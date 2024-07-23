@@ -1,0 +1,10 @@
+
+.loading-anim {
+    position: fixed;
+    inset: 0;
+    background-color: $quinary-color;
+    background-image: url(/images/logo.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

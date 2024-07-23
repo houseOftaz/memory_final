@@ -1,0 +1,30 @@
+.choose-nbr-crd-form {
+    @include flex-center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    background-color: $secondary-color;
+}
+
+.choose-nbr-crd-form-btn {
+    min-width: 130px;
+    height: 40px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border: 2px solid #ffd819;
+    background: #ffd819;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    font-weight: bold;
+    color: $current-font-color;
+  }
+  .choose-nbr-crd-form-btn:hover {
+    background: $quaternary-color;
+  }
+  

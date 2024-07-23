@@ -1,0 +1,26 @@
+
+@import '../utils/variables';
+
+@font-face {
+    font-family: 'Bungee';
+    src: url(/fonts/Bungee/Bungee-Regular.ttf) format(woff2),
+         url(/fonts/Bungee/Bungee-Regular.ttf) format(woff);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source sans 3';
+    src: url(/fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf) format(woff2),
+         url(/fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf) format(woff);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source sans 3 i';
+    src: url(/fonts/Source_Sans_3/SourceSans3-Italic-VariableFont_wght.ttf) format(woff2),
+         url(/fonts/Source_Sans_3/SourceSans3-Italic-VariableFont_wght.ttf) format(woff);
+    font-weight: italic;
+    font-style: normal;
+}

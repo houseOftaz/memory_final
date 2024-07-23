@@ -1,0 +1,25 @@
+FONCTIONS DOM:
+--------------
+
+let nouvelElement = document.createElement('li')
+elementParent.appendChild(elementEnfant)
+nouvelElement.attr['valeur']= 'valeur'
+nouvelElement.innerHTML = 'coucou'
+nouvelElementDeForm.value = 'les contenu de input'
+nouvelElement.styles.backgroundColor = 'red'
+nouvelElement.classList.addClass / removeClass / toggleClass
+
+
+POMPT:
+------
+
+Avec la balise dialog : utiliser un truc special pour la
+faire apparaitre c'est la fonction show() ou showModal()
+dessus et close() pour la fermer sinon faire une
+custom modal
+
+
+DESIGN
+------
+
+changer la taille des cartes en fonction du nombre de carte générée

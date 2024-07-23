@@ -1,0 +1,17 @@
+
+.home-menu {
+    height: 100vh;
+    @include flex-center;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+p {
+    margin: 10px 50px 0 50px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: $warning-color;
+    text-align: center;
+    font-family: $info-font;
+    font-weight: bolder;
+}
