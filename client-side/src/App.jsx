@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./pages/layout/Layout";
-import HomeMenu from "./pages/users/HomeMenu";
+import HomePage from "./pages/users/HomePage";
 import TestModePage from "./pages/users/TestModePage";
 import RegisterPage from "./pages/users/RegisterPage";
 import LoginPage from "./pages/users/LoginPage";
@@ -13,13 +13,13 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<HomeMenu />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/Test-mode-game" element={<TestModePage />} />
           <Route path="/Signup" element={<RegisterPage />} />
 
           <Route path="/login" element={<LoginPage />} />
 
-          <Route path="/back-to-home" element={<HomeMenu />} />
+          <Route path="/back-to-home" element={<HomePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

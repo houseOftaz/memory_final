@@ -29,6 +29,7 @@ function LoginPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+        crendentials: "include",
       }
     );
     if (!response.ok) {

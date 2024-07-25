@@ -55,9 +55,8 @@ const Register = () => {
       <h2>Inscription</h2>
 
       <form>
-        <div className="signup-form-group">
-          <label htmlFor="firstname">Prénom :</label>
-
+        <label className="signup-form-group" htmlFor="firstname">
+          Prénom :
           <input
             type="text"
             value={formData.firstname}
@@ -66,11 +65,10 @@ const Register = () => {
             autoComplete="firstname"
             onChange={handleChange}
           />
-        </div>
+        </label>
 
-        <div className="signup-form-group">
-          <label htmlFor="lastname">Nom :</label>
-
+        <label className="signup-form-group" htmlFor="lastname">
+          Nom :
           <input
             type="text"
             value={formData.lastname}
@@ -79,7 +77,7 @@ const Register = () => {
             autoComplete="lastname"
             onChange={handleChange}
           />
-        </div>
+        </label>
 
         <div className="signup-form-group">
           <label htmlFor="email">Email :</label>

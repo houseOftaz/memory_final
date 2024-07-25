@@ -5,7 +5,7 @@ const HomeMenu = () => {
   const user = {};
 
   return (
-    <nav className="home-menu">
+    <nav className="home-page">
       <LinkButton linkTo={"/Test-mode-game"} label={"Essayer le jeu"} />
 
       <LinkButton

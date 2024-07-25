@@ -1,4 +1,4 @@
-@import "./sass/base/reset";
+@import "./sass/base/normalize";
 @import "./sass/base/typography";
 @import "./sass/utils/mixins";
 @import "./sass/utils/variables";
@@ -11,7 +11,7 @@
 @import "./sass/layout/footer";
 @import "./sass/layout/grid";
 @import "./sass/pages/loadingAnim";
-@import "./sass/pages/homeMenu";
+@import "./sass/pages/homePage";
 @import "./sass/pages/testModeGame";
 @import "./sass/pages/termsPopup";
 @import "./sass/pages/registerPage";
