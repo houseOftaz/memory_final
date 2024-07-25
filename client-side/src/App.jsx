@@ -5,6 +5,7 @@ import HomePage from "./pages/users/HomePage";
 import TestModePage from "./pages/users/TestModePage";
 import RegisterPage from "./pages/users/RegisterPage";
 import LoginPage from "./pages/users/LoginPage";
+import ProfilPage from "./pages/users/ProfilPage";
 
 import "./index.scss";
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/Signup" element={<RegisterPage />} />
 
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/profile" element={<ProfilPage />} />
 
           <Route path="/back-to-home" element={<HomePage />} />
         </Route>

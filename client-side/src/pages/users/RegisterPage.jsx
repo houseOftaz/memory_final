@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import LinkButton from "../../components/buttons/LinkButton";
+import SessionContext from "../../context/SessionContextProvider";
 
 // AJOUT IF POUR LETAT DES BTN HOME PAGE
+// use context pour garder la session active
 const Register = () => {
+  const { session, setSession } = useContext(SessionContext);
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -55,6 +58,8 @@ const Register = () => {
       <h2>Inscription</h2>
 
       <form>
+        {" "}
+        {/* ohtmlFor ===label arround */}
         <label className="signup-form-group" htmlFor="firstname">
           Prénom :
           <input
@@ -66,7 +71,6 @@ const Register = () => {
             onChange={handleChange}
           />
         </label>
-
         <label className="signup-form-group" htmlFor="lastname">
           Nom :
           <input
@@ -78,7 +82,6 @@ const Register = () => {
             onChange={handleChange}
           />
         </label>
-
         <label className="signup-form-group" htmlFor="email">
           Email :
           <input
@@ -91,7 +94,6 @@ const Register = () => {
             onChange={handleChange}
           />
         </label>
-
         <label className="signup-form-group" htmlFor="password">
           Mot de passe :
           <input
@@ -103,8 +105,12 @@ const Register = () => {
             onChange={handleChange}
           />
         </label>
-
-        <LinkButton linkTo={"/"} label={"Valider"} onClick={handleSubmit} />
+        <LinkButton
+          className="register-btn"
+          linkTo={"/homePage"}
+          label={"Valider"}
+          onClick={handleSubmit}
+        />
       </form>
 
       {showSubmitFormPopup && (

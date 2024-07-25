@@ -1,14 +1,9 @@
-
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import LoadingAnim from "./LoadingAnim";
 
-
-
 function Layout() {
-
   const [loadingAnim, setLoadingAnim] = useState(true);
-
   const [isFirstRender, setIsFirstRender] = useState(true);
 
   useEffect(() => {
@@ -16,7 +11,7 @@ function Layout() {
       setTimeout(() => {
         setLoadingAnim(false);
         setIsFirstRender(false);
-      }, 1500)
+      }, 1500);
     } else {
       setLoadingAnim(false);
     }
@@ -26,11 +21,11 @@ function Layout() {
     <>
       {loadingAnim && isFirstRender && <LoadingAnim />}
 
-        <main className="main">
-            <Outlet />
-        </main>
+      <main className="main">
+        <Outlet />
+      </main>
     </>
-  )
+  );
 }
 
 export default Layout;
