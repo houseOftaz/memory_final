@@ -1,7 +1,8 @@
 import { useState } from "react";
 import LinkButton from "../../components/buttons/LinkButton";
 
-const SignupPage = () => {
+// AJOUT IF POUR LETAT DES BTN HOME PAGE
+const Register = () => {
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -118,6 +119,6 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default Register;
 
 // {formData.password < 7 && <p>Le mot de passe doit faire minimum 7 caractères</p>}
