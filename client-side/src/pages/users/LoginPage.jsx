@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LinkButton from "../../components/buttons/LinkButton";
 
 function LoginPage() {
   const [formData, setFormData] = useState({
@@ -41,10 +42,11 @@ function LoginPage() {
   };
 
   return (
-    <>
+    <div className="form-container">
+      <h2>Connexion</h2>
       <form onSubmit={handleSubmit}>
-        <div className="signup-form-group">
-          <label htmlFor="email">Email :</label>
+        <label className="signup-form-group" htmlFor="email">
+          Email :
           <input
             type="email"
             value={formData.email}
@@ -54,10 +56,10 @@ function LoginPage() {
             autoComplete="email@example.com"
             onChange={handleChange}
           />
-        </div>
+        </label>
 
-        <div className="signup-form-group">
-          <label htmlFor="password">Mot de passe :</label>
+        <label className="signup-form-group" htmlFor="password">
+          Mot de passe :
           <input
             type="password"
             value={formData.password}
@@ -66,16 +68,14 @@ function LoginPage() {
             autoComplete="new-password"
             onChange={handleChange}
           />
-        </div>
+        </label>
 
-        <button type="submit" className="submit-signup-btn">
-          Valider
-        </button>
+        <LinkButton linkTo={"/"} label={"Valider"} onClick={handleSubmit} />
 
         {error && <p>{error}</p>}
         {sucessMessage && <p>{sucessMessage}</p>}
       </form>
-    </>
+    </div>
   );
 }
 

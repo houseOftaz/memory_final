@@ -51,7 +51,7 @@ const Register = () => {
   };
 
   return (
-    <div className="signup-container">
+    <div className="form-container">
       <h2>Inscription</h2>
 
       <form>
@@ -79,9 +79,8 @@ const Register = () => {
           />
         </label>
 
-        <div className="signup-form-group">
-          <label htmlFor="email">Email :</label>
-
+        <label className="signup-form-group" htmlFor="email">
+          Email :
           <input
             type="email"
             value={formData.email}
@@ -91,11 +90,10 @@ const Register = () => {
             autoComplete="email@example.com"
             onChange={handleChange}
           />
-        </div>
+        </label>
 
-        <div className="signup-form-group">
-          <label htmlFor="password">Mot de passe :</label>
-
+        <label className="signup-form-group" htmlFor="password">
+          Mot de passe :
           <input
             type="password"
             value={formData.password}
@@ -104,7 +102,7 @@ const Register = () => {
             autoComplete="new-password"
             onChange={handleChange}
           />
-        </div>
+        </label>
 
         <LinkButton linkTo={"/"} label={"Valider"} onClick={handleSubmit} />
       </form>
