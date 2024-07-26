@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import LinkButton from "../../components/buttons/LinkButton";
 import Footer from "../layout/Footer";
+import { SessionContext } from "../../context/SessionContextProvider";
 
 const HomeMenu = () => {
-  const user = {};
+  const { session } = useContext(SessionContext);
 
   return (
     <nav className="home-page">
@@ -11,30 +13,22 @@ const HomeMenu = () => {
       <LinkButton
         linkTo={"/randomGame"}
         label={"Partie aléatoire"}
-        disabled={Object.keys(user).length === 0}
+        disabled={!session}
       />
 
       <LinkButton
         linkTo={"/chrono"}
         label={"Contre la montre"}
-        disabled={Object.keys(user).length === 0}
+        disabled={!session}
       />
 
-      <LinkButton
-        linkTo={"/theme"}
-        label={"Par thème"}
-        disabled={Object.keys(user).length === 0}
-      />
+      <LinkButton linkTo={"/theme"} label={"Par thème"} disabled={!session} />
 
-      <LinkButton
-        linkTo={"/score"}
-        label={"Scores"}
-        disabled={Object.keys(user).length === 0}
-      />
+      <LinkButton linkTo={"/score"} label={"Scores"} disabled={!session} />
 
       <LinkButton linkTo={"/signup"} label={"M'inscrire"} />
 
-      {Object.keys(user).length === 0 && (
+      {!session && (
         <p>
           Vous devez vous inscrire pour utiliser toutes les fonctionnalités du
           jeu.

@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import LinkButton from "../../components/buttons/LinkButton";
-import SessionContext from "../../context/SessionContextProvider";
+import { SessionContext } from "../../context/SessionContextProvider";
 
 // AJOUT IF POUR LETAT DES BTN HOME PAGE
 // use context pour garder la session active
 const Register = () => {
   const { session, setSession } = useContext(SessionContext);
+  console.log("session", session);
+  console.log(setSession);
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -39,6 +41,8 @@ const Register = () => {
         }
       );
       if (response.ok) {
+        const formData = await response.json();
+        setSession(formData);
         setShowSubmitFormPopup(true);
         setError(null);
       } else {
@@ -117,6 +121,11 @@ const Register = () => {
         <p>Données soumises expréssement avec succès tant attendu!</p>
       )}
       {error && <p>{error}</p>}
+      {session && (
+        <p>
+          Vous êtes connecté en tant que {session.firstname} {session.lastname}
+        </p>
+      )}
     </div>
   );
 };

@@ -7,6 +7,7 @@ function LinkButton({ linkTo, onClick, disabled, label }) {
   };
 
   const handleClick = async (e) => {
+    e.preventDefault();
     if (onClick) {
       await onClick(e);
     }

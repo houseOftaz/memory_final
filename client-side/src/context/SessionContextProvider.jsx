@@ -30,9 +30,9 @@ const SessionContextProvider = ({ children }) => {
   }, []);
   // le return est fait avant le useEffect
   return (
-    <SessionContextProvider.Provider value={{ session, setSession }}>
+    <SessionContext.Provider value={{ session, setSession }}>
       {children}
-    </SessionContextProvider.Provider>
+    </SessionContext.Provider>
   );
 };
 
