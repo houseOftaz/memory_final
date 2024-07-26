@@ -1,17 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function LinkButton({ linkTo, onClick, disabled, label }) {
+function LinkButton({ linkTo, testClick, disabled, label }) {
+  const navigate = useNavigate();
   const clickSound = (url) => {
     const audio = new Audio(url);
     audio.play();
   };
 
   const handleClick = async (e) => {
-    e.preventDefault();
-    if (onClick) {
-      await onClick(e);
-    }
     clickSound("/sounds/click.flac");
+    if (testClick) {
+      await testClick(e);
+      navigate(linkTo);
+    }
   };
 
   return (

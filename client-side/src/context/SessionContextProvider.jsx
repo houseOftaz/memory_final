@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const SessionContext = createContext();
 
 const SessionContextProvider = ({ children }) => {
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState();
 
   useEffect(() => {
     // ne peut pas etre async
@@ -17,6 +17,7 @@ const SessionContextProvider = ({ children }) => {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
         }
       );
       if (response.ok) {

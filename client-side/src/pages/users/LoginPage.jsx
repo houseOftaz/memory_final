@@ -45,7 +45,7 @@ function LoginPage() {
     <div className="form-container">
       <h2>Connexion</h2>
       <form onSubmit={handleSubmit}>
-        <label className="signup-form-group" htmlFor="email">
+        <label className="register-form-group" htmlFor="email">
           Email :
           <input
             type="email"
@@ -58,7 +58,7 @@ function LoginPage() {
           />
         </label>
 
-        <label className="signup-form-group" htmlFor="password">
+        <label className="register-form-group" htmlFor="password">
           Mot de passe :
           <input
             type="password"

@@ -1,10 +1,11 @@
 import { useContext } from "react";
+import { SessionContext } from "../../context/SessionContextProvider";
 import LinkButton from "../../components/buttons/LinkButton";
 import Footer from "../layout/Footer";
-import { SessionContext } from "../../context/SessionContextProvider";
 
 const HomeMenu = () => {
   const { session } = useContext(SessionContext);
+  console.log(session);
 
   return (
     <nav className="home-page">
@@ -26,7 +27,7 @@ const HomeMenu = () => {
 
       <LinkButton linkTo={"/score"} label={"Scores"} disabled={!session} />
 
-      <LinkButton linkTo={"/signup"} label={"M'inscrire"} />
+      <LinkButton linkTo={"/register"} label={"M'inscrire"} />
 
       {!session && (
         <p>
