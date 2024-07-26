@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import LinkButton from "../../components/buttons/LinkButton";
+import { SessionContext } from "../../context/SessionContextProvider";
 
 function ProfilPage() {
+  // ajout session context + patch pour update profil
+  const { session } = useContext(SessionContext);
   const [profilData, setProfilData] = useState({
     firstname: "",
     lastname: "",
@@ -12,7 +15,7 @@ function ProfilPage() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/auth/profile`,
+        `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/auth/me`,
         {
           method: "GET",
           headers: {

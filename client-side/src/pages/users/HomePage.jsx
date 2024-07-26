@@ -14,18 +14,26 @@ const HomeMenu = () => {
       <LinkButton
         linkTo={"/randomGame"}
         label={"Partie aléatoire"}
-        disabled={!session}
+        disabled={!session?.user?.email}
       />
 
       <LinkButton
         linkTo={"/chrono"}
         label={"Contre la montre"}
-        disabled={!session}
+        disabled={!session?.user?.email}
       />
 
-      <LinkButton linkTo={"/theme"} label={"Par thème"} disabled={!session} />
+      <LinkButton
+        linkTo={"/theme"}
+        label={"Par thème"}
+        disabled={!session?.user?.email}
+      />
 
-      <LinkButton linkTo={"/score"} label={"Scores"} disabled={!session} />
+      <LinkButton
+        linkTo={"/score"}
+        label={"Scores"}
+        disabled={!session?.user?.email}
+      />
 
       <LinkButton linkTo={"/register"} label={"M'inscrire"} />
 
@@ -36,7 +44,7 @@ const HomeMenu = () => {
         </p>
       )}
 
-      <Footer linkTo={"/login"} label={"login"} className={"link-button"} />
+      <Footer linkTo={"/profile"} label={"profile"} className={"link-button"} />
     </nav>
   );
 };

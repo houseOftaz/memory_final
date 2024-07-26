@@ -58,18 +58,6 @@ function LoginPage() {
           />
         </label>
 
-        <label className="register-form-group" htmlFor="password">
-          Mot de passe :
-          <input
-            type="password"
-            value={formData.password}
-            name="password"
-            id="password"
-            autoComplete="new-password"
-            onChange={handleChange}
-          />
-        </label>
-
         <LinkButton linkTo={"/"} label={"Valider"} onClick={handleSubmit} />
 
         {error && <p>{error}</p>}

@@ -2,8 +2,7 @@ import { useState, useContext } from "react";
 import LinkButton from "../../components/buttons/LinkButton";
 import { SessionContext } from "../../context/SessionContextProvider";
 
-// AJOUT IF POUR LETAT DES BTN HOME PAGE
-// use context pour garder la session active
+//
 const Register = () => {
   const { session, setSession } = useContext(SessionContext);
   const [formData, setFormData] = useState({
