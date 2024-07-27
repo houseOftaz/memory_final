@@ -5,7 +5,23 @@ import Footer from "../layout/Footer";
 
 const HomeMenu = () => {
   const { session } = useContext(SessionContext);
-  console.log(session);
+
+  const handleLogout = async () => {
+    const response = await fetch(
+      `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/auth/logout`,
+      {
+        credentials: "include", // c'est lui qui envoie ou non le cookie
+      }
+    );
+    if (response.ok) {
+      // la reponse contient un code HTTP
+      const data = await response.json(); // response contient un objet
+      console.log(response);
+      console.log(data);
+    } else {
+      console.log("Erreur lors de la déconnexion");
+    }
+  };
 
   return (
     <nav className="home-page">
@@ -30,21 +46,25 @@ const HomeMenu = () => {
       />
 
       <LinkButton
-        linkTo={"/score"}
-        label={"Scores"}
+        linkTo={"/classement"}
+        label={"classement"}
         disabled={!session?.user?.email}
       />
 
-      <LinkButton linkTo={"/register"} label={"M'inscrire"} />
+      <LinkButton
+        linkTo={!session?.user?.email ? "/register" : "/"}
+        label={!session?.user?.email ? "M'inscrire" : "Se déconnecter"}
+        onClickUserAction={!session?.user?.email ? null : handleLogout}
+      />
 
-      {!session && (
+      {!session?.user?.email && (
         <p>
           Vous devez vous inscrire pour utiliser toutes les fonctionnalités du
           jeu.
         </p>
       )}
 
-      <Footer linkTo={"/profile"} label={"profile"} className={"link-button"} />
+      <Footer />
     </nav>
   );
 };

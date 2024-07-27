@@ -5,6 +5,7 @@ import {
   me,
   updateUser,
   deleteUser,
+  logoutUser,
 } from "../controllers/user.controller.js";
 
 const auth_router = Router();
@@ -12,6 +13,8 @@ const auth_router = Router();
 auth_router.post("/register", registerUser);
 
 auth_router.post("/login", loginUser);
+
+auth_router.get("/logout", logoutUser);
 
 auth_router.get("/me", me);
 

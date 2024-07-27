@@ -88,8 +88,8 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = (req, res) => {
-  req.session.destroy();
-  res.clearCookie("session_id");
+  req.session.destroy(); // détruit la session de la base de données
+  res.clearCookie("session_id"); // envoie un ordre au navigateur de supprimer le cookie grace au header Set-Cookie
   return res.status(200).json({ message: "Vous êtes déconnecté" });
 };
 

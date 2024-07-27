@@ -1,7 +1,14 @@
 import { createContext, useState, useEffect } from "react";
 
-export const SessionContext = createContext();
+export const SessionContext = createContext({
+  user: {
+    firstname: "",
+    lastname: "",
+    email: "",
+  },
+});
 
+// {children} est le children du provider dans l'app
 const SessionContextProvider = ({ children }) => {
   const [session, setSession] = useState();
 

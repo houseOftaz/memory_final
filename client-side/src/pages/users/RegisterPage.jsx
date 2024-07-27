@@ -48,7 +48,6 @@ const Register = () => {
         throw new Error("Problème de connexion");
       }
     } catch (error) {
-      console.log("Erreur lors de la soumission du formulaire", error);
       setShowSubmitFormPopup(false);
       setError("Problème de connexion");
     }
@@ -124,7 +123,7 @@ const Register = () => {
           className="register-btn"
           linkTo={"/"}
           label={"Valider"}
-          testClick={handleSubmit}
+          onClickUserAction={handleSubmit}
         />
       </form>
       {showSubmitFormPopup && (

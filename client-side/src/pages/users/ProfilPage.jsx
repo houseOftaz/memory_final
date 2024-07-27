@@ -43,7 +43,6 @@ function ProfilPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(profilData);
   };
 
   return (

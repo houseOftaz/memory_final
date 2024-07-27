@@ -20,7 +20,6 @@ function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     // NEW INFO HERE warning
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/auth/login`,
