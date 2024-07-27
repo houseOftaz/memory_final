@@ -1,7 +1,11 @@
 import { useState } from "react";
 import LinkButton from "../../components/buttons/LinkButton";
+import { SessionContext } from "../../context/SessionContextProvider";
+import { useContext } from "react";
 
 function LoginPage() {
+  const { setSession } = useContext(SessionContext);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -13,23 +17,22 @@ function LoginPage() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
-      ...formData,
+      ...formData, // met a jour le formData avec les valeurs du champs
       [name]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // NEW INFO HERE warning
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/auth/login`,
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json", // previens l'envoi de json avec le headers      body: JSON.stringify(formDat
         },
-        body: JSON.stringify(formData),
-        crendentials: "include",
+        body: JSON.stringify(formData), // convertit le formData en json
+        credentials: "include",
       }
     );
     if (!response.ok) {
@@ -38,6 +41,7 @@ function LoginPage() {
     }
     const data = await response.json();
     setSuccessMessage(data.message); // router.push("/home")
+    setSession({ user: data.user });
   };
 
   return (
@@ -52,15 +56,27 @@ function LoginPage() {
             name="email"
             id="email"
             placeholder="email@example.com"
-            autoComplete="email@example.com"
             onChange={handleChange}
           />
         </label>
 
-        <LinkButton linkTo={"/"} label={"Valider"} onClick={handleSubmit} />
+        <label className="register-form-group" htmlFor="email">
+          Mot de passe :
+          <input
+            type="password"
+            value={formData.password}
+            name="password"
+            id="password"
+            placeholder="mot de passe"
+            onChange={handleChange}
+          />
+        </label>
 
-        {error && <p>{error}</p>}
-        {sucessMessage && <p>{sucessMessage}</p>}
+        <LinkButton
+          linkTo={"/"}
+          label={"Valider"}
+          onClickUserAction={handleSubmit}
+        />
       </form>
     </div>
   );

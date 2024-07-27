@@ -58,8 +58,6 @@ const Register = () => {
       <h2>Inscription</h2>
 
       <form>
-        {" "}
-        {/* ohtmlFor ===label arround */}
         <label className="register-form-group" htmlFor="firstname">
           Prénom :
           <input

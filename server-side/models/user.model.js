@@ -32,7 +32,7 @@ class User {
                 SELECT id, firstname, lastname, email, password, created_at
                 FROM users
                 WHERE id = ?`;
-      return await Query.runWithParams(query, id);
+      return await Query.runWithParams(query, { id });
     } catch (error) {
       return error;
     }

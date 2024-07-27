@@ -22,7 +22,7 @@ const SessionContextProvider = ({ children }) => {
         {
           method: "GET",
           headers: {
-            "Content-Type": "application/json",
+            Accept: "application/json",
           },
           credentials: "include",
         }

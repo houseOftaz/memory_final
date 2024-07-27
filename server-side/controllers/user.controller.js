@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt, { hash } from "bcrypt";
 
+// VERRIFIER LAFFICHAGE PASSWORD
 const registerUser = (req, res) => {
   const { firstname, lastname, email, password } = req.body;
   if (!firstname || !lastname || !email || !password) {
@@ -79,7 +80,17 @@ const loginUser = async (req, res) => {
       lastname: user.lastname,
       email: user.email,
     };
-    return res.status(200).json({ message: "Utilisateur connecté", user });
+    req.session.save((err) => {
+      if (err) {
+        res.json({
+          message: "Une erreur est survenue.",
+          err: "Une erreur est survenue.",
+        });
+      }
+      return res
+        .status(200)
+        .json({ message: "Utilisateur connecté", user: req.session.user });
+    });
   } catch (error) {
     return res
       .status(500)
