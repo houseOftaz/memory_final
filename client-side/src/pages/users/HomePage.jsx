@@ -4,7 +4,7 @@ import LinkButton from "../../components/buttons/LinkButton";
 import Footer from "../layout/Footer";
 
 const HomeMenu = () => {
-  const { session } = useContext(SessionContext);
+  const { session, setSession } = useContext(SessionContext);
 
   const handleLogout = async () => {
     const response = await fetch(
@@ -16,8 +16,7 @@ const HomeMenu = () => {
     if (response.ok) {
       // la reponse contient un code HTTP
       const data = await response.json(); // response contient un objet
-      console.log(response);
-      console.log(data);
+      setSession({});
     } else {
       console.log("Erreur lors de la déconnexion");
     }

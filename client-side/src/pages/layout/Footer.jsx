@@ -14,10 +14,10 @@ const Footer = () => {
     <>
       <div className="footer-separator"></div>
       <Link
-        to={!session?.user.email ? "/login" : "/profile"}
+        to={!session?.user?.email ? "/login" : "/profile"}
         className="link-button"
       >
-        {!session?.user.email ? "Se connecter" : "profile"}
+        {!session?.user?.email ? "Se connecter" : "profile"}
       </Link>
     </>
   );
