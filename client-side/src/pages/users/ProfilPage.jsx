@@ -4,6 +4,8 @@ import { SessionContext } from "../../context/SessionContextProvider";
 
 function ProfilPage() {
   const { session } = useContext(SessionContext);
+  console.log(session);
+
   const [profilData, setProfilData] = useState({
     avatar: null,
     firstname: session?.firstname || "",
@@ -50,6 +52,7 @@ function ProfilPage() {
       }
 
       const data = await response.json();
+      console.log("API response data:", data);
       setSuccessMessage(data.message);
       setSession(data.user);
     } catch (error) {
@@ -125,6 +128,7 @@ function ProfilPage() {
             id="avatar"
             onChange={handleChange}
             accept="image/*"
+            required
           />
         </label>
 
