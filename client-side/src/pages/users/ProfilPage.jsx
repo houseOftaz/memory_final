@@ -9,7 +9,6 @@ function ProfilPage() {
     firstname: "",
     lastname: "",
     email: "",
-    avatar: "",
   });
 
   useEffect(() => {
@@ -18,7 +17,6 @@ function ProfilPage() {
         firstname: session.firstname || "",
         lastname: session.lastname || "",
         email: session.email || "",
-        avatar: session.avatar || "",
       });
     }
     // s'occupe de mettre à jour le profil lorsque le session change
