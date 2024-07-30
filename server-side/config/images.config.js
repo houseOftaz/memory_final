@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const newDirectory = path.join(process.cwd(), "public/images");
-    fs.mkdirSync(new newDirectory(), { recursive: true });
+    fs.mkdirSync(newDirectory, { recursive: true });
     cb(null, newDirectory);
   },
   filename: function (req, file, cb) {
@@ -20,7 +20,7 @@ export const upload = multer({
     fileSize: 1024 * 1024 * 5,
   },
   fileFilter: function (req, file, cb) {
-    const types = /jpeg|jpg|png|webP|svg/;
+    const filetypes = /jpeg|jpg|png|webp|svg/;
     const isExtnameValid = filetypes.test(
       path.extname(file.originalname).toLowerCase()
     );
@@ -31,7 +31,7 @@ export const upload = multer({
       return cb(null, true);
     } else {
       cb(
-        "Le poids de votre fichier doit être inférieur à 5Mo, format supporté: jpeg, jpg, png, webP, svg"
+        "Le poids de votre fichier doit être inférieur à 5Mo, format supporté: jpeg, jpg, png, webp, svg"
       );
     }
   },

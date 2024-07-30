@@ -1,5 +1,6 @@
-import Query from "./query.model.js";
 import bcrypt from "bcrypt";
+import Query from "./query.model.js";
+import connection from "../config/db.config.js";
 
 class User {
   static async createUser(user) {
@@ -51,19 +52,23 @@ class User {
     }
   }
 
-  static async updateUser(data) {
-    // data = {objet} firstname, lastname, email, avatar, birthdate, password
+  static async updateUser(data, userId, avatar) {
+    console.log(data);
+    console.log(userId);
+    console.log(avatar);
+    console.log(data.data);
     try {
-      const hashedPassword = await bcrypt.hash(data.password, 10);
       const query = `
                 UPDATE users
-                SET firstname = ?, lastname = ?, email = ?, avatar = ?, birthdate = ?, password = ?
+                SET firstname = ?, lastname = ?, email = ?, avatar = ?
                 WHERE id = ?`;
-      return await Query.runWithParams(query, {
-        ...data,
-        password: hashedPassword,
-        id: "27",
-      });
+      return await connection.execute(query, [
+        data.firstname,
+        data.lastname,
+        data.email,
+        avatar,
+        userId,
+      ]);
     } catch (error) {
       return error;
     }

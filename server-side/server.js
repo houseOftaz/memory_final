@@ -1,6 +1,6 @@
 import "dotenv/config";
-import express from "express";
 import cors from "cors";
+import express from "express";
 
 import router from "./router/index.routes.js";
 import { sessionConfig } from "./config/session.config.js";
@@ -16,6 +16,8 @@ app.use(corsOptions);
 app.use(sessionConfig);
 app.use(express.json());
 app.use(express.static("public"));
+app.use("/images", express.static("public/images"));
+app.use(express.urlencoded({ extended: true }));
 app.use(protectedRoutes);
 
 app.use(router);

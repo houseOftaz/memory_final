@@ -1,5 +1,6 @@
-import User from "../models/user.model.js";
 import bcrypt, { hash } from "bcrypt";
+import User from "../models/user.model.js";
+import { upload } from "../config/images.config.js";
 
 // VERRIFIER LAFFICHAGE PASSWORD
 const registerUser = (req, res) => {
@@ -25,6 +26,7 @@ const registerUser = (req, res) => {
         });
       } else {
         req.session.user = {
+          id: result.insertId,
           firstname: user.firstname,
           lastname: user.lastname,
           email: user.email,
@@ -49,7 +51,6 @@ const registerUser = (req, res) => {
       }
     });
   } catch (error) {
-    console.log("Erreur lors de la création de l'utilisateur", error);
     res.status(500).json({
       message: "Création de l'utilisateur impossible",
       error: error.message,
@@ -105,20 +106,48 @@ const logoutUser = (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const { firstname, lastname, email, avatar, birthdate, password } = req.body;
-  if (!firstname || !lastname || !email || !avatar || !birthdate || !password) {
-    return res
-      .status(400)
-      .json({ message: "Vous devez remplir tous les champs" });
-  }
+  upload(req, res, async (err) => {
+    if (err) {
+      console.log(err);
+      return res
+        .status(500)
+        .json({ message: "Erreur lors de l'upload", error: err.message });
+    }
+    const { firstname, lastname, email } = req.body;
+    /*if (!firstname || !lastname || !email) {
+      return res
+        .status(400)
+        .json({ message: "Vous devez remplir tous les champs" });
+    }*/
 
-  const response = await User.updateUser(req.body);
-  if (!response.affectedRows) {
-    return res
-      .status(500)
-      .json({ message: "Erreur lors de la modification", error });
-  }
-  res.status(200).json({ message: "Utilisateur modifié", response });
+    let avatar = req.file ? `${req.file.filename}` : null;
+    /*
+    const user = {
+      id: req.session.user.id,
+      firstname: "",
+      lastname: "",
+      email: "",
+      avatar: "",
+    };
+    */
+    console.log(req.body);
+    try {
+      const response = await User.updateUser(
+        req.body,
+        req.session.user.id,
+        avatar
+      );
+      if (!response.affectedRows) {
+        console.log(response);
+        return res
+          .status(500)
+          .json({ message: "Erreur lors de la modification" });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    res.status(200).json({ message: "Utilisateur modifié" });
+  });
 };
 
 const me = async (req, res) => {

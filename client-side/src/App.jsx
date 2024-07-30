@@ -18,7 +18,6 @@ const App = () => {
           <Route path="/Test-mode-game" element={<TestModePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-
           <Route path="/profile" element={<ProfilPage />} />
         </Route>
       </Routes>
