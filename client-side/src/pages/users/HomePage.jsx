@@ -3,7 +3,7 @@ import { SessionContext } from "../../context/SessionContextProvider";
 import LinkButton from "../../components/buttons/LinkButton";
 import Footer from "../layout/Footer";
 
-const HomeMenu = () => {
+const HomePage = () => {
   const { session, setSession } = useContext(SessionContext);
 
   const handleLogout = async () => {
@@ -23,6 +23,19 @@ const HomeMenu = () => {
   };
 
   return (
+    /*<div className="animated-background">
+      <ul className="items">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>*/
     <nav className="home-page">
       <LinkButton linkTo={"/Test-mode-game"} label={"Essayer le jeu"} />
 
@@ -68,4 +81,4 @@ const HomeMenu = () => {
   );
 };
 
-export default HomeMenu;
+export default HomePage;
