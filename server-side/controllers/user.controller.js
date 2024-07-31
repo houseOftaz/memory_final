@@ -112,39 +112,40 @@ const updateUser = async (req, res) => {
         .status(500)
         .json({ message: "Erreur lors de l'upload", error });
     }
-    const { firstname, lastname, email } = req.body;
-    /*if (!firstname || !lastname || !email) {
+    const { firstname, lastname, email } = JSON.parse(req.body.data);
+    if (!firstname || !lastname || !email) {
       return res
         .status(400)
         .json({ message: "Vous devez remplir tous les champs" });
-    }*/
-    let avatar = req.file ? `${req.file.filename}` : null;
-    console.log(req.session.user);
-    console.log(req.body.data);
-    console.log(avatar);
-    /*
-    const user = {
-      id: req.session.user.id,
-      firstname: "",
-      lastname: "",
-      email: "",
-      avatar: "",
-    };
-    */
+    }
+    let avatar = req.file ? `${req.file.filename}` : "";
+
     try {
       const response = await User.updateUser(
         JSON.parse(req.body.data),
         req.session.user.id,
         avatar
       );
-      if (!response.affectedRows) {
+      if (!response[0].affectedRows) {
+        // sous quelle forme on recoit le resultat de la requete
         return res
           .status(500)
           .json({ message: "Erreur lors de la modification" });
       }
     } catch (error) {
-      console.log(error);
+      res
+        .status(500)
+        .json({ message: "Erreur lors de la modification", error });
     }
+
+    req.session.isLogged = true;
+    req.session.user = {
+      id: req.session.user.id,
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      avatar: avatar,
+    };
     res.status(200).json({ message: "Utilisateur modifié" });
   });
 };

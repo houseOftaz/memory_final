@@ -23,19 +23,6 @@ const HomePage = () => {
   };
 
   return (
-    /*<div className="animated-background">
-      <ul className="items">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>*/
     <nav className="home-page">
       <LinkButton linkTo={"/Test-mode-game"} label={"Essayer le jeu"} />
 

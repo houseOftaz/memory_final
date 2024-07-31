@@ -4,22 +4,22 @@ import { SessionContext } from "../../context/SessionContextProvider";
 
 function ProfilPage() {
   const { session, setSession } = useContext(SessionContext);
+  console.log("1 session", session);
   // état local pour les informations du profil
   const [userData, setUserData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
+    firstname: session?.user?.firstname || "",
+    lastname: session?.user?.lastname || "",
+    email: session?.user?.email || "",
   });
 
   useEffect(() => {
-    if (session && session.id) {
+    if (session?.user) {
       setUserData({
-        firstname: session.firstname || "",
-        lastname: session.lastname || "",
-        email: session.email || "",
+        firstname: session?.user?.firstname || "",
+        lastname: session?.user?.lastname || "",
+        email: session?.user?.email || "",
       });
     }
-    // s'occupe de mettre à jour le profil lorsque le session change
   }, [session]);
 
   const handleChange = (e) => {
@@ -51,8 +51,10 @@ function ProfilPage() {
       );
 
       const result = await response.json();
+      console.log("1", result);
+      setSession({ user: userData });
+      console.log("2", setSession, userData);
       alert("Profile mis à jour");
-      setSession(result.user);
     } catch (error) {
       console.log(error);
       alert("Problème lors de la mise à jour");
@@ -127,15 +129,9 @@ function ProfilPage() {
 
       {session && (
         <p>
-          Vous êtes connecté en tant que {session.firstname} {session.lastname}
+          Vous êtes connecté en tant que {session.user.firstname}{" "}
+          {session.user.lastname}
         </p>
-      )}
-
-      {userData.avatar && (
-        <img
-          src={`http://localhost:5000/images/${userData.avatar}`}
-          alt="avatar"
-        />
       )}
     </div>
   );

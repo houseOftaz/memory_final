@@ -58,6 +58,7 @@ class User {
                 UPDATE users
                 SET firstname = ?, lastname = ?, email = ?, avatar = ?
                 WHERE id = ?`;
+      console.log("5", data, avatar, userId);
       return await connection.execute(query, [
         data.firstname,
         data.lastname,
@@ -66,6 +67,7 @@ class User {
         userId,
       ]);
     } catch (error) {
+      console.log(error);
       return error;
     }
   }
