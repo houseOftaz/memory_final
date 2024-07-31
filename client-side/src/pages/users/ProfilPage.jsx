@@ -54,6 +54,7 @@ function ProfilPage() {
       alert("Profile mis à jour");
       setSession(result.user);
     } catch (error) {
+      console.log(error);
       alert("Problème lors de la mise à jour");
     }
   };
@@ -62,7 +63,7 @@ function ProfilPage() {
     <div className="form-container">
       <h2>Profile</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <label className="register-form-group">
+        <label className="register-form-group" htmlFor="firstname">
           Prénom :
           <input
             type="text"
@@ -74,7 +75,7 @@ function ProfilPage() {
           />
         </label>
 
-        <label className="register-form-group">
+        <label className="register-form-group" htmlFor="lastname">
           Nom :
           <input
             type="text"
@@ -114,7 +115,7 @@ function ProfilPage() {
           />
         </label>
 
-        <label className="register-form-group" htmlFor="password">
+        <label className="register-form-group" htmlFor="avatar">
           Avatar :
           <input type="file" name="avatar" id="avatar" />
         </label>

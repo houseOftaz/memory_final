@@ -53,10 +53,6 @@ class User {
   }
 
   static async updateUser(data, userId, avatar) {
-    console.log(data);
-    console.log(userId);
-    console.log(avatar);
-    console.log(data.data);
     try {
       const query = `
                 UPDATE users

@@ -12,8 +12,7 @@ class Query {
    * @returns {Promise} A promise that resolves to the query result.
    */
   static async runWithParams(query, data) {
-    // Object.values(data) transforms the values of the properties of an object into an array
-    console.log(Object.values(data));
+    // console.log(Object.values(data));
     const [result] = await pool.execute(query, Object.values(data));
     return result;
   }

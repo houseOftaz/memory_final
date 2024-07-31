@@ -3,7 +3,7 @@ const isAuthMiddleware = (req, res, next) => {
   const path = req.path;
   if (
     protectedRoutes.some((route) => path.includes(route)) &&
-    !req.session.isLogged
+    !req.session?.user?.email
   ) {
     return res.redirect("/");
   }

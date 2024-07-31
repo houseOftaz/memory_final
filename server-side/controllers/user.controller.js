@@ -108,10 +108,9 @@ const logoutUser = (req, res) => {
 const updateUser = async (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
-      console.log(err);
       return res
         .status(500)
-        .json({ message: "Erreur lors de l'upload", error: err.message });
+        .json({ message: "Erreur lors de l'upload", error });
     }
     const { firstname, lastname, email } = req.body;
     /*if (!firstname || !lastname || !email) {
@@ -119,8 +118,10 @@ const updateUser = async (req, res) => {
         .status(400)
         .json({ message: "Vous devez remplir tous les champs" });
     }*/
-
     let avatar = req.file ? `${req.file.filename}` : null;
+    console.log(req.session.user);
+    console.log(req.body.data);
+    console.log(avatar);
     /*
     const user = {
       id: req.session.user.id,
@@ -130,7 +131,6 @@ const updateUser = async (req, res) => {
       avatar: "",
     };
     */
-    console.log(req.body);
     try {
       const response = await User.updateUser(
         JSON.parse(req.body.data),
@@ -138,7 +138,6 @@ const updateUser = async (req, res) => {
         avatar
       );
       if (!response.affectedRows) {
-        console.log(response);
         return res
           .status(500)
           .json({ message: "Erreur lors de la modification" });
