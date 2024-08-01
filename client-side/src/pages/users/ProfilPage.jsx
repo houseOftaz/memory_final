@@ -4,7 +4,6 @@ import { SessionContext } from "../../context/SessionContextProvider";
 
 function ProfilPage() {
   const { session, setSession } = useContext(SessionContext);
-  console.log("1 session", session);
   // état local pour les informations du profil
   const [userData, setUserData] = useState({
     firstname: session?.user?.firstname || "",
@@ -51,9 +50,7 @@ function ProfilPage() {
       );
 
       const result = await response.json();
-      console.log("1", result);
       setSession({ user: userData });
-      console.log("2", setSession, userData);
       alert("Profile mis à jour");
     } catch (error) {
       console.log(error);
@@ -127,6 +124,9 @@ function ProfilPage() {
         <button type="submit">Valider</button>
       </form>
 
+      {session && session.user.role === "admin" && (
+        <p>Vous connecté en tant qu&apos;administrateur.</p>
+      )}
       {session && (
         <p>
           Vous êtes connecté en tant que {session.user.firstname}{" "}

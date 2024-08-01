@@ -4,7 +4,7 @@ import { SessionContext } from "../../context/SessionContextProvider";
 
 //
 const Register = () => {
-  const { session, setSession } = useContext(SessionContext);
+  const { setSession } = useContext(SessionContext);
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -12,7 +12,7 @@ const Register = () => {
     password: "",
   });
 
-  const [showSubmitFormPopup, setShowSubmitFormPopup] = useState(false);
+  const [setShowSubmitFormPopup] = useState(false);
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -69,9 +69,7 @@ const Register = () => {
             onChange={handleChange}
             required
           />
-          {formData.firstname < 4 && (
-            <p>Le prénom doit faire minimum 4 caractères</p>
-          )}
+          {formData.firstname < 4 && <p>minimum 4 caractères</p>}
         </label>
         <label className="register-form-group" htmlFor="lastname">
           Nom :
@@ -84,9 +82,7 @@ const Register = () => {
             onChange={handleChange}
             required
           />
-          {formData.lastname < 4 && (
-            <p>Le nom de famille doit faire minimum 4 caractères</p>
-          )}
+          {formData.lastname < 4 && <p>minimum 4 caractères</p>}
         </label>
         <label className="register-form-group" htmlFor="email">
           Email :
@@ -100,7 +96,7 @@ const Register = () => {
             onChange={handleChange}
             required
           />
-          {formData.email < 4 && <p>email doit faire minimum 4 caractères</p>}
+          {formData.email < 4 && <p>minimum 4 caractères</p>}
         </label>
         <label className="register-form-group" htmlFor="password">
           Mot de passe :
@@ -113,9 +109,7 @@ const Register = () => {
             onChange={handleChange}
             required
           />
-          {formData.password < 4 && (
-            <p>Le mot de passe doit faire minimum 4 caractères</p>
-          )}
+          {formData.password < 4 && <p>minimum 4 caractères</p>}
         </label>
         <LinkButton
           className="register-btn"
@@ -124,15 +118,7 @@ const Register = () => {
           onClickUserAction={handleSubmit}
         />
       </form>
-      {showSubmitFormPopup && (
-        <p>Données soumises expréssement avec succès tant attendu!</p>
-      )}
       {error && <p>{error}</p>}
-      {session && (
-        <p>
-          Vous êtes connecté en tant que {session.firstname} {session.lastname}
-        </p>
-      )}
     </div>
   );
 };

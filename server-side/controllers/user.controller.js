@@ -26,6 +26,7 @@ const registerUser = (req, res) => {
         });
       } else {
         req.session.user = {
+          role: user.role,
           id: result.insertId,
           firstname: user.firstname,
           lastname: user.lastname,
@@ -42,6 +43,7 @@ const registerUser = (req, res) => {
         res.status(200).json({
           message: "Utilisateur créé",
           user: {
+            role: user.role,
             id: user.id,
             firstname: user.firstname,
             lastname: user.lastname,
@@ -67,6 +69,7 @@ const loginUser = async (req, res) => {
   }
   try {
     const user = await User.getUserByEmail(email);
+    console.log("user", user);
     if (!user) {
       return res.status(404).json({ message: "Utilisateur introuvable" });
     }
@@ -76,11 +79,13 @@ const loginUser = async (req, res) => {
     }
     req.session.isLogged = true;
     req.session.user = {
+      role: user.role,
       id: user.id,
       firstname: user.firstname,
       lastname: user.lastname,
       email: user.email,
     };
+    console.log("session", user);
     req.session.save((err) => {
       if (err) {
         res.json({

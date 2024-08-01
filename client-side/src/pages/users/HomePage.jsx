@@ -1,10 +1,19 @@
 import { useContext } from "react";
+import { useSearchParams } from "react-router-dom";
 import { SessionContext } from "../../context/SessionContextProvider";
 import LinkButton from "../../components/buttons/LinkButton";
 import Footer from "../layout/Footer";
 
 const HomePage = () => {
   const { session, setSession } = useContext(SessionContext);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log("params", searchParams);
+  if (searchParams.get("sucessLogin")) {
+    setTimeout(() => {
+      setSearchParams({});
+    }, 3000);
+  }
 
   const handleLogout = async () => {
     const response = await fetch(
@@ -24,7 +33,11 @@ const HomePage = () => {
 
   return (
     <nav className="home-page">
-      <LinkButton linkTo={"/Test-mode-game"} label={"Essayer le jeu"} />
+      {searchParams.get("sucessLogin") && (
+        <p>Vous êtes connecté en tant que {session?.user?.firstname}</p>
+      )}
+
+      <LinkButton linkTo={"/test-mode"} label={"Essayer le jeu"} />
 
       <LinkButton
         linkTo={"/randomGame"}
@@ -39,7 +52,7 @@ const HomePage = () => {
       />
 
       <LinkButton
-        linkTo={"/theme"}
+        linkTo={"/themes"}
         label={"Par thème"}
         disabled={!session?.user?.email}
       />
@@ -62,7 +75,6 @@ const HomePage = () => {
           jeu.
         </p>
       )}
-
       <Footer />
     </nav>
   );

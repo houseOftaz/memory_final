@@ -12,7 +12,6 @@ function LoginPage() {
   });
 
   const [error, setError] = useState(null);
-  const [sucessMessage, setSuccessMessage] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +39,6 @@ function LoginPage() {
       throw new Error("Problème de connexion");
     }
     const data = await response.json();
-    setSuccessMessage(data.message); // router.push("/home")
     setSession({ user: data.user });
   };
 
@@ -73,11 +71,13 @@ function LoginPage() {
         </label>
 
         <LinkButton
-          linkTo={"/"}
+          linkTo={"/?sucessLogin=true"} // search query params
           label={"Valider"}
           onClickUserAction={handleSubmit}
         />
       </form>
+
+      {error && <p>{error}</p>}
     </div>
   );
 }

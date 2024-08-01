@@ -22,10 +22,6 @@ auth_router.patch("/update", updateUser);
 
 auth_router.delete("/delete", deleteUser);
 
-auth_router.get("/", (req, res) => {
-  res.json({ message: "Hello from the server!" });
-});
-
 // auth_router.get('/:id', getUser);
 
 // route pour obtenir tous les utilisateur

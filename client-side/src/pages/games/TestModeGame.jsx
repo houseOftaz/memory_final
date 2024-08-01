@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { CounterContext } from "../../context/CounterContextProvider";
-
 import Card from "../../components/cards/Card";
 import EndGameAlert from "../../components/popups/EndGameAlert";
 

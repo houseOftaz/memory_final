@@ -18,28 +18,17 @@
   }
 
   .register-form-group {
-    padding: 0.4rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   input {
-    padding: 0.4rem;
+    width: 80%;
+    padding: 0.2rem;
     background-color: $yellow;
     border: 1px solid;
     border-radius: 15px;
     text-align: center;
-  }
-
-  .register-btn {
-    padding: 0.5rem 0.5rem;
-    margin: 1rem;
-    border-radius: 15px;
-    background-color: $orange;
-    color: $current-font-color;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
   }
 }

@@ -42,8 +42,9 @@ class User {
   static async getUserByEmail(email) {
     try {
       const query = `
-                SELECT id, firstname, lastname, email, password, created_at
+                SELECT users.id, firstname, lastname, email, password, created_at, roles.name as role
                 FROM users
+                JOIN roles ON users.id_role = roles.id
                 WHERE email = ?`;
       const response = await Query.runWithParams(query, { email });
       return response[0];
@@ -58,7 +59,6 @@ class User {
                 UPDATE users
                 SET firstname = ?, lastname = ?, email = ?, avatar = ?
                 WHERE id = ?`;
-      console.log("5", data, avatar, userId);
       return await connection.execute(query, [
         data.firstname,
         data.lastname,
