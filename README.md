@@ -22,6 +22,13 @@ memory_final/
 │   ├── node_modules/
 │   ├── public/
 │   ├── src/
+│   │   ├── components/
+│   │   │   ├── ChooseNbrCardForm.jsx
+│   │   │   ├── ChooseThemeForm.jsx
+│   │   │   ├── DisplayChoices.jsx
+│   │   │   ├── ThemesDisplay.jsx
+│   │   │   ├── ThemesModeGame.jsx
+│   │   │   └── ...
 │   ├── ...files
 ├── server-side/
 │   ├── config/
