@@ -22,7 +22,7 @@ const AdminPage = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        setDataUsers(data);
+        setDataUsers(data.users || []);
       } else {
         throw new Error("Problème de connexion");
       }
