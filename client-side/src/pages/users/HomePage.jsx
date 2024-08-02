@@ -8,7 +8,6 @@ const HomePage = () => {
   const { session, setSession } = useContext(SessionContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log("params", searchParams);
   if (searchParams.get("sucessLogin")) {
     setTimeout(() => {
       setSearchParams({});

@@ -69,7 +69,6 @@ const loginUser = async (req, res) => {
   }
   try {
     const user = await User.getUserByEmail(email);
-    console.log("user", user);
     if (!user) {
       return res.status(404).json({ message: "Utilisateur introuvable" });
     }
@@ -85,7 +84,6 @@ const loginUser = async (req, res) => {
       lastname: user.lastname,
       email: user.email,
     };
-    console.log("session", user);
     req.session.save((err) => {
       if (err) {
         res.json({

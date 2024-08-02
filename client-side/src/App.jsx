@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Admin from "./pages/admin/Admin";
+import AdminPage from "./pages/admin/AdminPage";
 import Layout from "./pages/layout/Layout";
 import HomePage from "./pages/users/HomePage";
 import DisplayChoices from "./pages/games/DisplayChoices";
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<ProfilPage />} />
           <Route path="/themes" element={<ThemesDiplay />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
