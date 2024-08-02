@@ -3,7 +3,7 @@ import { CounterContext } from "../../context/CounterContextProvider";
 import Card from "../../components/cards/Card";
 import EndGameAlert from "../../components/popups/EndGameAlert";
 
-const ThemesPage = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
+const ThemesModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
   // état pour les cartes
   const [cards, setCards] = useState([]);
   // état pour les cartes déjà piquées
@@ -106,4 +106,4 @@ const ThemesPage = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
   );
 };
 
-export default ThemesPage;
+export default ThemesModeGame;

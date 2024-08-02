@@ -1,10 +1,18 @@
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { SessionContext } from "../../context/SessionContextProvider";
 
-import React from 'react'
+const Admin = () => {
+  const { session } = useContext(SessionContext);
+  const navigate = useNavigate();
 
-function Admin() {
-  return (
-    <div>Admin</div>
-  )
-}
+  if (!session) {
+    return <p>Loading</p>; // a ce stade la session est null / undifined
+  } else if (session?.user?.role !== "admin") {
+    navigate("/");
+  } else {
+    return <div>Page Admin</div>;
+  }
+};
 
-export default Admin
+export default Admin;

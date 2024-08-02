@@ -19,6 +19,12 @@ const Footer = () => {
       >
         {!session?.user?.email ? "Se connecter" : "profile"}
       </Link>
+
+      {session?.user?.role === "admin" && (
+        <Link to="/admin" className="link-button">
+          Admin
+        </Link>
+      )}
     </>
   );
 };
