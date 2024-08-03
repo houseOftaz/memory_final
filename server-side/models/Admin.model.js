@@ -13,6 +13,18 @@ class Admin {
       return error;
     }
   }
+
+  static async banishUser(id) {
+    try {
+      const query = `
+                UPDATE users
+                SET isBanned = 1
+                WHERE id = ?`;
+      return await Query.runWithParams(query, { id });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default Admin;

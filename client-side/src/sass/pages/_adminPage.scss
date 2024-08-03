@@ -1,0 +1,39 @@
+.admin-page {
+  height: 100vh;
+  @include flex-center;
+  flex-direction: column;
+}
+
+table {
+  width: 80%;
+  border-radius: 0.4rem;
+  background-color: $apple-green;
+
+  thead {
+    background-color: $yellow;
+    th {
+      padding: 0.1rem 0.6rem;
+      border-radius: 0.4rem;
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        padding: 0.5rem;
+        border-radius: 0.4rem;
+        border: 1px solid $yellow;
+      }
+    }
+  }
+}
+
+.banish-btn {
+  text-decoration: none;
+  background-color: $red;
+  color: $current-font-color;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.4rem;
+  font-weight: bold;
+  font-family: $current-font;
+}

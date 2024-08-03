@@ -30,23 +30,42 @@ const AdminPage = () => {
     fetchData();
   }, []);
   console.log(dataUsers);
+
+  const handleBanish = async (userId) => {
+    const response = await fetch(
+      `${
+        import.meta.env.VITE_BASE_URL_BACKEND
+      }/server-side/admin/user/${userId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+        },
+        credentials: "include",
+      }
+    );
+    if (response.ok) {
+      setDataUsers((prevData) => prevData.filter((user) => user.id !== userId));
+    } else {
+      throw new Error("Tentative de bannissement échouée");
+    }
+  };
+
   if (!session) {
     return <p>Loading</p>; // a ce stade la session est null / undifined
   } else if (session?.user?.role !== "admin") {
     navigate("/");
   } else {
     return (
-      <div>
+      <div className="admin-page">
         <h1>Page Admin</h1>
-        <p>sent la puissance du controle des joueurs mouahaha</p>
         <table>
           <thead>
             <tr>
-              <th>Créer un nouveau joueur</th>
-              <th>Modifier un joueur</th>
-              <th>Supprimer un joueur</th>
-              <th>Lister les joueurs</th>
-              <th>Bannir un joueur</th>
+              <th>Prénom</th>
+              <th>Nom de famille</th>
+              <th>Email</th>
+              <th>Bannir</th>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +75,12 @@ const AdminPage = () => {
                 <td>{user.lastname}</td>
                 <td>{user.email}</td>
                 <td>
-                  <Link to={`/admin/user/${user.id}`}>Bannir</Link>
+                  <button
+                    onClick={() => handleBanish(user.id)}
+                    className="banish-btn"
+                  >
+                    Bannir
+                  </button>
                 </td>
               </tr>
             ))}
