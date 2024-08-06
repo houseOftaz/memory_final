@@ -189,8 +189,23 @@ export const seedDB = async (req, res) => {
 export const seedBackCards = async (req, res) => {
   const images = [
     {
-      name: "back-card-1.webp",
-      picture: "back-card-1.webp",
-      alt: "back-card-1",
-      id: 1,
+      name: "back-animals",
+      picture: "back-animals.webp",
+      alt: "back-animals",
+      id_package: 1,
     },
+    {
+      name: "back-heros",
+      picture: "back-heros.webp",
+      alt: "back-heros",
+      id_package: 3,
+    },
+    {
+      name: "back-monuments",
+      picture: "back-monuments.webp",
+      alt: "back-monuments",
+      id_package: 4,
+    },
+  ];
+  await Seed.seedBackCards(images);
+};

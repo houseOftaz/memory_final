@@ -6,7 +6,6 @@ class Seed {
                 INSERT INTO cards (name, picture, alt, id_package)
                 VALUES (?, ?, ?, ?)`;
     for (let image of data) {
-      console.log(image);
       try {
         await Query.runWithParams(query, image);
       } catch (error) {
@@ -15,12 +14,11 @@ class Seed {
     }
   }
 
-  static async seedBackCards() {
+  static async seedBackCards(data) {
     const query = `
-                INSERT INTO cards (name, picture, alt, id_package)
+                INSERT INTO back_cards (name, picture, alt, id_package)
                 VALUES (?, ?, ?, ?)`;
     for (let image of data) {
-      console.log(image);
       try {
         await Query.runWithParams(query, image);
       } catch (error) {
