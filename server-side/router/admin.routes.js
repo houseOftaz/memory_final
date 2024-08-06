@@ -2,16 +2,15 @@ import { Router } from "express";
 import {
   adminBanishUser,
   adminGetUsers,
+  adminUnbanishUser,
 } from "../controllers/admin.controller.js";
 
 const auth_router = Router();
 
 auth_router.get("/admin", adminGetUsers);
 
-auth_router.delete("/user/:id", adminBanishUser);
-// auth_router.get('/:id', getUser);
+auth_router.patch("/user/banish/:id", adminBanishUser);
 
-// route pour obtenir tous les utilisateur
-//auth_router.get('/', getUsers);
+auth_router.patch("/user/unbanish/:id", adminUnbanishUser);
 
 export default auth_router;

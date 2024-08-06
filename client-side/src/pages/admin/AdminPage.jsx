@@ -30,24 +30,40 @@ const AdminPage = () => {
     fetchData();
   }, []);
 
-  const handleBanish = async (e, userId) => {
+  const handleBanish = async (e, userId, action) => {
     e.preventDefault();
-    const response = await fetch(
-      `${
-        import.meta.env.VITE_BASE_URL_BACKEND
-      }/server-side/admin/user/${userId}`,
-      {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-        },
-        credentials: "include",
-      }
-    );
+
+    const URL =
+      action === "banish"
+        ? `${
+            import.meta.env.VITE_BASE_URL_BACKEND
+          }/server-side/admin/user/banish/${userId}`
+        : `${
+            import.meta.env.VITE_BASE_URL_BACKEND
+          }/server-side/admin/user/unbanish/${userId}`;
+
+    const response = await fetch(URL, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+      },
+      credentials: "include",
+    });
     if (response.ok) {
-      setDataUsers((prevData) => prevData.filter((user) => user.id !== userId));
+      setDataUsers((prevData) =>
+        prevData.map((user) => {
+          if (user.id === userId) {
+            return { ...user, is_banned: action === "banish" ? 1 : 0 };
+          }
+          return user;
+        })
+      );
     } else {
-      throw new Error("Tentative de bannissement échouée");
+      throw new Error(
+        `Tentative de ${
+          action === "banish" ? "bannissement" : "débannissement"
+        } échouée`
+      );
     }
   };
 
@@ -76,13 +92,17 @@ const AdminPage = () => {
                 <td>{user.email}</td>
                 <td>
                   {user.is_banned ? (
-                    <Link to="#" className="banish-btn">
+                    <Link
+                      to="#"
+                      className="banish-btn"
+                      onClick={(e) => handleBanish(e, user.id, "unbanish")}
+                    >
                       Débannir
                     </Link>
                   ) : (
                     <Link
                       to="#"
-                      onClick={(e) => handleBanish(e, user.id)}
+                      onClick={(e) => handleBanish(e, user.id, "banish")}
                       className="banish-btn"
                     >
                       Bannir
@@ -93,6 +113,9 @@ const AdminPage = () => {
             ))}
           </tbody>
         </table>
+        <Link to="/" className="back-btn">
+          Retour
+        </Link>
       </div>
     );
   }

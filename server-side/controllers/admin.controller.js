@@ -14,3 +14,13 @@ export const adminBanishUser = async (req, res) => {
     return res.status(500).json({ message: "Error banning user", error });
   }
 };
+
+export const adminUnbanishUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Admin.unbanishUser(id);
+    return res.status(200).json({ message: "User unbanned" });
+  } catch (error) {
+    return res.status(500).json({ message: "Error unbanning user", error });
+  }
+};

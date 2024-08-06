@@ -26,6 +26,18 @@ class Admin {
       return error;
     }
   }
+
+  static async unbanishUser(id) {
+    try {
+      const query = `
+                UPDATE users
+                SET is_banned = 0
+                WHERE id = ?`;
+      return await Query.runWithParams(query, { id: id });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default Admin;

@@ -1,9 +1,11 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import LinkButton from "../../components/buttons/LinkButton";
 import { SessionContext } from "../../context/SessionContextProvider";
 
 function LoginPage() {
   const { setSession } = useContext(SessionContext);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -39,6 +41,7 @@ function LoginPage() {
     }
     const data = await response.json();
     setSession({ user: data.user });
+    navigate("/");
   };
 
   return (
