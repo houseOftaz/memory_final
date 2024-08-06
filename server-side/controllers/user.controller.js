@@ -1,5 +1,5 @@
 import bcrypt, { hash } from "bcrypt";
-import User from "../models/user.model.js";
+import User from "../models/User.model.js";
 import { upload } from "../config/images.config.js";
 
 // VERRIFIER LAFFICHAGE PASSWORD
@@ -86,6 +86,7 @@ const loginUser = async (req, res) => {
       firstname: user.firstname,
       lastname: user.lastname,
       email: user.email,
+      avatar: user.avatar,
     };
     req.session.save((err) => {
       if (err) {
@@ -151,8 +152,9 @@ const updateUser = async (req, res) => {
       lastname: lastname,
       email: email,
       avatar: avatar,
+      role: req.session.user.role,
     };
-    res.status(200).json({ message: "Utilisateur modifié" });
+    res.status(200).json({ user: req.session.user });
   });
 };
 

@@ -5,6 +5,7 @@ export const SessionContext = createContext({
     firstname: "",
     lastname: "",
     email: "",
+    avatar: "",
   },
 });
 

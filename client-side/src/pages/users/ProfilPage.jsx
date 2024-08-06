@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-// import LinkButton from "../../components/buttons/LinkButton";
+import LinkButton from "../../components/buttons/LinkButton";
 import { SessionContext } from "../../context/SessionContextProvider";
 
 function ProfilPage() {
@@ -9,6 +9,7 @@ function ProfilPage() {
     firstname: session?.user?.firstname || "",
     lastname: session?.user?.lastname || "",
     email: session?.user?.email || "",
+    avatar: session?.user?.avatar || "",
   });
 
   useEffect(() => {
@@ -17,6 +18,7 @@ function ProfilPage() {
         firstname: session?.user?.firstname || "",
         lastname: session?.user?.lastname || "",
         email: session?.user?.email || "",
+        avatar: session?.user?.avatar || "",
       });
     }
   }, [session]);
@@ -36,7 +38,6 @@ function ProfilPage() {
     const formData = new FormData();
 
     formData.append("avatar", e.target.avatar.files[0]);
-
     formData.append("data", JSON.stringify(userData));
 
     try {
@@ -50,7 +51,7 @@ function ProfilPage() {
       );
 
       const result = await response.json();
-      setSession({ user: userData });
+      setSession(result);
       alert("Profile mis à jour");
     } catch (error) {
       console.log(error);
@@ -61,6 +62,14 @@ function ProfilPage() {
   return (
     <div className="form-container">
       <h2>Profile</h2>
+      <img
+        src={`${import.meta.env.VITE_BASE_URL_BACKEND}/images/${
+          userData.avatar
+        }`}
+        alt="avatar"
+        width="100"
+        height="100"
+      />
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label className="register-form-group" htmlFor="firstname">
           Prénom :
@@ -121,7 +130,9 @@ function ProfilPage() {
         {/** 
         <LinkButton linkTo={"/"} label={"Valider"} onClick={handleSubmit} />
         */}
-        <button type="submit">Valider</button>
+        <button type="submit" className="submit-btn-profil">
+          Valider
+        </button>
       </form>
 
       {session && session.user.role === "admin" && (
@@ -133,6 +144,8 @@ function ProfilPage() {
           {session.user.lastname}
         </p>
       )}
+
+      <LinkButton linkTo="/" label="Retour" />
     </div>
   );
 }

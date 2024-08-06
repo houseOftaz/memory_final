@@ -1,15 +1,14 @@
 import { useState } from "react";
 import ThemesModeGame from "./ThemesModeGame";
 import ChooseThemeForm from "./ChooseThemeForm";
-import ChooseNbrCardForm from "./ChooseNbrCardForm";
 
 const ThemesDiplay = () => {
   const [displayChooseThemeForm, setDisplayChooseThemeForm] = useState(true);
   const [theme, setTheme] = useState(null);
 
-  const onStart = (num) => {
+  const onStart = (num, theme) => {
     setDisplayChooseThemeForm(false);
-    setTheme(num);
+    setTheme(num, theme);
   };
 
   return (
@@ -24,6 +23,7 @@ const ThemesDiplay = () => {
           <ThemesModeGame
             nbrCards={theme}
             setDisplayChooseThemeForm={setDisplayChooseThemeForm}
+            themeValue={theme}
           />
         </div>
       )}

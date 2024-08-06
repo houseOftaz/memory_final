@@ -1,49 +1,47 @@
-
 .container-cards {
-    @include flex-center;
-    flex-wrap: wrap;
-    gap: 1rem;
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .card {
-    background-image: url('/images/memory-card.png');
-    background-size: contain;
-    border-radius: 15px;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    font-size: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-image: url("/images/memory-card.png");
+  background-size: contain;
+  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.card:hover { // à mettre en requète média pour 1100px
-    background-color: darksalmon;
-    cursor: pointer;
+.card:hover {
+  // à mettre en requète média pour 1100px
+  background-color: $orange;
+  cursor: pointer;
 }
 
 .clicked-carte {
-    background-image: none;
-    background-color: khaki;
+  background-image: none;
+  background-color: $yellow;
 }
 
 .end-game-alert {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: black;
-    color: green;
-    padding: 2rem;
-    border: 2px solid black;
-    z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $yellow;
+  padding: 2rem;
+  z-index: 1000;
 }
 
 .alert-content {
-    text-align: center;
+  text-align: center;
 }
 
 .alert-content button:hover {
-    background-color: darksalmon;
+  background-color: $orange;
 }

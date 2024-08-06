@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import Query from "./query.model.js";
+import Query from "./Query.model.js";
 import connection from "../config/db.config.js";
 
 class User {
@@ -42,7 +42,7 @@ class User {
   static async getUserByEmail(email) {
     try {
       const query = `
-                SELECT users.id, firstname, lastname, email, password, roles.name as role, is_banned
+                SELECT users.id, firstname, lastname, email, avatar, password, roles.name as role, is_banned
                 FROM users
                 JOIN roles ON users.id_role = roles.id
                 WHERE email = ?`;

@@ -1,50 +1,5 @@
 @import "../utils/variables";
 
-// btn to submit subscribe form
-.submit-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  text-decoration: none;
-  color: #144cff;
-  font-size: 18px;
-  border-radius: 0px;
-  width: 200px;
-  height: 40px;
-  position: relative;
-  transition: 0.3s;
-  overflow: hidden;
-
-  .submit-btn::before,
-  .submit-btn::after {
-    content: "";
-    display: block;
-    height: 2px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    background-color: #144cff;
-    transition: 0.3s;
-  }
-
-  .submit-btn::before {
-    top: 0;
-  }
-
-  .submit-btn::after {
-    bottom: 0;
-  }
-
-  .submit-btn:hover::before {
-    transform: translateX(-100%);
-  }
-
-  .submit-btn:hover::after {
-    transform: translateX(100%);
-  }
-}
-
 .start-button {
   padding: 0.5rem, 1rem;
   background-color: $yellow;
@@ -75,16 +30,19 @@
   background-color: darksalmon;
 }
 
-.register-form-btn {
-  margin: 1.7rem;
-  padding: 0.5rem;
+.register-form-btn,
+.submit-btn-profil {
+  width: 6rem;
+  margin: 1rem;
+  padding: 0.6rem;
   border: none;
-  border-radius: 15px;
-  background-color: $apple-green;
-  box-shadow: 0px 10px 10px -3px $apple-green;
+  border-radius: 1.8rem;
+  background-color: $yellow;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
 
-  font-family: $current-font;
-  font-weight: bolder;
+  font-weight: bold;
+  font-size: smaller;
+  text-align: center;
+  text-decoration: none;
   text-transform: uppercase;
-  text-shadow: 0px 1px 0px white;
 }

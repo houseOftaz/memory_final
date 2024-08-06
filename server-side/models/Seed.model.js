@@ -1,4 +1,4 @@
-import Query from "./query.model.js";
+import Query from "./Query.model.js";
 
 class Seed {
   static async seedDB(data) {

@@ -3,7 +3,11 @@ import { CounterContext } from "../../context/CounterContextProvider";
 import Card from "../../components/cards/Card";
 import EndGameAlert from "../../components/popups/EndGameAlert";
 
-const ThemesModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
+const ThemesModeGame = ({
+  nbrCards,
+  setDisplayChooseNbrCardForm,
+  themeValue,
+}) => {
   // état pour les cartes
   const [cards, setCards] = useState([]);
   // état pour les cartes déjà piquées
@@ -87,7 +91,7 @@ const ThemesModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
 
   return (
     <>
-      <h2>Test Mode</h2>
+      <h2>Theme Mode</h2>
       <section className="container-cards">
         {cards.map((card, index) => (
           <Card

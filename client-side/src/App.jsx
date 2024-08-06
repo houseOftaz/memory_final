@@ -8,6 +8,7 @@ import ThemesDiplay from "./pages/games/ThemesDiplay";
 import RegisterPage from "./pages/users/RegisterPage";
 import LoginPage from "./pages/users/LoginPage";
 import ProfilPage from "./pages/users/ProfilPage";
+import RankPage from "./pages/users/RankPage";
 
 import "./index.scss";
 
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/profile" element={<ProfilPage />} />
           <Route path="/themes" element={<ThemesDiplay />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/classement" element={<RankPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import Query from "./query.model.js";
+import Query from "./Query.model.js";
 import connection from "../config/db.config.js";
 
 class Admin {
