@@ -42,7 +42,7 @@ class User {
   static async getUserByEmail(email) {
     try {
       const query = `
-                SELECT users.id, firstname, lastname, email, password, created_at, roles.name as role
+                SELECT users.id, firstname, lastname, email, password, roles.name as role, is_banned
                 FROM users
                 JOIN roles ON users.id_role = roles.id
                 WHERE email = ?`;

@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import LinkButton from "../../components/buttons/LinkButton";
 import { SessionContext } from "../../context/SessionContextProvider";
-import { useContext } from "react";
 
 function LoginPage() {
   const { setSession } = useContext(SessionContext);

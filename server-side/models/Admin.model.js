@@ -6,8 +6,9 @@ class Admin {
   static async getUsers() {
     try {
       const query = `
-                SELECT id, firstname, lastname, email
-                FROM users`;
+                SELECT id, firstname, lastname, email, is_banned
+                FROM users
+                ORDER BY is_banned ASC, lastname ASC, firstname ASC`;
       return await Query.run(query);
     } catch (error) {
       return error;
@@ -18,9 +19,9 @@ class Admin {
     try {
       const query = `
                 UPDATE users
-                SET isBanned = 1
+                SET is_banned = 1
                 WHERE id = ?`;
-      return await Query.runWithParams(query, { id });
+      return await Query.runWithParams(query, [id]);
     } catch (error) {
       return error;
     }

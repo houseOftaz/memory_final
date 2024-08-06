@@ -29,11 +29,23 @@ table {
 }
 
 .banish-btn {
+  display: block;
   text-decoration: none;
+  text-align: center;
   background-color: $red;
   color: $current-font-color;
   padding: 0.2rem 0.4rem;
   border-radius: 0.4rem;
   font-weight: bold;
   font-family: $current-font;
+}
+
+.responsive-table-admin {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .responsive-table-admin {
+    display: table-cell;
+  }
 }

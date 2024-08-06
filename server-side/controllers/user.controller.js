@@ -72,6 +72,9 @@ const loginUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "Utilisateur introuvable" });
     }
+    if (user.is_banned) {
+      return res.status(403).json({ message: "Utilisateur banni" });
+    }
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
       return res.status(401).json({ message: "Mot de passe incorrect" });

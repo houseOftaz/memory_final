@@ -29,9 +29,9 @@ const AdminPage = () => {
     };
     fetchData();
   }, []);
-  console.log(dataUsers);
 
-  const handleBanish = async (userId) => {
+  const handleBanish = async (e, userId) => {
+    e.preventDefault();
     const response = await fetch(
       `${
         import.meta.env.VITE_BASE_URL_BACKEND
@@ -62,8 +62,8 @@ const AdminPage = () => {
         <table>
           <thead>
             <tr>
-              <th>Prénom</th>
-              <th>Nom de famille</th>
+              <th className="responsive-table-admin">Prénom</th>
+              <th className="responsive-table-admin">Nom de famille</th>
               <th>Email</th>
               <th>Bannir</th>
             </tr>
@@ -71,16 +71,23 @@ const AdminPage = () => {
           <tbody>
             {dataUsers.map((user) => (
               <tr key={user.id}>
-                <td>{user.firstname}</td>
-                <td>{user.lastname}</td>
+                <td className="responsive-table-admin">{user.firstname}</td>
+                <td className="responsive-table-admin">{user.lastname}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button
-                    onClick={() => handleBanish(user.id)}
-                    className="banish-btn"
-                  >
-                    Bannir
-                  </button>
+                  {user.is_banned ? (
+                    <Link to="#" className="banish-btn">
+                      Débannir
+                    </Link>
+                  ) : (
+                    <Link
+                      to="#"
+                      onClick={(e) => handleBanish(e, user.id)}
+                      className="banish-btn"
+                    >
+                      Bannir
+                    </Link>
+                  )}
                 </td>
               </tr>
             ))}
