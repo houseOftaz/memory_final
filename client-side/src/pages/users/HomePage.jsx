@@ -39,8 +39,8 @@ const HomePage = () => {
       <LinkButton linkTo={"/test-mode"} label={"Essayer le jeu"} />
 
       <LinkButton
-        linkTo={"/randomGame"}
-        label={"Partie aléatoire"}
+        linkTo={"/challenge"}
+        label={"Défier un joueur"}
         disabled={!session?.user?.email}
       />
 

@@ -2,7 +2,6 @@
 
 ![logo](https://github.com/houseOftaz/memory_final/assets/148223409/ec692db4-46c7-4284-b417-c9a5c0fbecda)
 
-
 ## Description
 
 This project is a memory card game application to validate my web
@@ -12,7 +11,6 @@ The application is divided into 2 parts :
 the fronted (client-side) and the backend (server-side). The backend
 uses Node.js with Express and MySql, while the frontend is build with
 React and Vite.
-
 
 ## Project Structure
 
@@ -25,7 +23,7 @@ memory_final/
 │   │   ├── components/
 │   │   │   ├── ChooseNbrCardForm.jsx
 │   │   │   ├── ChooseThemeForm.jsx
-│   │   │   ├── DisplayChoices.jsx
+│   │   │   ├── ChooseNbrDisplay.jsx
 │   │   │   ├── ThemesDisplay.jsx
 │   │   │   ├── ThemesModeGame.jsx
 │   │   │   └── ...
@@ -42,7 +40,6 @@ memory_final/
 └── README.md
 ```
 
-
 ## Prerequisites
 
 **Node.js**
@@ -51,23 +48,22 @@ memory_final/
 **JavaScript**
 **React**
 
-
 ## Set Uo
 
 - how to clone repo ?
+
 ```bash
 git clone https://github.com/yourID/memory_final.git
 ```
 
 - install dependencies for back and front:
+
 ```bash
 npm i
 ```
+
 - for others dependencies : npm i { look at package.json :wink: }
 
-
 **npm run dev to launch server**
-
-
 
 enjoy :grinning:

@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import LinkButton from "../../components/buttons/LinkButton";
 import { SessionContext } from "../../context/SessionContextProvider";
 
-function ProfilPage() {
+function ProfilePage() {
   const { session, setSession } = useContext(SessionContext);
   // état local pour les informations du profil
   const [userData, setUserData] = useState({
@@ -150,4 +150,4 @@ function ProfilPage() {
   );
 }
 
-export default ProfilPage;
+export default ProfilePage;

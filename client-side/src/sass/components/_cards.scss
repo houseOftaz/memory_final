@@ -17,6 +17,14 @@
   align-items: center;
 }
 
+.themes-card {
+  @include flex-center;
+  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+}
+
 .card:hover {
   // à mettre en requète média pour 1100px
   background-color: $orange;

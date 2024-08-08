@@ -3,12 +3,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminPage from "./pages/admin/AdminPage";
 import Layout from "./pages/layout/Layout";
 import HomePage from "./pages/users/HomePage";
-import DisplayChoices from "./pages/games/DisplayChoices";
-import ThemesDiplay from "./pages/games/ThemesDiplay";
+import ChooseNbrDisplay from "./pages/games/lib/ChooseNbrDisplay";
+import ThemesDiplay from "./pages/games/lib/ThemesDiplay";
 import RegisterPage from "./pages/users/RegisterPage";
 import LoginPage from "./pages/users/LoginPage";
-import ProfilPage from "./pages/users/ProfilPage";
+import ProfilePage from "./pages/users/ProfilePage";
 import RankPage from "./pages/users/RankPage";
+import ChallengeModeGame from "./pages/games/ChallengeModeGame";
 
 import "./index.scss";
 
@@ -18,13 +19,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/test-mode" element={<DisplayChoices />} />
+          <Route path="/test-mode" element={<ChooseNbrDisplay />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/profile" element={<ProfilPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/themes" element={<ThemesDiplay />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/classement" element={<RankPage />} />
+          <Route path="/challenge" element={<ChallengeModeGame />} />
         </Route>
       </Routes>
     </BrowserRouter>

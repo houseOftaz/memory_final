@@ -12,21 +12,18 @@
     font-family: $title-font;
     color: $current-font-color;
   }
-}
-
-.choose-nbr-crd-form-btn {
-  min-width: 130px;
-  height: 40px;
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  outline: none;
-  border: 2px solid $yellow;
-  background: $yellow;
-  font-weight: bold;
-  border-radius: 20px;
-  color: $current-font-color;
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
+  .choose-nbr-crd-form-btn {
+    min-width: 130px;
+    height: 40px;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    border: 2px solid $yellow;
+    background: $yellow;
+    font-weight: bold;
+    border-radius: 20px;
+    color: $current-font-color;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
+  }
 }

@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from "react";
-import ThemesCard from "../../components/cards/ThemesCard";
-import EndGameAlert from "../../components/popups/EndGameAlert";
+import ThemesCard from "./cards/ThemesCard";
+import EndGameAlert from "./EndGameAlert";
 import { CounterContext } from "../../context/CounterContextProvider";
 
 const ThemesModeGame = ({
   nbrCards,
-  setDisplayChooseNbrCardForm,
+  setDisplayChooseThemeForm,
   themeValue,
 }) => {
   const [cards, setCards] = useState([]); // état pour les cartes
@@ -15,8 +15,6 @@ const ThemesModeGame = ({
   const [isRestricted, setIsRestricted] = useState(false);
 
   const { count, increment, reset } = useContext(CounterContext);
-
-  console.log("1", cards);
 
   useEffect(() => {
     // fonction pour lancer la partie
@@ -118,7 +116,7 @@ const ThemesModeGame = ({
     setCards([]);
     setmatchedPair([]);
     setNbrCoups(0);
-    setDisplayChooseNbrCardForm(true);
+    setDisplayChooseThemeForm(true);
     reset();
   };
 

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { CounterContext } from "../../context/CounterContextProvider";
-import Card from "../../components/cards/Card";
-import EndGameAlert from "../../components/popups/EndGameAlert";
+import Card from "./cards/Card";
+import EndGameAlert from "./EndGameAlert";
 
 const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
   // état pour les cartes

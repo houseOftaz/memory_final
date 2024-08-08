@@ -29,11 +29,15 @@ const ChooseThemeForm = ({ onStart }) => {
 
   return (
     <form
-      className="choose-theme"
+      className="choose-nbr-crd-form"
       onSubmit={handleInputSubmit}
-      aria-labelledby="choose-theme-form-title"
+      aria-labelledby="choose-nbr-crd-form-title"
     >
-      <label htmlFor="nbrCards" id="form-title">
+      <label
+        htmlFor="nbrCards"
+        id="form-title"
+        className="choose-nbr-crd-form-title"
+      >
         Choisi un nombre de cartes :
       </label>
 
@@ -49,7 +53,11 @@ const ChooseThemeForm = ({ onStart }) => {
         required
       />
 
-      <label htmlFor="theme" id="form-title">
+      <label
+        htmlFor="theme"
+        id="form-title"
+        className="choose-nbr-crd-form-title"
+      >
         Choisi un thème :
         <select
           name="theme"
@@ -62,7 +70,7 @@ const ChooseThemeForm = ({ onStart }) => {
           <option value="monuments">Monuments</option>
         </select>
       </label>
-      <button className="choose-theme-form-btn" type="submit">
+      <button className="choose-nbr-crd-form-btn" type="submit">
         Lancer la partie
       </button>
 
