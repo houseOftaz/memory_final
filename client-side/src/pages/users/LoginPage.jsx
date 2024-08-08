@@ -56,6 +56,7 @@ function LoginPage() {
             name="email"
             id="email"
             placeholder="email@example.com"
+            autoComplete="email"
             onChange={handleChange}
           />
         </label>
@@ -68,6 +69,7 @@ function LoginPage() {
             name="password"
             id="password"
             placeholder="mot de passe"
+            autoComplete="current-password"
             onChange={handleChange}
           />
         </label>

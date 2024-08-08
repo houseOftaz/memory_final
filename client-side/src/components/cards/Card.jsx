@@ -1,19 +1,11 @@
-const Card = ({ value, themeValue = "", onClick, isFlipped }) => {
+const Card = ({ value, onClick, isFlipped }) => {
   return (
     <div
-      className={`card ${isFlipped ? "clicked-carte" : ""}`}
+      className={`card ${isFlipped ? "clicked-card" : ""}`}
       onClick={onClick}
       data-value={value}
-      style={{
-        backgroundImage: themeValue
-          ? `url('/images/${themeValue}/${value})`
-          : undefined,
-      }}
     >
-      {isFlipped && !themeValue && <h2>{value}</h2>}
-      {isFlipped && themeValue && (
-        <img src={`/images/${themeValue}/${value}`} />
-      )}
+      {isFlipped && <h2>{value}</h2>}
     </div>
   );
 };

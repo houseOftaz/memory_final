@@ -1,22 +1,21 @@
 // si la partie est terminée, affiche une modale pour dire la partie est
 // terminée en x coup et clicker sur ok pour relancer la partie
 
-
 const nbrCoups = 0
 // ajout d'une fonction pour verifier si la partie est finie
 const finDePartie = () => {
-    const allCards = document.querySelectorAll('.card')
-    const visibleCards = document.querySelectorAll(".clicked-carte")
-    if (visibleCards.length === allCards.length) {
-        alert(`Congrats, you win in : {nbrCoups} coups`)
-        location.reload()
-    }
+const allCards = document.querySelectorAll('.card')
+const visibleCards = document.querySelectorAll(".clicked-card")
+if (visibleCards.length === allCards.length) {
+alert(`Congrats, you win in : {nbrCoups} coups`)
+location.reload()
+}
 }
 
 const clickCarte = (carte) => {
 
     // quitte la fonction si on a deja 2 cartes visibles
-    if (document.querySelectorAll('.clicked-carte').length >= 2) {
+    if (document.querySelectorAll('.clicked-card').length >= 2) {
         return
     }
 
@@ -34,41 +33,42 @@ const clickCarte = (carte) => {
 
     // add valeur de la carte à la carte
     carte.appendChild(insertValeurCarte)
-    carte.classList.add('clicked-carte')
+    carte.classList.add('clicked-card')
 
-    // si la paire retournée est cartes égales -> enlève la class clicked-carte
-    const retunedCards = document.querySelectorAll('.clicked-carte')
+    // si la paire retournée est cartes égales -> enlève la class clicked-card
+    const retunedCards = document.querySelectorAll('.clicked-card')
     if ( retunedCards.length >= 2 && retunedCards[0].innerHTML == retunedCards[1].innerHTML) {
-        retunedCards[0].classList.remove('clicked-carte')
-        retunedCards[1].classList.remove('clicked-carte')
+        retunedCards[0].classList.remove('clicked-card')
+        retunedCards[1].classList.remove('clicked-card')
     }
 
     // utilisation de setTimout pour supprimer la valeur et la couleur après 3 sec
     const displayValeurTime = () => {
 
-        const allClickedCards = document.querySelectorAll('.clicked-carte')
+        const allClickedCards = document.querySelectorAll('.clicked-card')
         for (let i=0; i<allClickedCards.length; i++) {
             const actuelCard = allClickedCards[i]
             actuelCard.innerHTML = ""
-            actuelCard.classList.remove('clicked-carte')
+            actuelCard.classList.remove('clicked-card')
         }
     }
 
-    if (document.querySelectorAll('.clicked-carte').length >=2) {
+    if (document.querySelectorAll('.clicked-card').length >=2) {
         setTimeout(displayValeurTime, 3000)
     }
+
 }
 
 const tireNbrRandom = (max) => {
-    let nbr = Math.floor(Math.random() * max)
-    return nbr
+let nbr = Math.floor(Math.random() \* max)
+return nbr
 }
 
 const creEtMelangeCarte = (nbr) => {
-    // génère les paires 
-    let cards = []
-    for (let i=1; i<=nbr/2; i=i+1) {
-        for (let j=0; j<2; j=j+1) {
+// génère les paires
+let cards = []
+for (let i=1; i<=nbr/2; i=i+1) {
+for (let j=0; j<2; j=j+1) {
 
             // Génère 1 carte avec 1 carte de valeur i
             let newCard = document.createElement('div')
@@ -95,9 +95,9 @@ const creEtMelangeCarte = (nbr) => {
     for (let i=0; i<cards.length; i++) {
         document.querySelector(".cards").appendChild( cards[i] )
     }
+
 }
 
 let nbrChoisi = prompt('Choisi un nombre de carte :')
 
 creEtMelangeCarte(nbrChoisi)
- 

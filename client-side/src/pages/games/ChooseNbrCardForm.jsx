@@ -27,7 +27,11 @@ const ChooseNbrCardForm = ({ onStart }) => {
       onSubmit={handleInputSubmit}
       aria-labelledby="choose-nbr-crd-form-title"
     >
-      <label htmlFor="nbrCards" id="form-title">
+      <label
+        htmlFor="nbrCards"
+        id="form-title"
+        className="choose-nbr-crd-form-title"
+      >
         Choisi un nombre de cartes :
       </label>
 

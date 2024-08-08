@@ -1,39 +1,63 @@
 import { useState, useEffect, useContext } from "react";
-import { CounterContext } from "../../context/CounterContextProvider";
-import Card from "../../components/cards/Card";
+import ThemesCard from "../../components/cards/ThemesCard";
 import EndGameAlert from "../../components/popups/EndGameAlert";
+import { CounterContext } from "../../context/CounterContextProvider";
 
 const ThemesModeGame = ({
   nbrCards,
   setDisplayChooseNbrCardForm,
   themeValue,
 }) => {
-  // état pour les cartes
-  const [cards, setCards] = useState([]);
-  // état pour les cartes déjà piquées
-  const [matchedPair, setmatchedPair] = useState([]);
-  // nombre de coups effectués
-  const [nbrCoups, setNbrCoups] = useState(0);
-  // état pour la fin de la partie
-  const [isGameOver, setIsGameOver] = useState(false);
+  const [cards, setCards] = useState([]); // état pour les cartes
+  const [matchedPair, setmatchedPair] = useState([]); // état pour les cartes déjà piquées
+  const [nbrCoups, setNbrCoups] = useState(0); // nombre de coups effectués
+  const [isGameOver, setIsGameOver] = useState(false); // état pour la fin de la partie
   const [isRestricted, setIsRestricted] = useState(false);
 
   const { count, increment, reset } = useContext(CounterContext);
 
-  // fonction pour lancer la partie
+  console.log("1", cards);
+
   useEffect(() => {
+    // fonction pour lancer la partie
     setIsGameOver(false);
     reset();
-    // fonction pour générer les cartes
-    // génération de la valeur des cartes
-    const cardValues = Array.from({ length: nbrCards / 2 }, (_, i) => i + 1);
-    // génération de la liste des cartes
-    const shuffledCards = [...cardValues, ...cardValues]
-      .sort(() => Math.random() - 0.5) // tri aléatoire
-      .map((value, index) => ({ id: index, value, isFlipped: false })); // création des objets cartes
-    setCards(shuffledCards); // maj de l'état des cartes
-    //setNbrCards(nbrCards) // maj de l'état du nombre de cartes
-  }, [nbrCards]);
+
+    // recupere les cartes depuis le serveur
+    const fetchCards = async () => {
+      try {
+        const response = await fetch(
+          `${
+            import.meta.env.VITE_BASE_URL_BACKEND
+          }/server-side/game/themes/${themeValue}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        if (!response.ok) {
+          throw new Error("HTTP error");
+        }
+
+        // recupere les cartes au format JSON
+        const fetchCards = await response.json();
+        // fonction pour générer les cartes
+        const cardValues = Array.from(
+          { length: nbrCards / 2 },
+          (_, i) => fetchCards[i].alt
+        );
+        // CARD LISTE GENERATION
+        const shuffledCards = [...cardValues, ...cardValues]
+          .sort(() => Math.random() - 0.5) // tri aléatoire
+          .map((value, index) => ({ id: index, value, isFlipped: false })); // création des objets cartes
+        setCards(shuffledCards); // maj de l'état des cartes
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchCards();
+  }, [nbrCards, themeValue]);
 
   // fonction pour effectuer un coup
   const handleClick = (id) => {
@@ -50,9 +74,12 @@ const ThemesModeGame = ({
     setCards(updatedCards);
     setIsGameOver(false);
 
-    const flipped = updatedCards.filter(
-      (card) => card.isFlipped && !matchedPair.includes(card)
-    );
+    const flipped = updatedCards.filter((card) => {
+      return (
+        card.isFlipped &&
+        !matchedPair.some((matchedCard) => matchedCard.id === card.id)
+      );
+    });
     if (flipped.length === 2) {
       setNbrCoups((prev) => prev + 1);
       if (flipped[0].value === flipped[1].value) {
@@ -63,7 +90,13 @@ const ThemesModeGame = ({
           setIsRestricted(false);
           setCards((prevCards) =>
             prevCards.map((card) => {
-              if (card.isFlipped && !matchedPair.includes(card)) {
+              if (
+                card.isFlipped &&
+                !matchedPair.some((matchedCard) => {
+                  console.log(card, matchedCard);
+                  return matchedCard.id === card.id;
+                })
+              ) {
                 card.isFlipped = false;
               }
               return card;
@@ -93,12 +126,13 @@ const ThemesModeGame = ({
     <>
       <h2>Theme Mode</h2>
       <section className="container-cards">
-        {cards.map((card, index) => (
-          <Card
-            key={index}
+        {cards.map((card) => (
+          <ThemesCard
+            key={card.id}
             value={card.value}
             onClick={() => handleClick(card.id)}
             isFlipped={card.isFlipped}
+            themeValue={themeValue}
           />
         ))}
       </section>

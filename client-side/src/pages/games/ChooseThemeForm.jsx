@@ -1,20 +1,27 @@
 import { useState } from "react";
 
 const ChooseThemeForm = ({ onStart }) => {
-  const [formValue, setFormValue] = useState("");
+  const [formValue, setFormValue] = useState({
+    theme: "animals",
+    nbrCards: "",
+  });
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e) => {
-    setFormValue(e.target.value); // maj la valeur saisie
+    const { name, value } = e.target;
+    setFormValue({
+      ...formValue, // met a jour le formData avec les valeurs du champs
+      [name]: value,
+    });
   };
 
   const handleInputSubmit = (e) => {
     e.preventDefault(); // empêche le reload de la page
-    const num = parseInt(formValue, 10); // conversion de la valeur saisie en entier
-    if (!isNaN(num) && num >= 2 && num <= 10) {
+    const num = parseInt(formValue.nbrCards, 10); // conversion de la valeur saisie en entier
+    if (!isNaN(num) && num >= 2 && num <= 10 && formValue.theme !== "") {
       // vérification que la valeur saisie est un entier et > 2 et < 10
       setErrorMessage(""); // désactive le message d'erreur
-      onStart(num); // appel de la fonction startGame avec la valeur saisie
+      onStart(formValue); // appel de la fonction startGame avec la valeur saisie
     } else {
       setErrorMessage("Il faut choisir un thème");
     }
@@ -34,7 +41,7 @@ const ChooseThemeForm = ({ onStart }) => {
         type="number"
         name="nbrCards"
         id="nbrCards"
-        value={formValue}
+        value={formValue.nbrCards}
         onChange={handleInputChange}
         min={2}
         max={10}
@@ -47,12 +54,12 @@ const ChooseThemeForm = ({ onStart }) => {
         <select
           name="theme"
           id="theme"
-          value={formValue}
+          value={formValue.theme}
           onChange={handleInputChange}
         >
-          <option>Animaux</option>
-          <option>Super heros</option>
-          <option>Monuments</option>
+          <option value="animals">Animaux</option>
+          <option value="heros">Heros</option>
+          <option value="monuments">Monuments</option>
         </select>
       </label>
       <button className="choose-theme-form-btn" type="submit">
