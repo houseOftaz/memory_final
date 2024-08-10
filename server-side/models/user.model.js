@@ -53,6 +53,21 @@ class User {
     }
   }
 
+  static async getUsersWithGames() {
+    try {
+      const query = `
+                SELECT users.firstname, COUNT(games.id) as games_played
+                FROM users
+                LEFT JOIN games ON users.id = games.id_users
+                GROUP BY users.firstname
+                ORDER BY games_played DESC;`;
+      const response = await Query.run(query);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
   static async updateUser(data, userId, avatar) {
     try {
       const query = `

@@ -6,6 +6,7 @@ import {
   updateUser,
   deleteUser,
   logoutUser,
+  getUsersWithGames,
 } from "../controllers/user.controller.js";
 
 const auth_router = Router();
@@ -22,7 +23,7 @@ auth_router.patch("/update", updateUser);
 
 auth_router.delete("/delete", deleteUser);
 
-// auth_router.get('/:id', getUser);
+auth_router.get("/rank", getUsersWithGames);
 
 // route pour obtenir tous les utilisateur
 //auth_router.get('/', getUsers);

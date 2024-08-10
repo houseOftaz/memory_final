@@ -165,6 +165,18 @@ const me = async (req, res) => {
     .json({ user: req.session.user || {} });
 };
 
+const getUsersWithGames = async (req, res) => {
+  try {
+    const usersWithGames = await User.getUsersWithGames();
+    res.status(200).json(usersWithGames);
+  } catch (error) {
+    res.status(500).json({
+      message: "Erreur lors de la récupération des utilisateurs",
+      error,
+    });
+  }
+};
+
 const deleteUser = async (req, res) => {
   const { id } = req.body;
   if (!id) {
@@ -187,4 +199,12 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser, me, logoutUser, updateUser, deleteUser };
+export {
+  registerUser,
+  loginUser,
+  me,
+  getUsersWithGames,
+  logoutUser,
+  updateUser,
+  deleteUser,
+};
