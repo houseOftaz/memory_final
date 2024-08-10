@@ -54,7 +54,6 @@ function ProfilePage() {
       setSession(result);
       alert("Profile mis à jour");
     } catch (error) {
-      console.log(error);
       alert("Problème lors de la mise à jour");
     }
   };

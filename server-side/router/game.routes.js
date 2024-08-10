@@ -1,14 +1,12 @@
 import { Router } from "express";
 import { getThemes } from "../controllers/theme.controller.js";
+import { createGame } from "../controllers/game.controller.js";
 
 const router = Router();
 
 router.get("/themes/:themeValue", getThemes);
-// route pour créer une nouvelle partie
-// router.post("/", createGame);
 
-// route pour mettre à joure partie existant
-// router.put("/:id", updateGame);
+router.post("/games/", createGame);
 
 // route pour obternir une partie par ID
 // router.get('/:id', getGame);

@@ -12,7 +12,7 @@ const Register = () => {
     password: "",
   });
 
-  const [setShowSubmitFormPopup] = useState(false);
+  const [showSubmitFormPopup, setShowSubmitFormPopup] = useState(false);
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -118,7 +118,18 @@ const Register = () => {
           onClickUserAction={handleSubmit}
         />
       </form>
-      {error && <p>{error}</p>}
+
+      {showSubmitFormPopup && (
+        <div className="popup-container">
+          <p>Inscription réussie</p>
+          <LinkButton
+            className="register-btn"
+            linkTo={"/"}
+            label={"Retour"}
+            onClick={() => setShowSubmitFormPopup(false)}
+          />
+        </div>
+      )}
     </div>
   );
 };

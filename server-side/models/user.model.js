@@ -8,7 +8,7 @@ class User {
       const { firstname, lastname, email, password } = user;
       const userData = { firstname, lastname, email, password };
       const query = `
-                INSERT INTO users (firstname, lastname, email, password, id_role, created_at)
+                INSERT INTO users (firstname, lastname, email, password, id_roles, created_at)
                 VALUES (?, ?, ?, ?, 1, NOW())`;
       return await Query.runWithParams(query, userData);
     } catch (error) {
@@ -44,7 +44,7 @@ class User {
       const query = `
                 SELECT users.id, firstname, lastname, email, avatar, password, roles.name as role, is_banned
                 FROM users
-                JOIN roles ON users.id_role = roles.id
+                JOIN roles ON users.id_roles = roles.id
                 WHERE email = ?`;
       const response = await Query.runWithParams(query, { email });
       return response[0];

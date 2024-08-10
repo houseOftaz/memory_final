@@ -2,26 +2,25 @@ import { useState, useEffect, useContext } from "react";
 import ThemesCard from "./cards/ThemesCard";
 import EndGameAlert from "./EndGameAlert";
 import { CounterContext } from "../../context/CounterContextProvider";
+import { SessionContext } from "../../context/SessionContextProvider";
 
 const ThemesModeGame = ({
   nbrCards,
   setDisplayChooseThemeForm,
   themeValue,
 }) => {
-  const [cards, setCards] = useState([]); // état pour les cartes
-  const [matchedPair, setmatchedPair] = useState([]); // état pour les cartes déjà piquées
-  const [nbrCoups, setNbrCoups] = useState(0); // nombre de coups effectués
-  const [isGameOver, setIsGameOver] = useState(false); // état pour la fin de la partie
+  const [cards, setCards] = useState([]);
+  const [matchedPair, setmatchedPair] = useState([]);
+  const [nbrCoups, setNbrCoups] = useState(0);
+  const [isGameOver, setIsGameOver] = useState(false);
   const [isRestricted, setIsRestricted] = useState(false);
 
   const { count, increment, reset } = useContext(CounterContext);
 
   useEffect(() => {
-    // fonction pour lancer la partie
     setIsGameOver(false);
     reset();
 
-    // recupere les cartes depuis le serveur
     const fetchCards = async () => {
       try {
         const response = await fetch(
@@ -33,22 +32,21 @@ const ThemesModeGame = ({
             credentials: "include",
           }
         );
+
         if (!response.ok) {
           throw new Error("HTTP error");
         }
 
-        // recupere les cartes au format JSON
         const fetchCards = await response.json();
-        // fonction pour générer les cartes
         const cardValues = Array.from(
           { length: nbrCards / 2 },
           (_, i) => fetchCards[i].alt
         );
-        // CARD LISTE GENERATION
+
         const shuffledCards = [...cardValues, ...cardValues]
-          .sort(() => Math.random() - 0.5) // tri aléatoire
-          .map((value, index) => ({ id: index, value, isFlipped: false })); // création des objets cartes
-        setCards(shuffledCards); // maj de l'état des cartes
+          .sort(() => Math.random() - 0.5)
+          .map((value, index) => ({ id: index, value, isFlipped: false }));
+        setCards(shuffledCards);
       } catch (error) {
         console.error(error);
       }
@@ -57,14 +55,12 @@ const ThemesModeGame = ({
     fetchCards();
   }, [nbrCards, themeValue]);
 
-  // fonction pour effectuer un coup
   const handleClick = (id) => {
     if (isRestricted) return;
     increment();
-    // récupération des cartes piquées
+
     const updatedCards = cards.map((card) => {
       if (card.id === id) {
-        // vérifi si la carte est piquée
         card.isFlipped = !card.isFlipped;
       }
       return card;
@@ -91,7 +87,6 @@ const ThemesModeGame = ({
               if (
                 card.isFlipped &&
                 !matchedPair.some((matchedCard) => {
-                  console.log(card, matchedCard);
                   return matchedCard.id === card.id;
                 })
               ) {
@@ -107,6 +102,32 @@ const ThemesModeGame = ({
 
   useEffect(() => {
     if (matchedPair.length === cards.length && cards.length > 0) {
+      const createNewGame = async () => {
+        try {
+          const response = await fetch(
+            `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/game/games/`,
+            {
+              method: "POST",
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                nbr_clics: count,
+                name_package: themeValue,
+              }),
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("front, fail to create new game");
+          }
+          const game = await response.json();
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      createNewGame();
       setIsGameOver(true);
     }
   }, [matchedPair, cards.length]);
@@ -122,8 +143,8 @@ const ThemesModeGame = ({
 
   return (
     <>
-      <h2>Theme Mode</h2>
-      <section className="container-cards">
+      <h2 className="themes-mode-title">{themeValue} theme</h2>
+      <section className="container-themes-cards">
         {cards.map((card) => (
           <ThemesCard
             key={card.id}

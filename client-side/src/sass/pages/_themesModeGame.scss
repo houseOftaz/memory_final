@@ -1,0 +1,10 @@
+.themes-mode-title {
+  @include flex-center;
+  font-family: $title-font;
+}
+
+.container-themes-cards {
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}

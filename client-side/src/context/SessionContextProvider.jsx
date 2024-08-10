@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 
 export const SessionContext = createContext({
   user: {
+    id: "",
     firstname: "",
     lastname: "",
     email: "",
