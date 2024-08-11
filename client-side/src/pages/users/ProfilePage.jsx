@@ -4,13 +4,13 @@ import { SessionContext } from "../../context/SessionContextProvider";
 
 function ProfilePage() {
   const { session, setSession } = useContext(SessionContext);
-  // état local pour les informations du profil
   const [userData, setUserData] = useState({
     firstname: session?.user?.firstname || "",
     lastname: session?.user?.lastname || "",
     email: session?.user?.email || "",
     avatar: session?.user?.avatar || "",
   });
+  const [randomImage, setRandomImage] = useState("");
 
   useEffect(() => {
     if (session?.user) {
@@ -22,6 +22,25 @@ function ProfilePage() {
       });
     }
   }, [session]);
+
+  useEffect(() => {
+    const gameImages = [
+      "cat.webp",
+      "cow.webp",
+      "dog.webp",
+      "eagle.webp",
+      "elephant.webp",
+      "monkey.webp",
+      "panda.webp",
+      "parrot.webp",
+      "shark.webp",
+      "snake.webp",
+    ];
+
+    const randomIndex = Math.floor(Math.random() * gameImages.length);
+    const selectedImage = gameImages[randomIndex];
+    setRandomImage(`images/animals/${selectedImage}`);
+  }, []);
 
   const handleChange = (e) => {
     // récupère le nom et la valeur du champ
@@ -62,9 +81,13 @@ function ProfilePage() {
     <div className="form-container">
       <h2>Profile</h2>
       <img
-        src={`${import.meta.env.VITE_BASE_URL_BACKEND}/images/${
+        src={
           userData.avatar
-        }`}
+            ? `${import.meta.env.VITE_BASE_URL_BACKEND}/images/${
+                userData.avatar
+              }`
+            : randomImage
+        }
         alt="avatar"
         width="100"
         height="100"

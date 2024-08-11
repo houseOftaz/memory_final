@@ -3,6 +3,7 @@ import ThemesCard from "./cards/ThemesCard";
 import EndGameAlert from "./EndGameAlert";
 import { CounterContext } from "../../context/CounterContextProvider";
 import { SessionContext } from "../../context/SessionContextProvider";
+import ProfileCard from "../layout/ProfileCard";
 
 const ThemesModeGame = ({
   nbrCards,
@@ -143,6 +144,7 @@ const ThemesModeGame = ({
 
   return (
     <>
+      <ProfileCard />
       <h2 className="themes-mode-title">{themeValue} theme</h2>
       <section className="container-themes-cards">
         {cards.map((card) => (
