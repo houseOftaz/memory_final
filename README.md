@@ -19,15 +19,33 @@ memory_final/
 ├── client-side/
 │   ├── node_modules/
 │   ├── public/
+│   │   ├── colors/
+│   │   ├── fonts/
+│   │   ├── images/
+│   │   ├── sounds/
+│   │   ├── videos/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── ChooseNbrCardForm.jsx
-│   │   │   ├── ChooseThemeForm.jsx
-│   │   │   ├── ChooseNbrDisplay.jsx
-│   │   │   ├── ThemesDisplay.jsx
-│   │   │   ├── ThemesModeGame.jsx
-│   │   │   └── ...
-│   ├── ...files
+│   │   │   ├── buttons/
+│   │   │   ├── popups/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   │   ├── admin/
+│   │   │   ├── games/
+│   │   │   ├── layout/
+│   │   │   ├── users/
+│   │   ├── sass/
+│   │   │   ├── bases/
+│   │   │   ├── components/
+│   │   │   ├── layout/
+│   │   │   ├── pages/
+│   │   │   ├── utils/
+│   ├── .env
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   └── vite.config.js
 ├── server-side/
 │   ├── config/
 │   ├── controllers/
@@ -37,6 +55,8 @@ memory_final/
 │   ├── routes/
 │   ├── views/
 │   ├── ...files
+└── eslintrc.cjs
+└── .gitignore
 └── README.md
 ```
 
