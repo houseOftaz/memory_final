@@ -19,13 +19,27 @@ memory_final/
 ├── client-side/
 │   ├── node_modules/
 │   ├── public/
+│   │   ├── colors/
+│   │   ├── fonts/
+│   │   ├── images/
+│   │   ├── sounds/
+│   │   ├── videos/
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── buttons/
 │   │   │   ├── popups/
 │   │   ├── context/
 │   │   ├── pages/
+│   │   │   ├── admin/
+│   │   │   ├── games/
+│   │   │   ├── layout/
+│   │   │   ├── users/
 │   │   ├── sass/
+│   │   │   ├── bases/
+│   │   │   ├── components/
+│   │   │   ├── layout/
+│   │   │   ├── pages/
+│   │   │   ├── utils/
 │   ├── .env
 │   ├── index.html
 │   ├── package-lock.json
