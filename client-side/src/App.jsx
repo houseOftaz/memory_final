@@ -10,9 +10,9 @@ import LoginPage from "./pages/users/LoginPage";
 import ProfilePage from "./pages/users/ProfilePage";
 import RankPage from "./pages/users/RankPage";
 import ChallengeModeGame from "./pages/games/ChallengeModeGame";
+import ChronoDisplay from "./pages/games/lib/ChronoDisplay";
 
 import "./index.scss";
-import ChronoModeGame from "./pages/games/ChronoModeGame";
 
 const App = () => {
   return (
@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/classement" element={<RankPage />} />
           <Route path="/challenge" element={<ChallengeModeGame />} />
-          <Route path="/chrono" element={<ChronoModeGame />} />
+          <Route path="/chrono" element={<ChronoDisplay />} />
         </Route>
       </Routes>
     </BrowserRouter>

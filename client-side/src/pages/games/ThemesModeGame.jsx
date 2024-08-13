@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import ThemesCard from "./cards/ThemesCard";
 import EndGameAlert from "./EndGameAlert";
 import { CounterContext } from "../../context/CounterContextProvider";
-import { SessionContext } from "../../context/SessionContextProvider";
 import ProfileCard from "../layout/ProfileCard";
 
 const ThemesModeGame = ({
@@ -39,6 +38,7 @@ const ThemesModeGame = ({
         }
 
         const fetchCards = await response.json();
+        console.log("2", fetchCards);
         const cardValues = Array.from(
           { length: nbrCards / 2 },
           (_, i) => fetchCards[i].alt
@@ -146,7 +146,7 @@ const ThemesModeGame = ({
     <>
       <ProfileCard />
       <h2 className="themes-mode-title">{themeValue} theme</h2>
-      <section className="container-themes-cards">
+      <section className="themes-container-cards">
         {cards.map((card) => (
           <ThemesCard
             key={card.id}
