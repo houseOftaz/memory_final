@@ -1,5 +1,5 @@
-import ProfileCard from "../layout/ProfileCard";
 import { useState, useEffect } from "react";
+import ProfileCard from "../layout/ProfileCard";
 
 function RankPage() {
   const [usersWithGames, setUsersWithGames] = useState([]);
@@ -28,7 +28,9 @@ function RankPage() {
 
   return (
     <div>
-      <ProfileCard />
+      {usersWithGames.length > 0 && (
+        <ProfileCard usersWithGames={usersWithGames} />
+      )}
       <h2>Classement des joueurs</h2>
       <table className="classement-table">
         <thead>

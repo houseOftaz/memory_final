@@ -56,7 +56,7 @@ class User {
   static async getUsersWithGames() {
     try {
       const query = `
-                SELECT users.firstname, COUNT(games.id) as games_played
+                SELECT users.firstname, users.id, COUNT(games.id) as games_played
                 FROM users
                 LEFT JOIN games ON users.id = games.id_users
                 GROUP BY users.firstname

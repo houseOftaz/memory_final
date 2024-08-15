@@ -125,8 +125,7 @@ const updateUser = async (req, res) => {
         .status(400)
         .json({ message: "Vous devez remplir tous les champs" });
     }
-    console.log(req.file.filename);
-    let avatar = req.file ? `${req.file.filename}` : "";
+    let avatar = req.file ? `${req.file.filename}` : req.session.user.avatar;
 
     try {
       const response = await User.updateUser(

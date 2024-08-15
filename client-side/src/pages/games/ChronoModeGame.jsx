@@ -118,7 +118,6 @@ const ChronoModeGame = ({
     setDisplayChooseChronoForm(true);
     reset();
   };
-  console.log("1", handleRestart);
   return (
     <>
       {!isGameOver && (

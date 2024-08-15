@@ -1,35 +1,14 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { SessionContext } from "../../context/SessionContextProvider";
 
-const ProfileCard = () => {
+const ProfileCard = ({ usersWithGames }) => {
   const { session } = useContext(SessionContext);
   const userData = session?.user;
-  const [userRank, setUserRank] = useState(null);
 
-  useEffect(() => {
-    const fetchUserRank = async () => {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/auth/rank`,
-          {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-            },
-            credentials: "include",
-          }
-        );
-        const data = await response.json();
-        const rankIndex = data.findIndex(
-          (user) => user.firstname === userData.firstname
-        );
-        setUserRank(rankIndex + 1);
-      } catch (error) {
-        throw new Error("Problème de connexion");
-      }
-    };
-    fetchUserRank();
-  }, [userData]);
+  const rankIndex = usersWithGames.findIndex(
+    (user) => user.firstname === userData.firstname
+  );
+  const userRank = rankIndex + 1;
 
   return (
     <div className="profile-card-container">

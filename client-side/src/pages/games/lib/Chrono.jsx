@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 const Chrono = ({ initialTime, handleEndGame }) => {
   const [time, setTime] = useState(initialTime);
-  console.log(time, initialTime);
 
   useEffect(() => {
     if (time <= 0) {

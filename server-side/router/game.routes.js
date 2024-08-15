@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { getThemes } from "../controllers/theme.controller.js";
-import { createGame } from "../controllers/game.controller.js";
+import { createGame, createMsg } from "../controllers/game.controller.js";
 
 const router = Router();
 
 router.get("/themes/:themeValue", getThemes);
 
 router.post("/games/", createGame);
+
+router.post("/challenge-msg", createMsg);
 
 // route pour obternir une partie par ID
 // router.get('/:id', getGame);

@@ -5,7 +5,6 @@ export const getThemes = async (req, res) => {
     const themes = await Theme.getCardsByThemes(req.params.themeValue);
     res.status(200).json(themes);
   } catch (error) {
-    console.log(req.body);
     res.status(500).json({ message: "Erreur serveur" });
   }
 };

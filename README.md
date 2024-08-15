@@ -87,3 +87,7 @@ npm i
 **npm run dev to launch server**
 
 enjoy :grinning:
+
+## futur udaptes
+
+- verifier les doublons de rendu de requête
