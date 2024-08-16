@@ -1,6 +1,11 @@
 import { Router } from "express";
 import { getThemes } from "../controllers/theme.controller.js";
-import { createGame, createMsg } from "../controllers/game.controller.js";
+import {
+  createGame,
+  createMsg,
+  deleteMsg,
+  getMsg,
+} from "../controllers/game.controller.js";
 
 const router = Router();
 
@@ -10,13 +15,8 @@ router.post("/games/", createGame);
 
 router.post("/challenge-msg", createMsg);
 
-// route pour obternir une partie par ID
-// router.get('/:id', getGame);
+router.get("/challenge-msg", getMsg);
 
-// route pour obtenir toutes les parties
-// router.get('/', getUGame);
-
-// route pour supprimer une partie
-// router.delete('/:id', deleteGame);
+router.delete("/challenge-msg/:msgId", deleteMsg);
 
 export default router;

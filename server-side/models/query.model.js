@@ -14,6 +14,7 @@ class Query {
   static async runWithParams(query, data) {
     // console.log(Object.values(data));
     const [result] = await pool.execute(query, Object.values(data));
+
     return result;
   }
 }

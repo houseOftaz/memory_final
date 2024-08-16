@@ -40,6 +40,33 @@ class Game {
       throw error;
     }
   }
+
+  static async getMsg(userId, msgId) {
+    try {
+      const query = `
+      SELECT messages.id, from_user_id, subject, message, users.firstname as from_users_firstname
+      FROM messages
+      JOIN users ON from_user_id = users.id
+      WHERE to_user_id = ?`;
+      return await Query.runWithParams(query, { to_user_id: userId });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async deleteMsg(userId, msgId) {
+    try {
+      const query = `
+      DELETE FROM messages
+      WHERE id = ? AND to_user_id = ?`;
+      return await Query.runWithParams(query, {
+        msgId: msgId,
+        to_user_id: userId,
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default Game;

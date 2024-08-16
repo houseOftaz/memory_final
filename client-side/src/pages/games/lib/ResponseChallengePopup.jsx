@@ -1,26 +1,28 @@
 import { useState } from "react";
 
-const ChallengeMsgPopup = ({ onClose, onSendMsg }) => {
-  const [msg, setMsg] = useState("");
+const ResponseChallengePopup = ({ onClose, message, onSendResponse }) => {
+  const [response, setResponse] = useState("");
 
-  const handleSendMsg = () => {
-    onSendMsg(msg);
-    setMsg("");
+  const handleSendResponse = () => {
+    onSendResponse(response);
+    setResponse("");
     onClose();
   };
 
   return (
     <div>
-      <h2>Des joueurs veulent jouer avec vous !</h2>
+      <h2>Vous avez été défié par {message.from_user_id}</h2>
+      <p>Sujet : {message.subject}</p>
+      <p>Message : {message.message}</p>
       <textarea
-        value={msg}
-        onChange={(e) => setMsg(e.target.value)}
-        placeholder="Entrez votre message"
+        value={response}
+        onChange={(e) => setResponse(e.target.value)}
+        placeholder="Entrez votre réponse"
       />
-      <button onClick={handleSendMsg}>Répondre</button>
-      <button onClick={onClose}>Refuser</button>
+      <button onClick={handleSendResponse}>Répondre</button>
+      <button onClick={onClose}>Fermer</button>
     </div>
   );
 };
 
-export default ChallengeMsgPopup;
+export default ResponseChallengePopup;
