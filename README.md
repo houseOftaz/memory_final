@@ -68,7 +68,7 @@ memory_final/
 **JavaScript**
 **React**
 
-## Set Uo
+## Set Up
 
 - how to clone repo ?
 
