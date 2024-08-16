@@ -29,17 +29,19 @@ body {
   left: 25%;
   width: 80px;
   height: 80px;
-  animation-delay: 0s;
+  animation-delay: 10s;
   background: url("../../../public/images/animals/snake.webp");
   background-size: cover;
 }
 
 .circles li:nth-child(2) {
   left: 10%;
-  width: 20px;
-  height: 20px;
+  width: 55px;
+  height: 55px;
   animation-delay: 2s;
   animation-duration: 12s;
+  background: url("../../../public/images/animals/monkey.webp");
+  background-size: cover;
 }
 
 .circles li:nth-child(3) {
@@ -47,69 +49,71 @@ body {
   width: 50px;
   height: 50px;
   animation-delay: 4s;
+  background: url("../../../public/images/animals/elephant.webp");
+  background-size: cover;
 }
 
 .circles li:nth-child(4) {
   left: 40%;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   animation-delay: 0s;
   animation-duration: 18s;
 }
 
 .circles li:nth-child(5) {
   left: 65%;
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
   animation-delay: 0s;
   background: url("../../../public/images/animals/parrot.webp");
   background-size: cover;
 }
 
 .circles li:nth-child(6) {
-  left: 75%;
+  left: 5%;
   width: 110px;
   height: 110px;
-  animation-delay: 3s;
-  background: url("../../../public/images/animals/elephant.webp");
+  animation-delay: 10s;
+  background: url("../../../public/images/animals/eagle.webp");
   background-size: cover;
 }
 
 .circles li:nth-child(7) {
   left: 35%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 7s;
+  width: 125px;
+  height: 125px;
+  animation-delay: 8s;
   background: url("../../../public/images/animals/panda.webp");
   background-size: cover;
 }
 
 .circles li:nth-child(8) {
   left: 50%;
-  width: 35px;
-  height: 35px;
-  animation-delay: 15s;
-  animation-duration: 45s;
+  width: 65px;
+  height: 65px;
+  animation-delay: 12s;
+  animation-duration: 35s;
   background: url("../../../public/images/animals/shark.webp");
   background-size: cover;
 }
 
 .circles li:nth-child(9) {
   left: 20%;
-  width: 150px;
-  height: 150px;
-  animation-delay: 2s;
-  animation-duration: 35s;
+  width: 100px;
+  height: 100px;
+  animation-delay: 15s;
+  animation-duration: 25s;
   background: url("../../../public/images/back-cards/back-monuments.webp");
   background-size: cover;
 }
 
 .circles li:nth-child(10) {
-  left: 85%;
-  width: 125px;
-  height: 125px;
-  animation-delay: 0s;
-  animation-duration: 11s;
+  left: 70%;
+  width: 90px;
+  height: 90px;
+  animation-delay: 2ms;
+  animation-duration: 20s;
   background: url("../../../public/images/back-cards/back-heros.webp");
   background-size: cover;
 }
