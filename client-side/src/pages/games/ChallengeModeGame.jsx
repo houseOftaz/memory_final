@@ -156,9 +156,9 @@ function ChallengeModeGame() {
   };
 
   return (
-    <div>
-      <h2>Classement des joueurs</h2>
-      <table className="classement-table">
+    <div className="challenge-mode-container">
+      <h2 className="challenge-mode-title">Classement des joueurs</h2>
+      <table className="challenge-mode-table">
         <thead>
           <tr>
             <th>Classement</th>
@@ -189,8 +189,8 @@ function ChallengeModeGame() {
           onClose={() => setShowPopup(false)}
         />
       )}
-      <h2>On vous défi !</h2>
-      <table className="classement-table">
+      <h2 className="challenge-mode-title">On vous défi !</h2>
+      <table className="challenge-mode-table">
         <thead>
           <tr>
             <th>De</th>
@@ -230,9 +230,9 @@ function ChallengeModeGame() {
           onSendResponse={onSendResponse}
         />
       )}
-      <button>
-        <Link to="/">Retour</Link>
-      </button>
+      <Link to="/" className="return-btn">
+        Retour
+      </Link>
     </div>
   );
 }

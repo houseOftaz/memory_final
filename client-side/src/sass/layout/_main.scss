@@ -1,8 +1,129 @@
 body {
-  height: 100vh; /*height 100 vh pour la prod*/
-  background-image: url(/images/memory-card_transparent.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: $green;
+  background: $green;
+  background: -webkit-linear-gradient(to left, $green, $orange);
+}
+
+.circles {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 35px;
+  height: 35px;
+  background: url("../../../public/images/back-cards/back-animals.webp");
+  background-size: cover;
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+  background: url("../../../public/images/animals/snake.webp");
+  background-size: cover;
+}
+
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 50px;
+  height: 50px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 50px;
+  height: 50px;
+  animation-delay: 0s;
+  background: url("../../../public/images/animals/parrot.webp");
+  background-size: cover;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+  background: url("../../../public/images/animals/elephant.webp");
+  background-size: cover;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+  background: url("../../../public/images/animals/panda.webp");
+  background-size: cover;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 35px;
+  height: 35px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+  background: url("../../../public/images/animals/shark.webp");
+  background-size: cover;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+  background: url("../../../public/images/back-cards/back-monuments.webp");
+  background-size: cover;
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 125px;
+  height: 125px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+  background: url("../../../public/images/back-cards/back-heros.webp");
+  background-size: cover;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
 }
