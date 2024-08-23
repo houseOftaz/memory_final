@@ -1,8 +1,7 @@
 // pop up for choosing number of cards
 .choose-nbr-crd-form {
-  margin-top: 20rem;
-  border: 2px solid $current-font-color;
   @include flex-center;
+  border: 2px solid $current-font-color;
   flex-direction: column;
   gap: 2rem;
   padding: 1.5rem;

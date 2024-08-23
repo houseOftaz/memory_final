@@ -88,8 +88,8 @@ const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
 
   return (
     <>
-      <h2>Test Mode</h2>
       <section className="container-cards">
+        <h2>Test Mode</h2>
         {cards.map((card, index) => (
           <Card
             key={index}
@@ -100,7 +100,6 @@ const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
         ))}
       </section>
       <p>{count} clicks</p>
-      <p>{nbrCoups} coups</p>
       <Link to="/" className="return-btn">
         Retour
       </Link>

@@ -1,0 +1,29 @@
+.confetti-animation {
+  position: relative;
+  width: 100px;
+  height: 100px;
+
+  .confetti-frame {
+    position: absolute;
+    opacity: 0;
+    animation: confetti-animation 0.5s steps(4) infinite;
+  }
+
+  @keyframes confetti-animation {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

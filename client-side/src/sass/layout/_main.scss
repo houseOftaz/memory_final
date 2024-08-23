@@ -1,8 +1,8 @@
 body {
+  @include flex-center;
+  min-height: 100vh;
   background: $green;
-  background: -webkit-linear-gradient(to left, $green, $orange);
-  width: 100%;
-  top: 50vh;
+  color: $current-font-color;
 }
 
 h1,
