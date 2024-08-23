@@ -21,7 +21,7 @@ const ProfileCard = ({ usersWithGames }) => {
         height="100"
         className="profile-card-avatar"
       />
-      <h2 className="profile-card-name">
+      <h2>
         {userData?.firstname} {userData?.lastname}
       </h2>
       <p className="profile-rank-info">

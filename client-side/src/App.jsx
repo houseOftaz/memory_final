@@ -3,14 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminPage from "./pages/admin/AdminPage";
 import Layout from "./pages/layout/Layout";
 import HomePage from "./pages/users/HomePage";
-import ChooseNbrDisplay from "./pages/games/lib/ChooseNbrDisplay";
-import ThemesDiplay from "./pages/games/lib/ThemesDiplay";
+import ChooseNbrDisplay from "./pages/games/test-mode/ChooseNbrDisplay";
+import ThemesDiplay from "./pages/games/themes-mode/ThemesDiplay";
 import RegisterPage from "./pages/users/RegisterPage";
 import LoginPage from "./pages/users/LoginPage";
 import ProfilePage from "./pages/users/ProfilePage";
 import RankPage from "./pages/users/RankPage";
-import ChallengeModeGame from "./pages/games/ChallengeModeGame";
-import ChronoDisplay from "./pages/games/lib/ChronoDisplay";
+import ChallengeModeGame from "./pages/games/challenge-mode/ChallengeModeGame";
+import ChronoDisplay from "./pages/games/chrono-mode/ChronoDisplay";
 
 import "./index.scss";
 

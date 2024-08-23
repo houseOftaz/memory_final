@@ -1,6 +1,10 @@
-
 body {
-    font-family: $current-font;
-    color: $current-font-color;
-    @include flex-center;
+  @include flex-center;
+  font-family: $current-font;
+  color: $current-font-color;
+
+  h2 {
+    font-family: $title-font;
+    text-shadow: 1px 1px 0 $yellow;
+  }
 }

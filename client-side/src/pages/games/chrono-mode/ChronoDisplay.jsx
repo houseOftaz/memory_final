@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ChronoModeGame from "../ChronoModeGame";
+import ChronoModeGame from "./ChronoModeGame";
 import ChooseChronoForm from "./ChooseChronoForm";
 
 const ChronoDisplay = () => {

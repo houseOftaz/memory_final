@@ -18,6 +18,7 @@ function LinkButton({ linkTo, onClickUserAction, disabled, label }) {
       to={linkTo}
       onClick={handleClick}
       className={`link-button ${disabled ? "disabled-btn" : ""}`}
+      aria-disabled={disabled}
     >
       {label}
     </Link>

@@ -1,7 +1,7 @@
-import SendMsgIcon from "../../../public/images/svg/SendMsgIcon";
+import SendMsgIcon from "../../../../public/images/svg/SendMsgIcon";
 import { useState, useEffect } from "react";
-import ChallengeMsgPopup from "./lib/ChallengeMsgPopup";
-import ResponseChallengePopup from "./lib/ResponseChallengePopup";
+import ChallengeMsgPopup from "./ChallengeMsgPopup";
+import ResponseChallengePopup from "./ResponseChallengePopup";
 import { Link } from "react-router-dom";
 
 function ChallengeModeGame() {
@@ -157,7 +157,7 @@ function ChallengeModeGame() {
 
   return (
     <div className="challenge-mode-container">
-      <h2 className="challenge-mode-title">Classement des joueurs</h2>
+      <h2>Classement des joueurs</h2>
       <table className="challenge-mode-table">
         <thead>
           <tr>
@@ -189,7 +189,7 @@ function ChallengeModeGame() {
           onClose={() => setShowPopup(false)}
         />
       )}
-      <h2 className="challenge-mode-title">On vous défi !</h2>
+      <h2>On vous défi !</h2>
       <table className="challenge-mode-table">
         <thead>
           <tr>
@@ -214,7 +214,10 @@ function ChallengeModeGame() {
                   <button onClick={() => openResponsePopup(message)}>
                     <SendMsgIcon />
                   </button>
-                  <button onClick={() => deleteMsg(message.id)}>
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteMsg(message.id)}
+                  >
                     suprimer
                   </button>
                 </td>

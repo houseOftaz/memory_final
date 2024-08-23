@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ChooseNbrCardForm = ({ onStart }) => {
   // état pour stocker la valeur saisie
@@ -36,6 +37,7 @@ const ChooseNbrCardForm = ({ onStart }) => {
       </label>
 
       <input
+        className="choose-nbr-card-form-input"
         type="number"
         name="nbrCards"
         id="nbrCards"
@@ -50,8 +52,11 @@ const ChooseNbrCardForm = ({ onStart }) => {
       <button className="choose-nbr-crd-form-btn" type="submit">
         Lancer la partie
       </button>
+      <Link to="/" className="return-btn">
+        Retour
+      </Link>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <p className="error-msg">{errorMessage}</p>}
     </form>
   );
 };

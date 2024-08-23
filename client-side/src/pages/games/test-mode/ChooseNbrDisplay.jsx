@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TestModeGame from "../TestModeGame";
+import TestModeGame from "./TestModeGame";
 import ChooseNbrCardForm from "./ChooseNbrCardForm";
 
 const ChooseNbrDisplay = () => {

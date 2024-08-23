@@ -1,5 +1,7 @@
 // pop up for choosing number of cards
 .choose-nbr-crd-form {
+  margin-top: 20rem;
+  border: 2px solid $current-font-color;
   @include flex-center;
   flex-direction: column;
   gap: 2rem;
@@ -12,18 +14,18 @@
     font-family: $title-font;
     color: $current-font-color;
   }
+
+  .choose-nbr-card-form-input {
+    border-radius: 15px;
+    font-family: $title-font;
+    text-align: center;
+  }
+
   .choose-nbr-crd-form-btn {
-    min-width: 130px;
-    height: 40px;
-    padding: 5px 10px;
-    cursor: pointer;
-    display: inline-block;
-    outline: none;
-    border: 2px solid $yellow;
-    background: $yellow;
-    font-weight: bold;
-    border-radius: 20px;
-    color: $current-font-color;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
+    @include global-btn;
+  }
+
+  .error-msg {
+    color: red;
   }
 }

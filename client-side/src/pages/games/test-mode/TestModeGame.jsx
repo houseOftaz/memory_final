@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { CounterContext } from "../../context/CounterContextProvider";
-import Card from "./cards/Card";
-import EndGameAlert from "./EndGameAlert";
+import { Link } from "react-router-dom";
+import { CounterContext } from "../../../context/CounterContextProvider";
+import Card from "./Card";
+import EndGameAlert from "../EndGameAlert";
 
 const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
   // état pour les cartes
@@ -100,6 +101,9 @@ const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
       </section>
       <p>{count} clicks</p>
       <p>{nbrCoups} coups</p>
+      <Link to="/" className="return-btn">
+        Retour
+      </Link>
 
       {isGameOver && <EndGameAlert handleRestart={handleRestart} />}
     </>

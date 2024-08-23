@@ -1,24 +1,27 @@
 import { useState, useEffect, useContext } from "react";
-import ThemesCard from "./cards/ThemesCard";
-import EndGameAlert from "./EndGameAlert";
-import { CounterContext } from "../../context/CounterContextProvider";
+import { Link } from "react-router-dom";
+import ChronoCard from "./ChronoCard";
+import EndGameAlert from "../EndGameAlert";
+import { CounterContext } from "../../../context/CounterContextProvider";
+import Chrono from "./Chrono";
 
-const ThemesModeGame = ({
-  nbrCards,
-  setDisplayChooseThemeForm,
+const ChronoModeGame = ({
+  timeLimit,
+  setDisplayChooseChronoForm,
   themeValue,
 }) => {
   const [cards, setCards] = useState([]);
-  const [matchedPair, setmatchedPair] = useState([]);
+  const [matchedPair, setMatchedPair] = useState([]);
   const [nbrCoups, setNbrCoups] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isRestricted, setIsRestricted] = useState(false);
+  const [isWon, setIsWon] = useState(false);
 
   const { count, increment, reset } = useContext(CounterContext);
 
   useEffect(() => {
     setIsGameOver(false);
-    reset();
+    setIsWon(false);
 
     const fetchCards = async () => {
       try {
@@ -38,7 +41,7 @@ const ThemesModeGame = ({
 
         const fetchCards = await response.json();
         const cardValues = Array.from(
-          { length: nbrCards / 2 },
+          { length: 3 },
           (_, i) => fetchCards[i].alt
         );
 
@@ -50,12 +53,11 @@ const ThemesModeGame = ({
         console.error(error);
       }
     };
-
     fetchCards();
-  }, [nbrCards, themeValue]);
+  }, [themeValue]);
 
   const handleClick = (id) => {
-    if (isRestricted) return;
+    if (isRestricted || isGameOver) return;
     increment();
 
     const updatedCards = cards.map((card) => {
@@ -65,7 +67,6 @@ const ThemesModeGame = ({
       return card;
     });
     setCards(updatedCards);
-    setIsGameOver(false);
 
     const flipped = updatedCards.filter((card) => {
       return (
@@ -76,7 +77,7 @@ const ThemesModeGame = ({
     if (flipped.length === 2) {
       setNbrCoups((prev) => prev + 1);
       if (flipped[0].value === flipped[1].value) {
-        setmatchedPair((prev) => [...prev, ...flipped]);
+        setMatchedPair((prev) => [...prev, ...flipped]);
       } else {
         setIsRestricted(true);
         setTimeout(() => {
@@ -85,9 +86,7 @@ const ThemesModeGame = ({
             prevCards.map((card) => {
               if (
                 card.isFlipped &&
-                !matchedPair.some((matchedCard) => {
-                  return matchedCard.id === card.id;
-                })
+                !matchedPair.some((matchedCard) => matchedCard.id === card.id)
               ) {
                 card.isFlipped = false;
               }
@@ -101,51 +100,34 @@ const ThemesModeGame = ({
 
   useEffect(() => {
     if (matchedPair.length === cards.length && cards.length > 0) {
-      const createNewGame = async () => {
-        try {
-          const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/game/games/`,
-            {
-              method: "POST",
-              credentials: "include",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                nbr_clics: count,
-                name_package: themeValue,
-              }),
-            }
-          );
-
-          if (!response.ok) {
-            throw new Error("front, fail to create new game");
-          }
-          const game = await response.json();
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      createNewGame();
       setIsGameOver(true);
+      setIsWon(true);
     }
   }, [matchedPair, cards.length]);
+
+  const handleTimeUp = () => {
+    setIsGameOver(true);
+    setIsRestricted(true);
+  };
 
   const handleRestart = () => {
     setIsGameOver(false);
     setCards([]);
-    setmatchedPair([]);
+    setMatchedPair([]);
     setNbrCoups(0);
-    setDisplayChooseThemeForm(true);
+    setIsRestricted(false);
+    setDisplayChooseChronoForm(true);
     reset();
   };
-
   return (
     <>
-      <h2 className="themes-mode-title">{themeValue} theme</h2>
+      {!isGameOver && (
+        <Chrono initialTime={timeLimit} handleEndGame={handleTimeUp} />
+      )}
+      <h2>{timeLimit} seconds</h2>
       <section className="themes-container-cards">
         {cards.map((card) => (
-          <ThemesCard
+          <ChronoCard
             key={card.id}
             value={card.value}
             onClick={() => handleClick(card.id)}
@@ -156,10 +138,18 @@ const ThemesModeGame = ({
       </section>
       <p>{count} clicks</p>
       <p>{nbrCoups} coups</p>
-
-      {isGameOver && <EndGameAlert handleRestart={handleRestart} />}
+      {isGameOver && (
+        <EndGameAlert
+          handleRestart={handleRestart}
+          isWon={isWon}
+          nbrCoups={nbrCoups}
+        />
+      )}
+      <Link to="/" className="return-btn">
+        Retour
+      </Link>
     </>
   );
 };
 
-export default ThemesModeGame;
+export default ChronoModeGame;

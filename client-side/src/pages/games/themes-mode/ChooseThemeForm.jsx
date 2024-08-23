@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ChooseThemeForm = ({ onStart }) => {
   const [formValue, setFormValue] = useState({
@@ -73,6 +74,9 @@ const ChooseThemeForm = ({ onStart }) => {
       <button className="choose-nbr-crd-form-btn" type="submit">
         Lancer la partie
       </button>
+      <Link to="/" className="return-btn">
+        Retour
+      </Link>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </form>

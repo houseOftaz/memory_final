@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ThemesModeGame from "../ThemesModeGame";
+import ThemesModeGame from "./ThemesModeGame";
 import ChooseThemeForm from "./ChooseThemeForm";
 
 const ThemesDiplay = () => {

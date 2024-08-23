@@ -113,7 +113,7 @@ const AdminPage = () => {
             ))}
           </tbody>
         </table>
-        <Link to="/" className="back-btn">
+        <Link to="/" className="return-btn">
           Retour
         </Link>
       </div>

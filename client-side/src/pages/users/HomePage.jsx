@@ -18,12 +18,10 @@ const HomePage = () => {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/auth/logout`,
       {
-        credentials: "include", // c'est lui qui envoie ou non le cookie
+        credentials: "include",
       }
     );
     if (response.ok) {
-      // la reponse contient un code HTTP
-      const data = await response.json(); // response contient un objet
       setSession({});
     } else {
       console.log("Erreur lors de la déconnexion");

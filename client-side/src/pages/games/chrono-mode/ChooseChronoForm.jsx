@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ChooseChronoForm = ({ onLevelSelect }) => {
   const [selectedLevel, setSelectedLevel] = useState("facile");
@@ -23,7 +24,7 @@ const ChooseChronoForm = ({ onLevelSelect }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="choose-nbr-crd-form" onSubmit={handleSubmit}>
       <h2>Choisissez le niveau</h2>
       <label htmlFor="facile">
         <input
@@ -58,7 +59,12 @@ const ChooseChronoForm = ({ onLevelSelect }) => {
         />
         Difficile | Temps limite : 15 secondes
       </label>
-      <button type="submit">Démarrer</button>
+      <button className="start-btn" type="submit">
+        Démarrer
+      </button>
+      <Link to="/" className="return-btn">
+        Retour
+      </Link>
     </form>
   );
 };
