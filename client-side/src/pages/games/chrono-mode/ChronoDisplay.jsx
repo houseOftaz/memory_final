@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ChronoModeGame from "./ChronoModeGame";
 import ChooseChronoForm from "./ChooseChronoForm";
+import ChronoBackgdMusic from "../../../components/ChronoBackgdMusic";
 
 const ChronoDisplay = () => {
   const [displayChooseChronoForm, setDisplayChooseChronoForm] = useState(true);
@@ -23,11 +24,14 @@ const ChronoDisplay = () => {
       {displayChooseChronoForm ? (
         <ChooseChronoForm onLevelSelect={onStart} />
       ) : (
-        <ChronoModeGame
-          timeLimit={formValue.timeLimit}
-          setDisplayChooseChronoForm={setDisplayChooseChronoForm}
-          themeValue={theme}
-        />
+        <>
+          <ChronoBackgdMusic />
+          <ChronoModeGame
+            timeLimit={formValue.timeLimit}
+            setDisplayChooseChronoForm={setDisplayChooseChronoForm}
+            themeValue={theme}
+          />
+        </>
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ThemesModeGame from "./ThemesModeGame";
 import ChooseThemeForm from "./ChooseThemeForm";
+import ThemesBackgdMusic from "../../../components/ThemesBackgdMusic";
 
 const ThemesDiplay = () => {
   const [displayChooseThemeForm, setDisplayChooseThemeForm] = useState(true);
@@ -20,6 +21,7 @@ const ThemesDiplay = () => {
       )}
       {!displayChooseThemeForm && (
         <div>
+          <ThemesBackgdMusic themeValue={formValue.theme} />
           <ThemesModeGame
             nbrCards={formValue.nbrCards}
             setDisplayChooseThemeForm={setDisplayChooseThemeForm}

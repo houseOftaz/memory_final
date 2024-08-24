@@ -86,7 +86,7 @@ const Register = () => {
 
   return (
     <div className="form-container">
-      <h2>Inscription</h2>
+      <h2 className="register-title">Inscription</h2>
 
       {error.global && <p className="error-msg">{error.global}</p>}
       <form onSubmit={handleSubmit}>
@@ -150,7 +150,7 @@ const Register = () => {
           />
         </div>
       )}
-      <Link to="/" className="return-btn">
+      <Link to="/" className="return-btn register-btn">
         Retour
       </Link>
     </div>

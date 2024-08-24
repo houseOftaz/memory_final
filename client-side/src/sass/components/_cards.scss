@@ -39,3 +39,14 @@
 .alert-content button:hover {
   background-color: $orange;
 }
+
+.themes-card {
+  @include flex-center;
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  background-size: contain;
+
+  text-align: center;
+  font-size: 2rem;
+}
