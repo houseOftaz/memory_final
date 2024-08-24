@@ -1,0 +1,37 @@
+.games-title {
+  @include flex-center;
+  margin-bottom: 5rem;
+  padding: 1rem;
+  border-radius: 15px;
+  border: 2px solid $current-font-color;
+  background-color: $yellow;
+}
+
+.games-container-cards {
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* challenge mode */
+.challenge-mode-container {
+  margin: 0 20px;
+  @include flex-center;
+  flex-direction: column;
+}
+
+.challenge-mode-table {
+  border-radius: 15px;
+  border: 2px solid $current-font-color;
+  width: 100%;
+  border-collapse: collapse;
+  th {
+    text-align: left;
+    padding: 10px;
+    background-color: $apple-green;
+  }
+  td {
+    text-align: left;
+    padding: 10px;
+  }
+}

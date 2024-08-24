@@ -1,28 +1,13 @@
-.container-cards {
-  @include flex-center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
 .card {
-  background-image: url("/images/memory-card.png");
-  background-size: contain;
-  border-radius: 15px;
+  @include flex-center;
   width: 100px;
   height: 100px;
+  border-radius: 15px;
+  background-size: contain;
+  background-image: url("/images/memory-card.png");
+
   text-align: center;
   font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.themes-card {
-  @include flex-center;
-  border-radius: 15px;
-  width: 100px;
-  height: 100px;
-  background-size: cover;
 }
 
 .card:hover {
@@ -41,9 +26,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: $yellow;
+  background-color: $orange;
   padding: 2rem;
   z-index: 1000;
+  border-radius: 15px;
 }
 
 .alert-content {

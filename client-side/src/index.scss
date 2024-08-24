@@ -1,21 +1,19 @@
+/* base */
 @import "./sass/bases/normalize";
 @import "./sass/bases/typography";
 @import "./sass/utils/mixins";
 @import "./sass/utils/variables";
+@import "./sass/layout/main";
+
 @import "./sass/components/button";
 @import "./sass/components/cards";
 @import "./sass/components/chooseNbrCardForms";
-@import "./sass/layout/main";
-// @import "./sass/layout/_animatedBackground.scss";
 @import "./sass/layout/header";
-@import "./sass/layout/footer";
-@import "./sass/pages/loadingAnim";
+@import "./sass/layout/loadingAnim";
 @import "./sass/pages/homePage";
-@import "./sass/pages/testModeGame";
 @import "./sass/pages/registerPage";
 @import "./sass/pages/adminPage";
 @import "./sass/layout/profileCard";
 @import "./sass/pages/rankPage";
-@import "./sass/pages/themesModeGame";
-@import "./sass/pages/challengeModeGame";
 @import "./sass/components/confetti";
+@import "./sass/pages/games";

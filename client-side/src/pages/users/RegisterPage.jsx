@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import LinkButton from "../../components/buttons/LinkButton";
 import { SessionContext } from "../../context/SessionContextProvider";
+import FormField from "../../components/FormField";
 
-//
 const Register = () => {
   const { setSession } = useContext(SessionContext);
   const [formData, setFormData] = useState({
@@ -13,7 +14,7 @@ const Register = () => {
   });
 
   const [showSubmitFormPopup, setShowSubmitFormPopup] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,8 +24,39 @@ const Register = () => {
     });
   };
 
+  const validateForm = () => {
+    const errors = {};
+    if (formData.firstname.length < 4) {
+      errors.firstname = "minimum 4 caractères";
+    }
+    if (formData.lastname.length < 4) {
+      errors.lastname = "minimum 4 caractères";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/;
+
+    if (!emailRegex.test(formData.email)) {
+      errors.email = "email invalide";
+    }
+    if (!passwordRegex.test(formData.password)) {
+      errors.password = `le mot de passe doit contenir
+        au moins 10 caractères dont une lettre majuscule,
+        une lettre minuscule, un chiffre et un caractère
+        spécial`;
+    }
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const validateErrors = validateForm();
+    if (Object.keys(validateErrors).length > 0) {
+      setError(validateErrors);
+      return;
+    }
+
     try {
       const response = await fetch(
         `${import.meta.env.VITE_BASE_URL_BACKEND}/server-side/auth/register`,
@@ -44,12 +76,11 @@ const Register = () => {
         setError(null);
       } else {
         setShowSubmitFormPopup(false);
-        setError("Problème de connexion");
-        throw new Error("Problème de connexion");
+        setError({ global: "Problème de connexion" });
       }
     } catch (error) {
       setShowSubmitFormPopup(false);
-      setError("Problème de connexion");
+      setError({ global: "Problème de connexion" });
     }
   };
 
@@ -57,60 +88,49 @@ const Register = () => {
     <div className="form-container">
       <h2>Inscription</h2>
 
-      <form>
-        <label className="register-form-group" htmlFor="firstname">
-          Prénom :
-          <input
-            type="text"
-            value={formData.firstname}
-            name="firstname"
-            id="firstname"
-            autoComplete="firstname"
-            onChange={handleChange}
-            required
-          />
-          {formData.firstname < 4 && <p>minimum 4 caractères</p>}
-        </label>
-        <label className="register-form-group" htmlFor="lastname">
-          Nom :
-          <input
-            type="text"
-            value={formData.lastname}
-            name="lastname"
-            id="lastname"
-            autoComplete="lastname"
-            onChange={handleChange}
-            required
-          />
-          {formData.lastname < 4 && <p>minimum 4 caractères</p>}
-        </label>
-        <label className="register-form-group" htmlFor="email">
-          Email :
-          <input
-            type="email"
-            value={formData.email}
-            name="email"
-            id="email"
-            placeholder="email@example.com"
-            autoComplete="email@example.com"
-            onChange={handleChange}
-            required
-          />
-          {formData.email < 4 && <p>minimum 4 caractères</p>}
-        </label>
-        <label className="register-form-group" htmlFor="password">
-          Mot de passe :
-          <input
-            type="password"
-            value={formData.password}
-            name="password"
-            id="password"
-            autoComplete="new-password"
-            onChange={handleChange}
-            required
-          />
-          {formData.password < 4 && <p>minimum 4 caractères</p>}
-        </label>
+      {error.global && <p className="error-msg">{error.global}</p>}
+      <form onSubmit={handleSubmit}>
+        <FormField
+          label="Prénom"
+          id="firstname"
+          name="firstname"
+          value={formData.firstname}
+          onChange={handleChange}
+          error={error.firstname}
+          required
+          autoComplete="firstname"
+        />
+        <FormField
+          label="Nom"
+          id="lastname"
+          name="lastname"
+          value={formData.lastname}
+          onChange={handleChange}
+          error={error.lastname}
+          required
+          autoComplete="lastname"
+        />
+        <FormField
+          label="Email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          error={error.email}
+          required
+          autoComplete="email@example.com"
+          placeholder="email@example.com"
+        />
+        <FormField
+          label="Mot de passe"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          error={error.password}
+          required
+          autoComplete="new-password"
+        />
         <LinkButton
           className="register-btn"
           linkTo={"/"}
@@ -130,6 +150,9 @@ const Register = () => {
           />
         </div>
       )}
+      <Link to="/" className="return-btn">
+        Retour
+      </Link>
     </div>
   );
 };

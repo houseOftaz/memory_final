@@ -143,8 +143,8 @@ const ThemesModeGame = ({
 
   return (
     <>
-      <h2>{themeValue} theme</h2>
-      <section className="themes-container-cards">
+      <h2 className="games-title">{themeValue} theme</h2>
+      <section className="games-container-cards">
         {cards.map((card) => (
           <ThemesCard
             key={card.id}
@@ -155,8 +155,10 @@ const ThemesModeGame = ({
           />
         ))}
       </section>
+
       <p>{count} clicks</p>
       <p>{nbrCoups} coups</p>
+
       <Link to="/" className="return-btn">
         Retour
       </Link>

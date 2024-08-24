@@ -157,7 +157,7 @@ function ChallengeModeGame() {
 
   return (
     <div className="challenge-mode-container">
-      <h2>Classement des joueurs</h2>
+      <h2 className="games-title">Classement des joueurs</h2>
       <table className="challenge-mode-table">
         <thead>
           <tr>
@@ -189,7 +189,7 @@ function ChallengeModeGame() {
           onClose={() => setShowPopup(false)}
         />
       )}
-      <h2>On vous défi !</h2>
+      <h2 className="games-title">On vous défi !</h2>
       <table className="challenge-mode-table">
         <thead>
           <tr>

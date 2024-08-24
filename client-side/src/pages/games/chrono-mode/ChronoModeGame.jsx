@@ -124,8 +124,8 @@ const ChronoModeGame = ({
       {!isGameOver && (
         <Chrono initialTime={timeLimit} handleEndGame={handleTimeUp} />
       )}
-      <h2>{timeLimit} seconds</h2>
-      <section className="themes-container-cards">
+      <h2 className="games-title">{timeLimit} seconds</h2>
+      <section className="games-container-cards">
         {cards.map((card) => (
           <ChronoCard
             key={card.id}

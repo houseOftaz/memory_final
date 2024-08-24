@@ -4,6 +4,7 @@
 .restart-button,
 .return-btn {
   @include global-btn;
+  display: block;
 }
 
 /* challenge-page */
@@ -19,7 +20,6 @@
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: $current-font;
   color: black;
 }
 
@@ -36,7 +36,6 @@
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: $current-font;
   color: black;
 }
 
