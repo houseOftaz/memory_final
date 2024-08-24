@@ -1,20 +1,21 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const ChooseChronoForm = ({ onLevelSelect }) => {
-  const [selectedLevel, setSelectedLevel] = useState("facile");
-
+const ChooseChronoForm = ({
+  onLevelSelect,
+  selectedLevel,
+  setSelectedLevel,
+}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     let timeLimit;
     switch (selectedLevel) {
-      case "facile":
+      case "easy":
         timeLimit = 60;
         break;
-      case "moyen":
+      case "medium":
         timeLimit = 30;
         break;
-      case "difficile":
+      case "hard":
         timeLimit = 15;
         break;
       default:
@@ -26,38 +27,38 @@ const ChooseChronoForm = ({ onLevelSelect }) => {
   return (
     <form className="choose-nbr-crd-form" onSubmit={handleSubmit}>
       <h2>Choisissez le niveau</h2>
-      <label htmlFor="facile">
+      <label htmlFor="easy">
         <input
           type="radio"
-          id="facile"
+          id="easy"
           name="level"
-          value="facile"
-          checked={selectedLevel === "facile"}
+          value="easy"
+          checked={selectedLevel === "easy"}
           onChange={(event) => setSelectedLevel(event.target.value)}
         />
-        Facile | Temps limite : 1 minute
+        Easy | Temps limite : 1 minute
       </label>
-      <label htmlFor="moyen">
+      <label htmlFor="medium">
         <input
           type="radio"
-          id="moyen"
+          id="medium"
           name="level"
-          value="moyen"
-          checked={selectedLevel === "moyen"}
+          value="medium"
+          checked={selectedLevel === "medium"}
           onChange={(event) => setSelectedLevel(event.target.value)}
         />
-        Moyen | Temps limite : 30 secondes
+        Medium | Temps limite : 30 secondes
       </label>
-      <label htmlFor="difficile">
+      <label htmlFor="hard">
         <input
           type="radio"
-          id="difficile"
+          id="hard"
           name="level"
-          value="difficile"
-          checked={selectedLevel === "difficile"}
+          value="hard"
+          checked={selectedLevel === "hard"}
           onChange={(event) => setSelectedLevel(event.target.value)}
         />
-        Difficile | Temps limite : 15 secondes
+        Hard | Temps limite : 15 secondes
       </label>
       <button className="start-btn" type="submit">
         Démarrer

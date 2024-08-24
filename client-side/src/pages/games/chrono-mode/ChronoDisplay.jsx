@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import ChronoModeGame from "./ChronoModeGame";
 import ChooseChronoForm from "./ChooseChronoForm";
-import ChronoBackgdMusic from "../../../components/ChronoBackgdMusic";
+import useChronoBackgdMusic from "../../../components/useChronoBackgdMusic";
 
 const ChronoDisplay = () => {
   const [displayChooseChronoForm, setDisplayChooseChronoForm] = useState(true);
   const [formValue, setFormValue] = useState(null);
   const [theme, setTheme] = useState("");
+  const [playbackRate, setPlaybackRate] = useState(1.0);
+  const [selectedLevel, setSelectedLevel] = useState("easy");
 
   useEffect(() => {
     const availableThemes = ["animals", "heros", "monuments"];
@@ -18,14 +20,35 @@ const ChronoDisplay = () => {
   const onStart = (selectedLevel, timeLimit) => {
     setDisplayChooseChronoForm(false);
     setFormValue({ selectedLevel, timeLimit });
+
+    switch (selectedLevel) {
+      case "easy":
+        setPlaybackRate(1.0);
+        break;
+      case "medium":
+        setPlaybackRate(1.4);
+        break;
+      case "hard":
+        setPlaybackRate(1.9);
+        break;
+      default:
+        setPlaybackRate(1.0);
+        break;
+    }
   };
+
+  useChronoBackgdMusic(playbackRate, !displayChooseChronoForm);
+
   return (
-    <div>
+    <div className={displayChooseChronoForm ? "" : selectedLevel}>
       {displayChooseChronoForm ? (
-        <ChooseChronoForm onLevelSelect={onStart} />
+        <ChooseChronoForm
+          onLevelSelect={onStart}
+          selectedLevel={selectedLevel}
+          setSelectedLevel={setSelectedLevel}
+        />
       ) : (
         <>
-          <ChronoBackgdMusic />
           <ChronoModeGame
             timeLimit={formValue.timeLimit}
             setDisplayChooseChronoForm={setDisplayChooseChronoForm}

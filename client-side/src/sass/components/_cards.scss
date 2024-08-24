@@ -26,10 +26,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: $orange;
+  background-color: $yellow;
   padding: 2rem;
   z-index: 1000;
   border-radius: 15px;
+  border: 2px solid $current-font-color;
 }
 
 .alert-content {
