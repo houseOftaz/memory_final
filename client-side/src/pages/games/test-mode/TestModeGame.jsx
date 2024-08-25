@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { CounterContext } from "../../../context/CounterContextProvider";
 import Card from "./Card";
 import EndGameAlert from "../EndGameAlert";
+import LinkButton from "../../../components/buttons/LinkButton";
 
 const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
   // état pour les cartes
@@ -87,7 +87,7 @@ const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
   };
 
   return (
-    <>
+    <div className="test-mode-container">
       <h2 className="games-title">Test Mode</h2>
       <section className="games-container-cards">
         {cards.map((card, index) => (
@@ -102,12 +102,10 @@ const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
 
       <p className="test-mode-count">{count} clicks</p>
 
-      <Link to="/" className="return-btn test-mode-btn">
-        Retour
-      </Link>
+      <LinkButton linkTo="/" label="Retour" className="test-mode-btn" />
 
       {isGameOver && <EndGameAlert handleRestart={handleRestart} />}
-    </>
+    </div>
   );
 };
 

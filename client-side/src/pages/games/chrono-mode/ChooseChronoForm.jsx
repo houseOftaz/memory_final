@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import LinkButton from "../../../components/buttons/LinkButton";
 
 const ChooseChronoForm = ({
   onLevelSelect,
@@ -25,7 +26,7 @@ const ChooseChronoForm = ({
   };
 
   return (
-    <form className="choose-nbr-crd-form" onSubmit={handleSubmit}>
+    <form className="choose-form" onSubmit={handleSubmit}>
       <h2>Choisissez le niveau</h2>
       <label htmlFor="easy">
         <input
@@ -63,9 +64,7 @@ const ChooseChronoForm = ({
       <button className="start-btn" type="submit">
         Démarrer
       </button>
-      <Link to="/" className="return-btn">
-        Retour
-      </Link>
+      <LinkButton linkTo="/" label="Retour" />
     </form>
   );
 };

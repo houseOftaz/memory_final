@@ -21,7 +21,7 @@ function Layout() {
     <>
       {loadingAnim && isFirstRender && <LoadingAnim />}
 
-      <main className="main">
+      <main>
         <Outlet />
       </main>
     </>

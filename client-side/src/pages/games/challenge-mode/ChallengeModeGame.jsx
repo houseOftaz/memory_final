@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ChallengeMsgPopup from "./ChallengeMsgPopup";
 import ResponseChallengePopup from "./ResponseChallengePopup";
 import { Link } from "react-router-dom";
+import LinkButton from "../../../components/buttons/LinkButton";
 
 function ChallengeModeGame() {
   const [usersWithGames, setUsersWithGames] = useState([]);
@@ -157,7 +158,7 @@ function ChallengeModeGame() {
 
   return (
     <div className="challenge-mode-container">
-      <h2 className="games-title">Classement des joueurs</h2>
+      <h2 className="games-title">Défiez un joueur</h2>
       <table className="challenge-mode-table">
         <thead>
           <tr>
@@ -233,9 +234,7 @@ function ChallengeModeGame() {
           onSendResponse={onSendResponse}
         />
       )}
-      <Link to="/" className="return-btn">
-        Retour
-      </Link>
+      <LinkButton linkTo="/" label="Retour" className="test-mode-btn" />
     </div>
   );
 }

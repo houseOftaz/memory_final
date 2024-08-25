@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ProfileCard from "../layout/ProfileCard";
+import LinkButton from "../../components/buttons/LinkButton";
 
 function RankPage() {
   const [usersWithGames, setUsersWithGames] = useState([]);
@@ -50,6 +51,7 @@ function RankPage() {
           ))}
         </tbody>
       </table>
+      <LinkButton linkTo="/" label="Retour" />
     </div>
   );
 }

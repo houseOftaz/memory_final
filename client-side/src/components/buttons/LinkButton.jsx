@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
-function LinkButton({ linkTo, onClickUserAction, disabled, label }) {
+const LinkButton = ({
+  linkTo,
+  onClickUserAction,
+  disabled,
+  label,
+  className,
+}) => {
   const clickSound = (url) => {
     const audio = new Audio(url);
     audio.play();
@@ -17,12 +23,14 @@ function LinkButton({ linkTo, onClickUserAction, disabled, label }) {
     <Link
       to={linkTo}
       onClick={handleClick}
-      className={`link-button ${disabled ? "disabled-btn" : ""}`}
+      className={`link-button ${
+        disabled ? "disabled-btn " + className : className
+      }`}
       aria-disabled={disabled}
     >
       {label}
     </Link>
   );
-}
+};
 
 export default LinkButton;

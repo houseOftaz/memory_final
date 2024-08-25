@@ -1,10 +1,11 @@
 .games-title {
   @include flex-center;
-  margin-bottom: 5rem;
   padding: 1rem;
+  margin-bottom: 3rem;
+
   border-radius: 15px;
-  border: 2px solid $current-font-color;
   background-color: $yellow;
+  border: 2px solid $current-font-color;
 }
 
 .games-container-cards {
@@ -13,31 +14,49 @@
   gap: 1rem;
 }
 
-/* challenge mode */
+// TEST MODE
+.test-mode-container {
+  @include neumorphism-container;
+}
+
+.test-mode-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.test-mode-count {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+// CHALLENGE MODE
 .challenge-mode-container {
-  margin: 0 20px;
-  @include flex-center;
-  flex-direction: column;
+  @include neumorphism-container;
 }
 
 .challenge-mode-table {
-  border-radius: 15px;
-  border: 2px solid $current-font-color;
   width: 100%;
-  border-collapse: collapse;
+  margin-bottom: 4rem;
+  border-radius: 15px;
+
   th {
-    text-align: left;
+    overflow: hidden;
     padding: 10px;
+
+    border: 2px solid $yellow;
     background-color: $apple-green;
+
+    text-align: left;
+    text-transform: uppercase;
   }
+
   td {
     text-align: left;
     padding: 10px;
   }
 }
 
-/* chrono mode */
-
+// CHRONO MODE
 @keyframes blink {
   0%,
   100% {

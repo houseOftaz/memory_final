@@ -1,5 +1,5 @@
 // pop up for choosing number of cards
-.choose-nbr-crd-form {
+.choose-form {
   @include flex-center;
   flex-direction: column;
   border: 2px solid $current-font-color;
@@ -9,18 +9,18 @@
   background-color: $orange;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
 
-  .choose-nbr-crd-form-title {
+  .choose-form-title {
     font-family: $title-font;
   }
 
-  .choose-nbr-card-form-input {
+  .choose-input {
     padding: 0.7rem 0.4rem;
     border-radius: 15px;
     font-family: $title-font;
     text-align: center;
   }
 
-  .choose-nbr-crd-form-btn {
+  .choose-form-btn {
     @include global-btn;
   }
 

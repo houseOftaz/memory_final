@@ -4,6 +4,7 @@
   height: 100px;
   border-radius: 15px;
   background-size: contain;
+  border: 1px solid $current-font-color;
   background-image: url("/images/memory-card.png");
 
   text-align: center;
@@ -11,8 +12,6 @@
 }
 
 .card:hover {
-  // à mettre en requète média pour 1100px
-  background-color: $orange;
   cursor: pointer;
 }
 
@@ -25,12 +24,18 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  padding: 1.5rem 2rem 3.5rem;
   transform: translate(-50%, -50%);
-  background-color: $yellow;
-  padding: 2rem;
-  z-index: 1000;
+
+  background-color: $orange;
   border-radius: 15px;
   border: 2px solid $current-font-color;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
+
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: larger;
+  z-index: 1000;
 }
 
 .alert-content {

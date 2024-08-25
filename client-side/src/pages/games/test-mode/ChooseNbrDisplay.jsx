@@ -14,18 +14,12 @@ const ChooseNbrDisplay = () => {
 
   return (
     <>
-      {displayChooseNbrCardForm && (
-        <div>
-          <ChooseNbrCardForm onStart={onStart} />
-        </div>
-      )}
+      {displayChooseNbrCardForm && <ChooseNbrCardForm onStart={onStart} />}
       {!displayChooseNbrCardForm && (
-        <div>
-          <TestModeGame
-            nbrCards={nbrCards}
-            setDisplayChooseNbrCardForm={setDisplayChooseNbrCardForm}
-          />
-        </div>
+        <TestModeGame
+          nbrCards={nbrCards}
+          setDisplayChooseNbrCardForm={setDisplayChooseNbrCardForm}
+        />
       )}
     </>
   );

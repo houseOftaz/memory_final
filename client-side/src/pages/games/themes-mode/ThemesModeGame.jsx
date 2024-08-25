@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import ThemesCard from "./ThemesCard";
 import EndGameAlert from "../EndGameAlert";
 import { CounterContext } from "../../../context/CounterContextProvider";
+import LinkButton from "../../../components/buttons/LinkButton";
 
 const ThemesModeGame = ({
   nbrCards,
@@ -159,9 +159,7 @@ const ThemesModeGame = ({
       <p>{count} clicks</p>
       <p>{nbrCoups} coups</p>
 
-      <Link to="/" className="return-btn">
-        Retour
-      </Link>
+      <LinkButton linkTo="/" label="Retour" />
 
       {isGameOver && <EndGameAlert handleRestart={handleRestart} />}
     </>

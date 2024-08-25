@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import LinkButton from "../../../components/buttons/LinkButton";
 
 const ChooseNbrCardForm = ({ onStart }) => {
   // état pour stocker la valeur saisie
@@ -24,20 +25,16 @@ const ChooseNbrCardForm = ({ onStart }) => {
 
   return (
     <form
-      className="choose-nbr-crd-form"
+      className="choose-form"
       onSubmit={handleInputSubmit}
-      aria-labelledby="choose-nbr-crd-form-title"
+      aria-labelledby="choose-form-title"
     >
-      <label
-        htmlFor="nbrCards"
-        id="form-title"
-        className="choose-nbr-crd-form-title"
-      >
+      <label htmlFor="nbrCards" id="form-title" className="choose-form-title">
         Choisi un nombre de cartes :
       </label>
 
       <input
-        className="choose-nbr-card-form-input"
+        className="choose-input"
         type="number"
         name="nbrCards"
         id="nbrCards"
@@ -49,12 +46,10 @@ const ChooseNbrCardForm = ({ onStart }) => {
         required
       />
 
-      <button className="choose-nbr-crd-form-btn" type="submit">
+      <button className="choose-form-btn" type="submit">
         Lancer la partie
       </button>
-      <Link to="/" className="return-btn">
-        Retour
-      </Link>
+      <LinkButton linkTo="/" label="Retour" />
 
       {errorMessage && <p className="error-msg">{errorMessage}</p>}
     </form>

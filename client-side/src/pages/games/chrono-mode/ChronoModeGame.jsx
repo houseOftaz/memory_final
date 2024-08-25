@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import ChronoCard from "./ChronoCard";
 import EndGameAlert from "../EndGameAlert";
 import { CounterContext } from "../../../context/CounterContextProvider";
 import Chrono from "./Chrono";
+import LinkButton from "../../../components/buttons/LinkButton";
 
 const ChronoModeGame = ({
   timeLimit,
@@ -145,9 +145,7 @@ const ChronoModeGame = ({
           nbrCoups={nbrCoups}
         />
       )}
-      <Link to="/" className="return-btn">
-        Retour
-      </Link>
+      <LinkButton linkTo="/" label="Retour" />
     </>
   );
 };

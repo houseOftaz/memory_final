@@ -24,3 +24,10 @@
   border: none;
   background-color: $orange;
 }
+
+@mixin neumorphism-container {
+  padding: 1.5rem 2.5rem;
+  border-radius: 25px;
+  background: #62d28f;
+  box-shadow: 20px 20px 60px #53b37a, -20px -20px 60px #71f2a4;
+}
