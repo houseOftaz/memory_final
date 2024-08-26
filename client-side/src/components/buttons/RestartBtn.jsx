@@ -1,4 +1,4 @@
-const RestartButton = ({ onRestart }) => {
+const RestartBtn = ({ onRestart }) => {
   const handleRestart = (url) => {
     const audio = new Audio(url);
     audio.play();
@@ -12,4 +12,4 @@ const RestartButton = ({ onRestart }) => {
   );
 };
 
-export default RestartButton;
+export default RestartBtn;

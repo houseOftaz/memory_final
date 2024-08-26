@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { CounterContext } from "../../../context/CounterContextProvider";
 import Card from "./Card";
 import EndGameAlert from "../EndGameAlert";
-import LinkButton from "../../../components/buttons/LinkButton";
+import LinkBtn from "../../../components/buttons/LinkBtn";
 
 const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
   // état pour les cartes
@@ -87,9 +87,9 @@ const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
   };
 
   return (
-    <div className="test-mode-container">
+    <div className="games-container">
       <h2 className="games-title">Test Mode</h2>
-      <section className="games-container-cards">
+      <section className="cards-container">
         {cards.map((card, index) => (
           <Card
             key={index}
@@ -100,11 +100,17 @@ const TestModeGame = ({ nbrCards, setDisplayChooseNbrCardForm }) => {
         ))}
       </section>
 
-      <p className="test-mode-count">{count} clicks</p>
+      <p className="clicks-counter">{count} clicks</p>
 
-      <LinkButton linkTo="/" label="Retour" className="test-mode-btn" />
+      <LinkBtn linkTo="/" label="Retour" className="test-mode-btn" />
 
-      {isGameOver && <EndGameAlert handleRestart={handleRestart} />}
+      {isGameOver && (
+        <EndGameAlert
+          nbrCoups={nbrCoups}
+          handleRestart={handleRestart}
+          isWon={matchedPair.length === cards.length}
+        />
+      )}
     </div>
   );
 };

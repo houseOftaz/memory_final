@@ -15,7 +15,7 @@ const Chrono = ({ initialTime, handleEndGame }) => {
     return () => clearInterval(interval);
   }, [time, handleEndGame]);
 
-  return <div>{time}</div>;
+  return <div className="clicks-counter">{time}</div>;
 };
 
 export default Chrono;

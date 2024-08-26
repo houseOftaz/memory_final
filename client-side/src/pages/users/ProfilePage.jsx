@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from "react";
-import LinkButton from "../../components/buttons/LinkButton";
+import LinkBtn from "../../components/buttons/LinkBtn";
 import { SessionContext } from "../../context/SessionContextProvider";
 
-function ProfilePage() {
+const ProfilePage = () => {
   const { session, setSession } = useContext(SessionContext);
   const [userData, setUserData] = useState({
     firstname: session?.user?.firstname || "",
@@ -79,7 +79,7 @@ function ProfilePage() {
 
   return (
     <div className="form-container">
-      <h2>Profile</h2>
+      <h2 className="profile-title">Profile</h2>
       <img
         src={
           userData.avatar
@@ -92,10 +92,15 @@ function ProfilePage() {
         width="100"
         height="100"
       />
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <label className="register-form-group" htmlFor="firstname">
+      <form
+        className="login-form"
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+      >
+        <label className="form-label" htmlFor="firstname">
           Prénom :
           <input
+            className="register-form-input"
             type="text"
             value={userData.firstname}
             name="firstname"
@@ -105,9 +110,10 @@ function ProfilePage() {
           />
         </label>
 
-        <label className="register-form-group" htmlFor="lastname">
+        <label className="form-label" htmlFor="lastname">
           Nom :
           <input
+            className="register-form-input"
             type="text"
             value={userData.lastname}
             name="lastname"
@@ -132,9 +138,10 @@ function ProfilePage() {
         </label>
           */}
 
-        <label className="register-form-group" htmlFor="email">
+        <label className="form-label" htmlFor="email">
           Email :
           <input
+            className="register-form-input"
             type="email"
             value={userData.email}
             name="email"
@@ -145,14 +152,19 @@ function ProfilePage() {
           />
         </label>
 
-        <label className="register-form-group" htmlFor="avatar">
+        <label className="form-label" htmlFor="avatar">
           Avatar :
-          <input type="file" name="avatar" id="avatar" />
+          <input
+            className="register-form-input"
+            type="file"
+            name="avatar"
+            id="avatar"
+          />
         </label>
         {/** 
-        <LinkButton linkTo={"/"} label={"Valider"} onClick={handleSubmit} />
+        <LinkBtn linkTo={"/"} label={"Valider"} onClick={handleSubmit} />
         */}
-        <button type="submit" className="submit-btn-profil">
+        <button className="submit-btn-profil" type="submit">
           Valider
         </button>
       </form>
@@ -167,9 +179,9 @@ function ProfilePage() {
         </p>
       )}
 
-      <LinkButton linkTo="/" label="Retour" />
+      <LinkBtn linkTo="/" label="Retour" className="login-btn" />
     </div>
   );
-}
+};
 
 export default ProfilePage;

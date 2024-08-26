@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 import { SessionContext } from "../../context/SessionContextProvider";
-import LinkButton from "../../components/buttons/LinkButton";
+import LinkBtn from "../../components/buttons/LinkBtn";
 import Footer from "../layout/Footer";
 
 const HomePage = () => {
@@ -34,40 +34,42 @@ const HomePage = () => {
         <p>Vous êtes connecté en tant que {session?.user?.firstname}</p>
       )}
 
-      <LinkButton linkTo={"/test-mode"} label={"Essayer le jeu"} />
+      <div className="home-div-linkbtn">
+        <LinkBtn linkTo={"/test-mode"} label={"Essayer le jeu"} />
 
-      <LinkButton
-        linkTo={"/challenge"}
-        label={"Défier un joueur"}
-        disabled={!session?.user?.email}
-      />
+        <LinkBtn
+          linkTo={"/challenge"}
+          label={"Défier un joueur"}
+          disabled={!session?.user?.email}
+        />
 
-      <LinkButton
-        linkTo={"/chrono"}
-        label={"Contre la montre"}
-        disabled={!session?.user?.email}
-      />
+        <LinkBtn
+          linkTo={"/chrono"}
+          label={"Contre la montre"}
+          disabled={!session?.user?.email}
+        />
 
-      <LinkButton
-        linkTo={"/themes"}
-        label={"Par thème"}
-        disabled={!session?.user?.email}
-      />
+        <LinkBtn
+          linkTo={"/themes"}
+          label={"Par thème"}
+          disabled={!session?.user?.email}
+        />
 
-      <LinkButton
-        linkTo={"/classement"}
-        label={"classement"}
-        disabled={!session?.user?.email}
-      />
+        <LinkBtn
+          linkTo={"/classement"}
+          label={"classement"}
+          disabled={!session?.user?.email}
+        />
 
-      <LinkButton
-        linkTo={!session?.user?.email ? "/register" : "/"}
-        label={!session?.user?.email ? "M'inscrire" : "Se déconnecter"}
-        onClickUserAction={!session?.user?.email ? null : handleLogout}
-      />
+        <LinkBtn
+          linkTo={!session?.user?.email ? "/register" : "/"}
+          label={!session?.user?.email ? "M'inscrire" : "Se déconnecter"}
+          onClickUserAction={!session?.user?.email ? null : handleLogout}
+        />
+      </div>
 
       {!session?.user?.email && (
-        <p>
+        <p className="info-text-register">
           Vous devez vous inscrire pour utiliser toutes les fonctionnalités du
           jeu.
         </p>

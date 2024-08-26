@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LinkButton from "../../../components/buttons/LinkButton";
+import LinkBtn from "../../../components/buttons/LinkBtn";
 
 const ChooseThemeForm = ({ onStart }) => {
   const [formValue, setFormValue] = useState({
@@ -67,7 +67,7 @@ const ChooseThemeForm = ({ onStart }) => {
       <button className="choose-form-btn" type="submit">
         Lancer la partie
       </button>
-      <LinkButton linkTo="/" label="Retour" />
+      <LinkBtn linkTo="/" label="Retour" />
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </form>

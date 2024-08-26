@@ -1,13 +1,34 @@
-.classement-table {
-  width: 100%;
-  border-collapse: collapse;
-  th {
-    text-align: left;
-    padding: 10px;
-    background-color: $apple-green;
+.rank-container {
+  @include neumorphism-container;
+  padding: 3rem;
+
+  .rank-title {
+    text-align: center;
   }
+
+  .classement-table {
+    width: 100%;
+    margin-bottom: 4rem;
+    border-radius: 1rem;
+  }
+
+  th {
+    overflow: hidden;
+    padding: 10px;
+
+    border: 2px solid $yellow;
+    background-color: $apple-green;
+
+    text-align: left;
+    text-transform: uppercase;
+  }
+
   td {
     text-align: left;
     padding: 10px;
+  }
+
+  .link-button {
+    @include flex-center;
   }
 }

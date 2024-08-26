@@ -24,7 +24,7 @@ const FormField = ({
         required={required}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className={`form-input ${error ? "error" : ""}`}
+        className={`register-form-input ${error ? "error" : ""}`}
       />
       {error && (
         <p id={`${id}-error`} className="error-msg" role="alert">

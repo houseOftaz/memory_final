@@ -10,17 +10,22 @@ const ResponseChallengePopup = ({ onClose, message, onSendResponse }) => {
   };
 
   return (
-    <div>
+    <div className="end-game-alert">
       <h2>Vous avez été défié par {message.from_user_id}</h2>
       <p>Sujet : {message.subject}</p>
       <p>Message : {message.message}</p>
       <textarea
+        className="challenge-msg-input"
         value={response}
         onChange={(e) => setResponse(e.target.value)}
         placeholder="Entrez votre réponse"
       />
-      <button onClick={handleSendResponse}>Répondre</button>
-      <button onClick={onClose}>Fermer</button>
+      <button className="start-btn" onClick={handleSendResponse}>
+        Répondre
+      </button>
+      <button className="start-btn" onClick={onClose}>
+        Fermer
+      </button>
     </div>
   );
 };

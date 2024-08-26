@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import ThemesCard from "./ThemesCard";
 import EndGameAlert from "../EndGameAlert";
 import { CounterContext } from "../../../context/CounterContextProvider";
-import LinkButton from "../../../components/buttons/LinkButton";
+import LinkBtn from "../../../components/buttons/LinkBtn";
 
 const ThemesModeGame = ({
   nbrCards,
@@ -142,9 +142,9 @@ const ThemesModeGame = ({
   };
 
   return (
-    <>
+    <div className="games-container">
       <h2 className="games-title">{themeValue} theme</h2>
-      <section className="games-container-cards">
+      <section className="cards-container">
         {cards.map((card) => (
           <ThemesCard
             key={card.id}
@@ -156,13 +156,11 @@ const ThemesModeGame = ({
         ))}
       </section>
 
-      <p>{count} clicks</p>
-      <p>{nbrCoups} coups</p>
-
-      <LinkButton linkTo="/" label="Retour" />
+      <p className="clicks-counter">{count} clicks</p>
+      <LinkBtn linkTo="/" label="Retour" className="test-mode-btn" />
 
       {isGameOver && <EndGameAlert handleRestart={handleRestart} />}
-    </>
+    </div>
   );
 };
 

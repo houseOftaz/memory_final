@@ -2,9 +2,10 @@
   @include flex-center;
   width: 100px;
   height: 100px;
-  border-radius: 15px;
+  border-radius: 1rem;
   background-size: contain;
   border: 1px solid $current-font-color;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.2);
   background-image: url("/images/memory-card.png");
 
   text-align: center;
@@ -21,6 +22,8 @@
 }
 
 .end-game-alert {
+  @include flex-center;
+  flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -28,12 +31,11 @@
   transform: translate(-50%, -50%);
 
   background-color: $orange;
-  border-radius: 15px;
+  border-radius: 1rem;
   border: 2px solid $current-font-color;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
 
   text-transform: uppercase;
-  font-weight: bolder;
   font-size: larger;
   z-index: 1000;
 }
@@ -50,9 +52,29 @@
   @include flex-center;
   width: 100px;
   height: 100px;
-  border-radius: 15px;
+  border-radius: 1rem;
   background-size: contain;
 
   text-align: center;
   font-size: 2rem;
+}
+
+/////////////////////////////////
+/// PROFILE CARD
+/////////////////////////////////
+.profile-card-container {
+  @include neumorphism-container;
+  @include flex-center;
+  flex-direction: column;
+
+  .profile-card-avatar {
+    border-radius: 1rem;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .profile-card-name {
+    font-family: $title-font;
+  }
 }

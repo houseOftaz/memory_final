@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import LinkButton from "../../components/buttons/LinkButton";
+import LinkBtn from "../../components/buttons/LinkBtn";
 import { SessionContext } from "../../context/SessionContextProvider";
 import FormField from "../../components/FormField";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { setSession } = useContext(SessionContext);
@@ -13,6 +13,7 @@ const Register = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
   const [showSubmitFormPopup, setShowSubmitFormPopup] = useState(false);
   const [error, setError] = useState({});
 
@@ -73,22 +74,23 @@ const Register = () => {
         const formData = await response.json();
         setSession(formData);
         setShowSubmitFormPopup(true);
-        setError(null);
+        setError({});
+        navigate("/");
       } else {
         setShowSubmitFormPopup(false);
-        setError({ global: "Problème de connexion" });
+        setError({ global: "Vous êtes déjà inscrit" });
       }
     } catch (error) {
       setShowSubmitFormPopup(false);
       setError({ global: "Problème de connexion" });
     }
   };
-
+  console.log(formData);
   return (
     <div className="form-container">
       <h2 className="register-title">Inscription</h2>
 
-      {error.global && <p className="error-msg">{error.global}</p>}
+      {error?.global && <p className="error-msg">{error?.global}</p>}
       <form onSubmit={handleSubmit}>
         <FormField
           label="Prénom"
@@ -96,7 +98,7 @@ const Register = () => {
           name="firstname"
           value={formData.firstname}
           onChange={handleChange}
-          error={error.firstname}
+          error={error.firstname || ""}
           required
           autoComplete="firstname"
         />
@@ -106,7 +108,7 @@ const Register = () => {
           name="lastname"
           value={formData.lastname}
           onChange={handleChange}
-          error={error.lastname}
+          error={error.lastname || ""}
           required
           autoComplete="lastname"
         />
@@ -116,7 +118,7 @@ const Register = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          error={error.email}
+          error={error.email || ""}
           required
           autoComplete="email@example.com"
           placeholder="email@example.com"
@@ -127,11 +129,12 @@ const Register = () => {
           name="password"
           value={formData.password}
           onChange={handleChange}
-          error={error.password}
+          error={error.password || ""}
           required
+          type="password"
           autoComplete="new-password"
         />
-        <LinkButton
+        <LinkBtn
           className="register-btn"
           linkTo={"/"}
           label={"Valider"}
@@ -139,20 +142,7 @@ const Register = () => {
         />
       </form>
 
-      {showSubmitFormPopup && (
-        <div className="popup-container">
-          <p>Inscription réussie</p>
-          <LinkButton
-            className="register-btn"
-            linkTo={"/"}
-            label={"Retour"}
-            onClick={() => setShowSubmitFormPopup(false)}
-          />
-        </div>
-      )}
-      <Link to="/" className="return-btn register-btn">
-        Retour
-      </Link>
+      <LinkBtn linkTo="/" label="Retour" className="register-btn return-btn" />
     </div>
   );
 };

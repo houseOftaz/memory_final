@@ -10,15 +10,22 @@ const ChallengeMsgPopup = ({ onClose, onSendMsg }) => {
   };
 
   return (
-    <div>
-      <h2>Enoyer un message pour défier le joueur</h2>
+    <div className="end-game-alert">
+      <h2 className="challenge-msg-title">
+        Enoyer un message pour défier le joueur
+      </h2>
       <textarea
+        className="challenge-msg-input"
         value={msg}
         onChange={(e) => setMsg(e.target.value)}
         placeholder="Entrez votre message"
       />
-      <button onClick={handleSendMsg}>Envoyer</button>
-      <button onClick={onClose}>Annuler</button>
+      <button className="start-btn" onClick={handleSendMsg}>
+        Envoyer
+      </button>
+      <button className="start-btn" onClick={onClose}>
+        Annuler
+      </button>
     </div>
   );
 };

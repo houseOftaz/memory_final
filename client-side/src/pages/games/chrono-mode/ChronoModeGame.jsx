@@ -3,12 +3,13 @@ import ChronoCard from "./ChronoCard";
 import EndGameAlert from "../EndGameAlert";
 import { CounterContext } from "../../../context/CounterContextProvider";
 import Chrono from "./Chrono";
-import LinkButton from "../../../components/buttons/LinkButton";
+import LinkBtn from "../../../components/buttons/LinkBtn";
 
 const ChronoModeGame = ({
   timeLimit,
   setDisplayChooseChronoForm,
   themeValue,
+  selectedLevel,
 }) => {
   const [cards, setCards] = useState([]);
   const [matchedPair, setMatchedPair] = useState([]);
@@ -125,7 +126,7 @@ const ChronoModeGame = ({
         <Chrono initialTime={timeLimit} handleEndGame={handleTimeUp} />
       )}
       <h2 className="games-title">{timeLimit} seconds</h2>
-      <section className="games-container-cards">
+      <section className={`cards-container ${selectedLevel}`}>
         {cards.map((card) => (
           <ChronoCard
             key={card.id}
@@ -136,8 +137,7 @@ const ChronoModeGame = ({
           />
         ))}
       </section>
-      <p>{count} clicks</p>
-      <p>{nbrCoups} coups</p>
+      <p className="clicks-counter">{count} clicks</p>
       {isGameOver && (
         <EndGameAlert
           handleRestart={handleRestart}
@@ -145,7 +145,7 @@ const ChronoModeGame = ({
           nbrCoups={nbrCoups}
         />
       )}
-      <LinkButton linkTo="/" label="Retour" />
+      <LinkBtn linkTo="/" label="Retour" className="test-mode-btn" />
     </>
   );
 };

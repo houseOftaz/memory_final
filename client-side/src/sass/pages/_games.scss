@@ -1,3 +1,7 @@
+.games-container {
+  @include neumorphism-container;
+}
+
 .games-title {
   @include flex-center;
   padding: 1rem;
@@ -8,76 +12,73 @@
   border: 2px solid $current-font-color;
 }
 
-.games-container-cards {
+.cards-container {
   @include flex-center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
+  margin: 1rem 0 3rem;
 }
 
+/////////////////////////////////
 // TEST MODE
+/////////////////////////////////
 .test-mode-container {
   @include neumorphism-container;
 }
 
+.clicks-counter {
+  @include flex-center;
+  @include neumorphism-container;
+  font-size: 2rem;
+}
+
 .test-mode-btn {
   display: block;
-  margin: 0 auto;
+  margin: 2.5rem auto;
 }
 
-.test-mode-count {
-  margin-top: 1rem;
-  font-size: 1.5rem;
-}
-
+/////////////////////////////////
 // CHALLENGE MODE
+/////////////////////////////////
 .challenge-mode-container {
   @include neumorphism-container;
-}
 
-.challenge-mode-table {
-  width: 100%;
-  margin-bottom: 4rem;
-  border-radius: 15px;
+  .challenge-mode-table {
+    width: 100%;
+    margin-bottom: 4rem;
+    border-radius: 15px;
 
-  th {
-    overflow: hidden;
-    padding: 10px;
+    th {
+      overflow: hidden;
+      padding: 10px;
 
-    border: 2px solid $yellow;
-    background-color: $apple-green;
+      border: 2px solid $yellow;
+      background-color: $apple-green;
 
-    text-align: left;
-    text-transform: uppercase;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    td {
+      text-align: left;
+      padding: 10px;
+    }
   }
 
-  td {
-    text-align: left;
-    padding: 10px;
+  .challenge-msg-input {
+    border: none;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 1rem;
+    background: $orange;
+    box-shadow: 10px 10px 25px #d9a135, -10px -10px 25px #ffd947;
+    transition: 0.3s;
   }
-}
 
-// CHRONO MODE
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
+  .challenge-msg-input:focus {
+    outline-color: $orange;
+    background: $orange;
+    box-shadow: inset 10px 10px 25px #d9a135, -10px -10px 25px #ffd947;
+    transition: 0.3s;
   }
-  50% {
-    opacity: 0;
-  }
-}
-
-.easy {
-  background-color: $yellow;
-  animation: blink 2s infinite;
-}
-
-.medium {
-  background-color: $orange;
-  animation: blink 1.5s infinite;
-}
-
-.hard {
-  background-color: $red;
-  animation: blink 1s infinite;
 }

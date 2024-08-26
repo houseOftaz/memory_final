@@ -17,7 +17,9 @@ const ThemesBackgdMusic = ({ themeValue }) => {
 
     const playAudio = async () => {
       try {
-        await audio.play();
+        if (audio.paused) {
+          await audio.play();
+        }
       } catch (error) {
         console.error(error);
       }
@@ -27,7 +29,9 @@ const ThemesBackgdMusic = ({ themeValue }) => {
     playAudio();
 
     return () => {
-      audio.pause();
+      if (!audio.paused) {
+        audio.pause();
+      }
       audio.currentTime = 0;
     };
   }, [themeValue]);

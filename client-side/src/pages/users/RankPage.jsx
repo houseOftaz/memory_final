@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import ProfileCard from "../layout/ProfileCard";
-import LinkButton from "../../components/buttons/LinkButton";
+import LinkBtn from "../../components/buttons/LinkBtn";
 
-function RankPage() {
+const RankPage = () => {
   const [usersWithGames, setUsersWithGames] = useState([]);
 
   useEffect(() => {
@@ -28,11 +28,11 @@ function RankPage() {
   }, []);
 
   return (
-    <div>
+    <div className="rank-container">
       {usersWithGames.length > 0 && (
         <ProfileCard usersWithGames={usersWithGames} />
       )}
-      <h2>Classement des joueurs</h2>
+      <h2 className="rank-title">Top 50</h2>
       <table className="classement-table">
         <thead>
           <tr>
@@ -51,9 +51,9 @@ function RankPage() {
           ))}
         </tbody>
       </table>
-      <LinkButton linkTo="/" label="Retour" />
+      <LinkBtn linkTo="/" label="Retour" />
     </div>
   );
-}
+};
 
 export default RankPage;

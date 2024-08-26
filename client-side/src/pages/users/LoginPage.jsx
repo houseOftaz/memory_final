@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import LinkButton from "../../components/buttons/LinkButton";
+import LinkBtn from "../../components/buttons/LinkBtn";
 import { SessionContext } from "../../context/SessionContextProvider";
 
-function LoginPage() {
+const LoginPage = () => {
   const { setSession } = useContext(SessionContext);
   const navigate = useNavigate();
 
@@ -47,10 +47,11 @@ function LoginPage() {
   return (
     <div className="form-container">
       <h2>Connexion</h2>
-      <form onSubmit={handleSubmit}>
-        <label className="register-form-group" htmlFor="email">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <label className="form-label" htmlFor="email">
           Email :
           <input
+            className="register-form-input"
             type="email"
             value={formData.email}
             name="email"
@@ -61,9 +62,10 @@ function LoginPage() {
           />
         </label>
 
-        <label className="register-form-group" htmlFor="email">
+        <label className="form-label" htmlFor="email">
           Mot de passe :
           <input
+            className="register-form-input"
             type="password"
             value={formData.password}
             name="password"
@@ -74,16 +76,17 @@ function LoginPage() {
           />
         </label>
 
-        <LinkButton
+        <LinkBtn
           linkTo={"/?sucessLogin=true"} // search query params
           label={"Valider"}
           onClickUserAction={handleSubmit}
         />
+        <LinkBtn linkTo="/" label="Retour" className="login-btn" />
       </form>
 
       {error && <p>{error}</p>}
     </div>
   );
-}
+};
 
 export default LoginPage;

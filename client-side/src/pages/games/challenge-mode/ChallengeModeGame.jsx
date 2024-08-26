@@ -2,8 +2,8 @@ import SendMsgIcon from "../../../../public/images/svg/SendMsgIcon";
 import { useState, useEffect } from "react";
 import ChallengeMsgPopup from "./ChallengeMsgPopup";
 import ResponseChallengePopup from "./ResponseChallengePopup";
-import { Link } from "react-router-dom";
-import LinkButton from "../../../components/buttons/LinkButton";
+import LinkBtn from "../../../components/buttons/LinkBtn";
+import DeleteMsgIcon from "../../../../public/images/svg/DeleteMsgIcon";
 
 function ChallengeModeGame() {
   const [usersWithGames, setUsersWithGames] = useState([]);
@@ -175,7 +175,10 @@ function ChallengeModeGame() {
               <td>{user.firstname}</td>
               <td>{user.games_played}</td>
               <td>
-                <button onClick={() => openPopup(user)}>
+                <button
+                  className="send-msg-btn"
+                  onClick={() => openPopup(user)}
+                >
                   <SendMsgIcon />
                 </button>
               </td>
@@ -211,15 +214,18 @@ function ChallengeModeGame() {
                 <td>{message.from_users_firstname}</td>
                 <td>{message.subject}</td>
                 <td>{message.message}</td>
-                <td>
-                  <button onClick={() => openResponsePopup(message)}>
+                <td className="icon-msg-content">
+                  <button
+                    className="send-msg-btn"
+                    onClick={() => openResponsePopup(message)}
+                  >
                     <SendMsgIcon />
                   </button>
                   <button
                     className="delete-btn"
                     onClick={() => deleteMsg(message.id)}
                   >
-                    suprimer
+                    <DeleteMsgIcon />
                   </button>
                 </td>
               </tr>
@@ -234,7 +240,7 @@ function ChallengeModeGame() {
           onSendResponse={onSendResponse}
         />
       )}
-      <LinkButton linkTo="/" label="Retour" className="test-mode-btn" />
+      <LinkBtn linkTo="/" label="Retour" className="test-mode-btn" />
     </div>
   );
 }

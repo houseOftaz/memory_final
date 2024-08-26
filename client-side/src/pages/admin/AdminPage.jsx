@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { SessionContext } from "../../context/SessionContextProvider";
-import LinkButton from "../../components/buttons/LinkButton";
+import LinkBtn from "../../components/buttons/LinkBtn";
 
 const AdminPage = () => {
   const { session } = useContext(SessionContext);
@@ -114,7 +114,7 @@ const AdminPage = () => {
             ))}
           </tbody>
         </table>
-        <LinkButton linkTo="/" label="Retour" />
+        <LinkBtn linkTo="/" label="Retour" />
       </div>
     );
   }

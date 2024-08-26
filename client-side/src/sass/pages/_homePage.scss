@@ -4,7 +4,75 @@
   gap: 1.2rem;
 }
 
-p {
-  font-family: $current-font;
-  color: $current-font-color;
+.home-div-linkbtn {
+  @include flex-center;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+////////////////////////////////
+// connexion info
+////////////////////////////////
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.info-text-register {
+  @include neumorphism-container;
+  text-align: center;
+
+  animation: blink 7s infinite;
+}
+
+////////////////////////////////
+// TABLET RESPONSIVE
+////////////////////////////////
+@media (min-width: 600px) {
+  .home-page {
+    font-size: large;
+  }
+
+  .home-div-linkbtn {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .footer-separator {
+    margin: 5% auto;
+  }
+}
+
+////////////////////////////////
+// DESKTOP RESPONSIVE
+////////////////////////////////
+@media (min-width: 1024px) {
+  .home-page {
+    font-size: larger;
+  }
+
+  .link-button {
+    width: 12rem;
+    padding: 1rem 0.4rem;
+  }
+
+  .home-div-linkbtn {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5rem;
+
+    .link-button {
+      width: 30%;
+    }
+  }
+
+  .footer-separator {
+    margin: 10% auto;
+  }
 }

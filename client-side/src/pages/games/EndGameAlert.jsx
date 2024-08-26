@@ -1,15 +1,15 @@
-import RestartButton from "../../components/buttons/RestartButton";
+import RestartBtn from "../../components/buttons/RestartBtn";
 
 // fonction pour afficher l'alerte de fin de partie
 const EndGameAlert = ({ nbrCoups, handleRestart, isWon }) => {
   return (
     <div className="end-game-alert">
       {isWon ? (
-        <p>Vous avez gagné ! {nbrCoups} coups !</p>
+        <p>Vous avez gagné en {nbrCoups} coups !</p>
       ) : (
-        <p>Vous avez perdu ! {nbrCoups} coups !</p>
+        <p>Perdu, essayez encore !</p>
       )}
-      <RestartButton onRestart={handleRestart} />
+      <RestartBtn onRestart={handleRestart} />
     </div>
   );
 };

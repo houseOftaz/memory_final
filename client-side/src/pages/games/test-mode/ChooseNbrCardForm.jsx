@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import LinkButton from "../../../components/buttons/LinkButton";
+import LinkBtn from "../../../components/buttons/LinkBtn";
 
 const ChooseNbrCardForm = ({ onStart }) => {
   // état pour stocker la valeur saisie
@@ -49,7 +48,7 @@ const ChooseNbrCardForm = ({ onStart }) => {
       <button className="choose-form-btn" type="submit">
         Lancer la partie
       </button>
-      <LinkButton linkTo="/" label="Retour" />
+      <LinkBtn linkTo="/" label="Retour" />
 
       {errorMessage && <p className="error-msg">{errorMessage}</p>}
     </form>
