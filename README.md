@@ -20,33 +20,98 @@ memory_final/
 │   ├── node_modules/
 │   ├── public/
 │   │   ├── colors/
+│   │   │   ├── colors.png
 │   │   ├── fonts/
+│   │   │   ├── bungee/
+│   │   │   ├── source_sans_3/
 │   │   ├── images/
 │   │   ├── sounds/
 │   │   ├── videos/
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── buttons/
-│   │   │   ├── popups/
+│   │   │   │   ├── LinkBtn.jsx
+│   │   │   │   ├── RestartBtn.jsx
+│   │   │   ├── Confetti.jsx
+│   │   │   ├── FormField.jsx
+│   │   │   ├── ThemesBackgrdMusic.jsx
+│   │   │   ├── useChronoBackgdMusic.jsx
 │   │   ├── context/
+│   │   │   ├── Counter.jsx
+│   │   │   ├── CounterContextProvider.jsx
+│   │   │   ├── SessionContextProvider.jsx
+│   │   │   ├── useCounter.jsx
 │   │   ├── pages/
 │   │   │   ├── admin/
+│   │   │   │   ├── AdminPage.jsx
 │   │   │   ├── games/
+│   │   │   │   ├── challenge-mode/ChallengeModeGame
+│   │   │   │   │   ├── ChallengeModeGame.jsx
+│   │   │   │   │   ├── ChallengeMsgPopup.jsx
+│   │   │   │   │   ├── ResponseChallengePopup.jsx
+│   │   │   │   ├── chrono-mode/
+│   │   │   │   │   ├── ChooseChronoForm.jsx
+│   │   │   │   │   ├── Chrono.jsx
+│   │   │   │   │   ├── ChronoCard.jsx
+│   │   │   │   │   ├── ChronoDisplay.jsx
+│   │   │   │   │   ├── ChronoModeGame.jsx
+│   │   │   │   ├── test-mode/
+│   │   │   │   │   ├── Card.jsx
+│   │   │   │   │   ├── ChooseNbrCardForm.jsx
+│   │   │   │   │   ├── ChooseNbrDisplay.jsx
+│   │   │   │   │   ├── TestModeGame.jsx
+│   │   │   │   ├── themes-mode/
+│   │   │   │   │   ├── ChooseThemeForm.jsx
+│   │   │   │   │   ├── ThemesCard.jsx
+│   │   │   │   │   ├── ThemesDisplay.jsx
+│   │   │   │   │   ├── ThemeModeGame.jsx
+│   │   │   │   ├── EndGameAlert.jsx
 │   │   │   ├── layout/
+│   │   │   │   ├── Footer.jsx
+│   │   │   │   ├── Layout.jsx
+│   │   │   │   ├── LoadingAnim.jsx
+│   │   │   │   ├── ProfileCard.jsx
 │   │   │   ├── users/
+│   │   │   │   ├── HomePage.jsx
+│   │   │   │   ├── LoginPage.jsx
+│   │   │   │   ├── ProfilePage.jsx
+│   │   │   │   ├── RankPage.jsx
+│   │   │   │   ├── RegisterPage.jsx
 │   │   ├── sass/
 │   │   │   ├── bases/
+│   │   │   │   ├── _normalize.scss
+│   │   │   │   ├── _typography.scss
 │   │   │   ├── components/
+│   │   │   │   ├── _button.scss
+│   │   │   │   ├── _cards.scss
+│   │   │   │   ├── _chooseNbrCardForm.scss
+│   │   │   │   ├── _confetti.scss
 │   │   │   ├── layout/
+│   │   │   │   ├── _header.scss
+│   │   │   │   ├── _loadingAnim.scss
+│   │   │   │   ├── _main.scss
+│   │   │   │   ├── _profileCard.scss
 │   │   │   ├── pages/
+│   │   │   │   ├── _adminPage.scss
+│   │   │   │   ├── _games.scss
+│   │   │   │   ├── _homePage.scss
+│   │   │   │   ├── _rankPage.scss
+│   │   │   │   ├── _registerPage.scss
 │   │   │   ├── utils/
-│   ├── .env
-│   ├── index.html
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── README.md
-│   └── vite.config.js
-├── server-side/
+│   │   │   │   ├── _mixins.scss
+│   │   │   │   ├── _variables.scss
+│   │   │   ├── sass.
+│   ├── App.jsx
+│   ├── index.scss
+│   ├── main.jsx
+└── .env
+└── .eslintrc.cjs
+└── index.html
+└── package-lock.json
+└── package.json
+└── README.md
+└── vite.config.js
+└── server-side/
 │   ├── config/
 │   ├── controllers/
 │   ├── middlewares/
