@@ -153,6 +153,8 @@ npm i
 
 enjoy :grinning:
 
-## futur udaptes
+## Connection Admin
 
-- verifier les doublons de rendu de requête
+- Admin page : http://localhost:3000/admin
+  nom d'utilisateur : admin
+  mot de passe : Admin1991!
