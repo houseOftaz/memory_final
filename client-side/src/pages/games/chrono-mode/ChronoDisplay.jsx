@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import ChronoModeGame from "./ChronoModeGame";
 import ChooseChronoForm from "./ChooseChronoForm";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import ChronoModeGame from "./ChronoModeGame";
+import ChooseChronoForm from "./ChooseChronoForm";
 import useChronoBackgdMusic from "../../../components/useChronoBackgdMusic";
+import { SessionContext } from "../../../context/SessionContextProvider";
 
 const ChronoDisplay = () => {
   const [displayChooseChronoForm, setDisplayChooseChronoForm] = useState(true);
@@ -9,6 +14,15 @@ const ChronoDisplay = () => {
   const [theme, setTheme] = useState("");
   const [playbackRate, setPlaybackRate] = useState(1.0);
   const [selectedLevel, setSelectedLevel] = useState("easy");
+
+  const { session } = useContext(SessionContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (session && session.user && session.user.role !== "admin") {
+      navigate("/");
+    }
+  }, [session, navigate]);
 
   useEffect(() => {
     const availableThemes = ["animals", "heros", "monuments"];
@@ -38,6 +52,10 @@ const ChronoDisplay = () => {
   };
 
   useChronoBackgdMusic(playbackRate, !displayChooseChronoForm);
+
+  if (!session) {
+    return <p>Loading ...</p>;
+  }
 
   return (
     <div className={displayChooseChronoForm ? "" : selectedLevel}>
