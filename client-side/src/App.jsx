@@ -11,7 +11,6 @@ import ProfilePage from "./pages/users/ProfilePage";
 import RankPage from "./pages/users/RankPage";
 import ChallengeModeGame from "./pages/games/challenge-mode/ChallengeModeGame";
 import ChronoDisplay from "./pages/games/chrono-mode/ChronoDisplay";
-
 import "./index.scss";
 
 const App = () => {
@@ -29,6 +28,7 @@ const App = () => {
           <Route path="/classement" element={<RankPage />} />
           <Route path="/challenge" element={<ChallengeModeGame />} />
           <Route path="/chrono" element={<ChronoDisplay />} />
+          <Route path="*" element={<h1>404 not found</h1>} />
         </Route>
       </Routes>
     </BrowserRouter>
