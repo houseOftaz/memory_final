@@ -16,94 +16,101 @@ React and Vite.
 
 ```text
 memory_final/
+├── .vscode/
+│   ├── extensions.json
+│   └── settings.json
 ├── client-side/
 │   ├── node_modules/
 │   ├── public/
 │   │   ├── colors/
-│   │   │   ├── colors.png
+│   │   │   └── colors.png
 │   │   ├── fonts/
 │   │   │   ├── bungee/
-│   │   │   ├── source_sans_3/
+│   │   │   └── source_sans_3/
 │   │   ├── images/
-│   │   ├── sounds/
-│   │   ├── videos/
+│   │   │   ├── animals/
+│   │   │   ├── back-cards/
+│   │   │   ├── heros/
+│   │   │   ├── monuments/
+│   │   │   └── svg/
+│   │   └── sounds/
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── buttons/
 │   │   │   │   ├── LinkBtn.jsx
-│   │   │   │   ├── RestartBtn.jsx
+│   │   │   │   └── RestartBtn.jsx
 │   │   │   ├── Confetti.jsx
 │   │   │   ├── FormField.jsx
+│   │   │   ├── PasswordChecklist.jsx
 │   │   │   ├── ThemesBackgrdMusic.jsx
-│   │   │   ├── useChronoBackgdMusic.jsx
+│   │   │   └── useChronoBackgdMusic.jsx
 │   │   ├── context/
 │   │   │   ├── Counter.jsx
 │   │   │   ├── CounterContextProvider.jsx
 │   │   │   ├── SessionContextProvider.jsx
-│   │   │   ├── useCounter.jsx
+│   │   │   └── useCounter.jsx
 │   │   ├── pages/
 │   │   │   ├── admin/
-│   │   │   │   ├── AdminPage.jsx
+│   │   │   │   └── AdminPage.jsx
 │   │   │   ├── games/
-│   │   │   │   ├── challenge-mode/ChallengeModeGame
+│   │   │   │   ├── challenge-mode/
 │   │   │   │   │   ├── ChallengeModeGame.jsx
 │   │   │   │   │   ├── ChallengeMsgPopup.jsx
-│   │   │   │   │   ├── ResponseChallengePopup.jsx
+│   │   │   │   │   └── ResponseChallengePopup.jsx
 │   │   │   │   ├── chrono-mode/
 │   │   │   │   │   ├── ChooseChronoForm.jsx
 │   │   │   │   │   ├── Chrono.jsx
 │   │   │   │   │   ├── ChronoCard.jsx
 │   │   │   │   │   ├── ChronoDisplay.jsx
-│   │   │   │   │   ├── ChronoModeGame.jsx
+│   │   │   │   │   └── ChronoModeGame.jsx
 │   │   │   │   ├── test-mode/
 │   │   │   │   │   ├── Card.jsx
 │   │   │   │   │   ├── ChooseNbrCardForm.jsx
 │   │   │   │   │   ├── ChooseNbrDisplay.jsx
-│   │   │   │   │   ├── TestModeGame.jsx
+│   │   │   │   │   └── TestModeGame.jsx
 │   │   │   │   ├── themes-mode/
 │   │   │   │   │   ├── ChooseThemeForm.jsx
 │   │   │   │   │   ├── ThemesCard.jsx
 │   │   │   │   │   ├── ThemesDisplay.jsx
-│   │   │   │   │   ├── ThemeModeGame.jsx
-│   │   │   │   ├── EndGameAlert.jsx
+│   │   │   │   │   └── ThemeModeGame.jsx
+│   │   │   │   └── EndGameAlert.jsx
 │   │   │   ├── layout/
 │   │   │   │   ├── Footer.jsx
 │   │   │   │   ├── Layout.jsx
 │   │   │   │   ├── LoadingAnim.jsx
-│   │   │   │   ├── ProfileCard.jsx
+│   │   │   │   └── ProfileCard.jsx
 │   │   │   ├── users/
 │   │   │   │   ├── HomePage.jsx
 │   │   │   │   ├── LoginPage.jsx
 │   │   │   │   ├── ProfilePage.jsx
 │   │   │   │   ├── RankPage.jsx
-│   │   │   │   ├── RegisterPage.jsx
+│   │   │   │   └── RegisterPage.jsx
 │   │   ├── sass/
 │   │   │   ├── bases/
 │   │   │   │   ├── _normalize.scss
-│   │   │   │   ├── _typography.scss
+│   │   │   │   └── _typography.scss
 │   │   │   ├── components/
 │   │   │   │   ├── _button.scss
 │   │   │   │   ├── _cards.scss
 │   │   │   │   ├── _chooseNbrCardForm.scss
-│   │   │   │   ├── _confetti.scss
+│   │   │   │   └── _confetti.scss
 │   │   │   ├── layout/
 │   │   │   │   ├── _header.scss
 │   │   │   │   ├── _loadingAnim.scss
-│   │   │   │   ├── _main.scss
-│   │   │   │   ├── _profileCard.scss
+│   │   │   │   └── _main.scss
 │   │   │   ├── pages/
 │   │   │   │   ├── _adminPage.scss
 │   │   │   │   ├── _games.scss
 │   │   │   │   ├── _homePage.scss
 │   │   │   │   ├── _rankPage.scss
-│   │   │   │   ├── _registerPage.scss
+│   │   │   │   └── _registerPage.scss
 │   │   │   ├── utils/
 │   │   │   │   ├── _mixins.scss
-│   │   │   │   ├── _variables.scss
-│   │   │   ├── sass.
+│   │   │   │   └── _variables.scss
+│   │   │   └── sass.md
 │   ├── App.jsx
 │   ├── index.scss
-│   ├── main.jsx
+│   └── main.jsx
 └── .env
 └── .eslintrc.cjs
 └── index.html
@@ -113,13 +120,35 @@ memory_final/
 └── vite.config.js
 └── server-side/
 │   ├── config/
+│   │   ├── db.config.js
+│   │   ├── images.config.js
+│   │   └── session.config.js
 │   ├── controllers/
+│   │   ├── admin.controller.js
+│   │   ├── game.controller.js
+│   │   ├── home.controller.js
+│   │   ├── seed.controller.js
+│   │   ├── theme.controller.js
+│   │   └── user.controller.js
 │   ├── middlewares/
+│   │   ├── admin.middleware.js
+│   │   └── auth.middleware.js
 │   ├── models/
+│   │   ├── Admin.model.js
+│   │   ├── Game.model.js
+│   │   ├── project.sql
+│   │   ├── Query.model.js
+│   │   ├── Seed.model.js
+│   │   ├── Theme.model.js
+│   │   └── User.model.js
+│   ├── node_modules/
 │   ├── public/
-│   ├── routes/
-│   ├── views/
-│   ├── ...files
+│   │   └── images/
+│   ├── router/
+│   │   ├── admin.routes.js
+│   │   ├── auth.routes.js
+│   │   ├── game.routes.js
+│   │   └── index.routes.js
 └── eslintrc.cjs
 └── .gitignore
 └── README.md
