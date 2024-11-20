@@ -19,10 +19,10 @@ export const sessionConfig = session({
     connection
   ),
   cookie: {
-    secure: false,
+    secure: process.env.NODE_ENV === "production" ? true : false,
     httpOnly: true,
-    sameSite: "lax",
-    maxAge: 1000 * 60 * 60 * 24 * 7,
+    sameSite: "strict",
+    maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
   },
   rolling: true,
 });

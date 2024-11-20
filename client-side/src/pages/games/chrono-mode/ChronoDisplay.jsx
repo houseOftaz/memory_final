@@ -1,12 +1,9 @@
-import { useState, useEffect } from "react";
-import ChronoModeGame from "./ChronoModeGame";
-import ChooseChronoForm from "./ChooseChronoForm";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { SessionContext } from "../../../context/SessionContextProvider";
 import ChronoModeGame from "./ChronoModeGame";
 import ChooseChronoForm from "./ChooseChronoForm";
 import useChronoBackgdMusic from "../../../components/useChronoBackgdMusic";
-import { SessionContext } from "../../../context/SessionContextProvider";
 
 const ChronoDisplay = () => {
   const [displayChooseChronoForm, setDisplayChooseChronoForm] = useState(true);

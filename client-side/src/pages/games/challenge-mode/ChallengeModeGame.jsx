@@ -102,7 +102,6 @@ function ChallengeModeGame() {
   };
 
   const deleteMsg = async (id) => {
-    console.log("id", id);
     try {
       const response = await fetch(
         `${

@@ -111,7 +111,7 @@ memory_final/
 └── package.json
 └── README.md
 └── vite.config.js
-└── server-side/
+├── server-side/
 │   ├── config/
 │   ├── controllers/
 │   ├── middlewares/
@@ -156,5 +156,5 @@ enjoy :grinning:
 ## Connection Admin
 
 - Admin page : http://localhost:3000/admin
-  nom d'utilisateur : admin
-  mot de passe : Admin1991!
+  email de connexion :
+  mot de passe :

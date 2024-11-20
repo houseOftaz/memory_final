@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
-import LinkBtn from "../../components/buttons/LinkBtn";
+import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../../context/SessionContextProvider";
 import FormField from "../../components/FormField";
-import { useNavigate } from "react-router-dom";
+import LinkBtn from "../../components/buttons/LinkBtn";
 
 const Register = () => {
   const { setSession } = useContext(SessionContext);
@@ -85,7 +85,6 @@ const Register = () => {
       setError({ global: "Problème de connexion" });
     }
   };
-  console.log(formData);
   return (
     <div className="form-container">
       <h2 className="register-title">Inscription</h2>
