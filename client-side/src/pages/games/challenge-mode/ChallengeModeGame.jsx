@@ -57,7 +57,6 @@ function ChallengeModeGame() {
       }
     };
     fetchMsg();
-    console.log("msg from controller", msg);
   }, []);
 
   const openPopup = (user) => {
@@ -164,7 +163,7 @@ function ChallengeModeGame() {
             <th>Classement</th>
             <th>Prénom du joueur</th>
             <th>Parties jouées</th>
-            <th>Ecrire</th>
+            <th>Écrire</th>
           </tr>
         </thead>
         <tbody>

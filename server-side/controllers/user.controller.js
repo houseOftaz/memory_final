@@ -2,7 +2,7 @@ import bcrypt, { hash } from "bcrypt";
 import User from "../models/User.model.js";
 import { upload } from "../config/images.config.js";
 
-// VERRIFIER LAFFICHAGE PASSWORD
+// cette méthode est responsable
 const registerUser = (req, res) => {
   const { firstname, lastname, email, password } = req.body;
   if (!firstname || !lastname || !email || !password) {
@@ -17,7 +17,6 @@ const registerUser = (req, res) => {
         email,
         password: hash,
       };
-      // CORRECTION renvoi user
       const result = await User.createUser(user);
       if (!result.affectedRows) {
         res.status(500).json({
@@ -134,7 +133,7 @@ const updateUser = async (req, res) => {
         avatar
       );
       if (!response[0].affectedRows) {
-        // sous quelle forme on recoit le resultat de la requete
+        // sous quelle forme on reçoit le résultat de la requête
         return res
           .status(500)
           .json({ message: "Erreur lors de la modification" });
