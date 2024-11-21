@@ -8,7 +8,7 @@ const HomePage = () => {
   const { session, setSession } = useContext(SessionContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  if (searchParams.get("sucessLogin")) {
+  if (searchParams.get("successLogin")) {
     setTimeout(() => {
       setSearchParams({});
     }, 3000);
@@ -30,7 +30,7 @@ const HomePage = () => {
 
   return (
     <nav className="home-page">
-      {searchParams.get("sucessLogin") && (
+      {searchParams.get("successLogin") && (
         <p>Vous êtes connecté en tant que {session?.user?.firstname}</p>
       )}
 
