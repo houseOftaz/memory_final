@@ -2,9 +2,32 @@ import bcrypt, { hash } from "bcrypt";
 import User from "../models/User.model.js";
 import { upload } from "../config/images.config.js";
 
-// cette méthode est responsable
+const containsSpecialCharacter = (password) => {
+  const specialCharacters = "!@#$%^&*()_+-=[]{};':\"\\|,.<>/?";
+  return [...password].some((char) => specialCharacters.includes(char));
+};
+
+const validatePassword = (password) => {
+  const errors = [];
+  if (password.length < 10)
+    errors.push("Le mot de passe doit contenir au moins 10 caractères");
+  if (!/[A-Z]/.test(password))
+    errors.push("Le mot de passe doit contenir au moins une majuscule");
+  if (!/[a-z]/.test(password))
+    errors.push("Le mot de passe doit contenir au moins une minuscule");
+  if (!/\d/.test(password))
+    errors.push("Le mot de passe doit contenir au moins un chiffre");
+  if (!containsSpecialCharacter(password))
+    errors.push("Le mot de passe doit contenir au moins un caractère spécial");
+
+  return errors;
+};
+
+// cette méthode est responsable de la création d'un utilisateur et gère
+// la validation des champs obligatoires
 const registerUser = (req, res) => {
   const { firstname, lastname, email, password } = req.body;
+  // validation des champs requis
   if (!firstname || !lastname || !email || !password) {
     res.status(400).json({ message: "Vous devez remplir tous les champs" });
   }
