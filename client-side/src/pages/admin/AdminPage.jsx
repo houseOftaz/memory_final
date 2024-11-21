@@ -69,7 +69,7 @@ const AdminPage = () => {
   };
 
   if (!session) {
-    return <p>Loading</p>; // a ce stade la session est null / undifined
+    return <p>Loading</p>; // a ce stade la session est null / undefined
   } else if (session?.user?.role !== "admin") {
     navigate("/");
   } else {

@@ -8,22 +8,23 @@ import {
   logoutUser,
   getUsersWithGames,
 } from "../controllers/user.controller.js";
+import isAuthMiddleware from "../middlewares/auth.middleware.js";
 
 const auth_router = Router();
 
-auth_router.post("/register", registerUser);
+auth_router.post("/register", isAuthMiddleware, registerUser);
 
-auth_router.post("/login", loginUser);
+auth_router.post("/login", isAuthMiddleware, loginUser);
 
-auth_router.get("/logout", logoutUser);
+auth_router.get("/logout", isAuthMiddleware, logoutUser);
 
-auth_router.get("/me", me);
+auth_router.get("/me", isAuthMiddleware, me);
 
-auth_router.patch("/update", updateUser);
+auth_router.patch("/update", isAuthMiddleware, updateUser);
 
-auth_router.delete("/delete", deleteUser);
+auth_router.delete("/delete", isAuthMiddleware, deleteUser);
 
-auth_router.get("/rank", getUsersWithGames);
+auth_router.get("/rank", isAuthMiddleware, getUsersWithGames);
 
 // route pour obtenir tous les utilisateur
 //auth_router.get('/', getUsers);
