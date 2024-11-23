@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 export const upload = multer({
   storage,
   limits: {
-    fileSize: 1024 * 1024 * 5,
+    fileSize: 1024 * 1024 * 2,
   },
   fileFilter: function (req, file, cb) {
     const filetypes = /jpeg|jpg|png|webp|svg/;
@@ -33,7 +33,7 @@ export const upload = multer({
       return cb(null, true);
     } else {
       cb(
-        "Le poids de votre fichier doit être inférieur à 5Mo, format supporté: jpeg, jpg, png, webp, svg"
+        "Le poids de votre fichier doit être inférieur à 2Mo, format supporté: jpeg, jpg, png, webp, svg"
       );
     }
   },
