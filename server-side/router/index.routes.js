@@ -9,8 +9,10 @@ const SERVER_SIDE_PATH = "/server-side";
 
 router.use(`${SERVER_SIDE_PATH}/auth`, auth_router);
 router.use(`${SERVER_SIDE_PATH}/admin`, admin_router);
-// router.get(`${SERVER_SIDE_PATH}/seed`, seedDB);
-// router.get(`${SERVER_SIDE_PATH}/seed-back-cards`, seedBackCards);
+if (process.env.NODE_ENV === "development") {
+  router.get(`${SERVER_SIDE_PATH}/seed`, seedDB);
+  router.get(`${SERVER_SIDE_PATH}/seed-back-cards`, seedBackCards);
+}
 
 router.use(`${SERVER_SIDE_PATH}/game`, game_router);
 

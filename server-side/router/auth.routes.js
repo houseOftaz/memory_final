@@ -12,9 +12,9 @@ import isAuthMiddleware from "../middlewares/auth.middleware.js";
 
 const auth_router = Router();
 
-auth_router.post("/register", isAuthMiddleware, registerUser);
+auth_router.post("/register", registerUser);
 
-auth_router.post("/login", isAuthMiddleware, loginUser);
+auth_router.post("/login", loginUser);
 
 auth_router.get("/logout", isAuthMiddleware, logoutUser);
 

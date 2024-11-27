@@ -6,17 +6,18 @@ import {
   deleteMsg,
   getMsg,
 } from "../controllers/game.controller.js";
+import isAuthMiddleware from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
 router.get("/themes/:themeValue", getThemes);
 
-router.post("/games/", createGame);
+router.post("/games/", isAuthMiddleware, createGame);
 
-router.post("/challenge-msg", createMsg);
+router.post("/challenge-msg", isAuthMiddleware, createMsg);
 
-router.get("/challenge-msg", getMsg);
+router.get("/challenge-msg", isAuthMiddleware, getMsg);
 
-router.delete("/challenge-msg/:msgId", deleteMsg);
+router.delete("/challenge-msg/:msgId", isAuthMiddleware, deleteMsg);
 
 export default router;
