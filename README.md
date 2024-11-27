@@ -185,5 +185,5 @@ enjoy :grinning:
 ## Connection Admin
 
 - Admin page : http://localhost:3000/admin
-  email de connexion :
-  mot de passe :
+  email de connexion : admin@test.dev
+  mot de passe : Admin1991!!
