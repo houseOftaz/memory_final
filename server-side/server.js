@@ -11,6 +11,7 @@ const corsOptions = cors({
   origin: "http://localhost:5173",
   credentials: true,
 });
+// faire une variable .env qui contient le port
 
 app.use(corsOptions);
 app.use(sessionConfig);

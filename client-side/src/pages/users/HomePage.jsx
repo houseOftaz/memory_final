@@ -68,6 +68,11 @@ const HomePage = () => {
         />
       </div>
 
+      {/* Bouton Admin (visible uniquement pour les admins) */}
+      {session?.user?.role === "admin" && (
+        <LinkBtn linkTo={"/admin"} label={"Admin"} />
+      )}
+
       {!session?.user?.email && (
         <p className="info-text-register">
           Vous devez vous inscrire pour utiliser toutes les fonctionnalités du
